@@ -159,6 +159,23 @@ width: fit-content;
 display: flex;
 justify-content: end;
 }
+
 label>input[type=search]{
 width: fit-content;
 }
+
+.dt-buttons{
+float:left;
+}
+.right-col{
+    margin-bottom: 3px;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #ffc107;
+}
+/* .btn-warning w-hover{
+    color: #ffca2c;
+    border-color: #212529;
+    background: #212529;
+} */

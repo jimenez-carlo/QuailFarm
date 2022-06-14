@@ -1,6 +1,6 @@
 <?php
-require('../db/database.php');
-require('common.php');
+require_once('../db/database.php');
+require_once('common.php');
 if (!$_POST || !isset($_POST['form'])) {
   http_response_code(500);
 }
@@ -37,10 +37,10 @@ if ($_POST['form'] == 'login') {
   $obj->email = mysqli_real_escape_string($conn, clean_data($_POST['email']));
   $obj->password = mysqli_real_escape_string($conn, clean_data($_POST['password']));
   $obj->password_retype = mysqli_real_escape_string($conn, clean_data($_POST['password_retype']));
-  $obj->firstname = mysqli_real_escape_string($conn, clean_data($_POST['firstname']));
-  $obj->lastname = mysqli_real_escape_string($conn, clean_data($_POST['lastname']));
+  $obj->first_name = mysqli_real_escape_string($conn, clean_data($_POST['firstname']));
+  $obj->last_name = mysqli_real_escape_string($conn, clean_data($_POST['lastname']));
   $obj->address = mysqli_real_escape_string($conn, clean_data($_POST['address']));
-  $obj->contact = mysqli_real_escape_string($conn, clean_data($_POST['contact']));
+  $obj->contact_no = mysqli_real_escape_string($conn, clean_data($_POST['contact']));
   $obj->gender = mysqli_real_escape_string($conn, clean_data($_POST['gender']));
 
   if ($obj->password != $obj->password_retype) {
@@ -61,7 +61,7 @@ if ($_POST['form'] == 'login') {
     mysqli_free_result($result);
   }
 
-  if (!filter_var(intval($obj->contact), FILTER_VALIDATE_INT)) {
+  if (!filter_var(intval($obj->contact_no), FILTER_VALIDATE_INT)) {
     echo "Error Invalid Contact No.";
     die;
   }
@@ -69,7 +69,7 @@ if ($_POST['form'] == 'login') {
   $sql = "INSERT INTO tbl_users (username, password, email) VALUES ('$obj->username', '$password', '$obj->email')";
   if (mysqli_query($conn, $sql)) {
     $user_id = intval(mysqli_insert_id($conn));
-    $sql = "INSERT INTO tbl_users_info (id, first_name, last_name, address, contact_no, gender_id) VALUES ($user_id, '$obj->firstname', '$obj->lastname', '$obj->address', $obj->contact, $obj->gender)";
+    $sql = "INSERT INTO tbl_users_info (id, first_name, last_name, address, contact_no, gender_id) VALUES ($user_id, '$obj->first_name', '$obj->last_name', '$obj->address', $obj->contact_no, $obj->gender)";
     if (mysqli_query($conn, $sql)) {
       $_SESSION['user'] = $obj;
       $_SESSION['is_logged_in'] = true;

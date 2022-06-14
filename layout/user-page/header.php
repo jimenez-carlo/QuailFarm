@@ -14,6 +14,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/datable.js"></script>
   <script src="js/datable.bootstrap.js"></script>
+  <script src="js/datatable.buttons.js"></script>
   <script src="js/main.js"></script>
   <script src="js/user-page.js"></script>
 </head>
@@ -51,6 +52,9 @@
         <li><a href="#" name="products" class="nav-link sidebar-btn"><i class="fa fa-shopping-basket"></i> Products</a></li>
         <li><a href="#" name="inventory" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Inventory</a></li>
         <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-cog"></i> System</a></li>
+        <hr>
+        <li><a href="#" name="shop" class="nav-link sidebar-btn"><i class="fa fa-shopping-bag"></i> Shop</a></li>
+        <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
       </ul>
       <hr>
       <div class="dropdown">

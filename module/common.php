@@ -22,9 +22,9 @@ if (!function_exists('get_access')) {
   {
     switch ($access) {
       case 1:
-        return array('dashboard', 'users', 'products', 'inventory', 'system');
+        return array('dashboard', 'users', 'user_register', 'products', 'inventory', 'system', 'shop');
       case 2:
-        return array('dashboard', 'products', 'inventory');
+        return array('dashboard', 'users', 'products', 'inventory');
       case 3:
         return array('dashboard', 'products');
       default:
@@ -32,6 +32,7 @@ if (!function_exists('get_access')) {
     }
   }
 }
+
 if (!function_exists('page_url')) {
   function page_url($page)
   {
@@ -40,12 +41,18 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/dashboard.php';
       case 'users':
         return '../layout/user-page/content/users.php';
+      case 'user_register':
+        return '../layout/user-page/content/user_register.php';
       case 'products':
         return '../layout/user-page/content/products.php';
       case 'inventory':
         return '../layout/user-page/content/inventory.php';
       case 'system':
         return '../layout/user-page/content/system.php';
+      case 'shop':
+        return '../layout/user-page/content/shop.php';
+      case 'shop':
+        return '../layout/user-page/content/shop.php';
       case 'denied':
         return '../layout/user-page/content/access_denied.php';
       default:
@@ -53,6 +60,7 @@ if (!function_exists('page_url')) {
     }
   }
 }
+
 class Modal
 {
 
@@ -61,8 +69,10 @@ class Modal
   public  $title = 'Modal_Title';
   public  $id = 'modal_id_';
   public  $form_name = 'form_name_';
+  public  $submit_show   = true;
   public  $submit_id   = 'submit_id_';
   public  $submit_text = 'Submit';
+  public  $cancel_show   = true;
   public  $cancel_id = 'cancel_id_';
   public  $cancel_text = 'Cancel';
   public  $method = 'POST';
@@ -76,8 +86,6 @@ class Modal
 
   public function create_modal($url)
   {
-
-
     $modal = '<div class="modal fade" id="' . $this->id . '" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
           <form name="' . $this->form_name . '" method="' . $this->method . '">
          <div class="modal-dialog modal-dialog-centered">
@@ -89,9 +97,11 @@ class Modal
              <div class="modal-body">';
     $modal   .= get_contents($url);
     $modal   .= '</div>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal"> ' . $this->cancel_text . ' <i class="fa fa-close"></i></button>
-                <button type="submit" class="btn btn-sm btn-warning">' . $this->submit_text . ' <i class="fa fa-check"></i></button>
+             <div class="modal-footer">';
+
+    $modal .= (!$this->cancel_show) ? '' : '<button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal"> ' . $this->cancel_text . ' <i class="fa fa-close"></i></button>';
+    $modal .= (!$this->submit_show) ? '' : '<button type="submit" class="btn btn-sm btn-warning">' . $this->submit_text . ' <i class="fa fa-check"></i></button>';
+    $modal .= '            
             </div>
           </div>
         </div>

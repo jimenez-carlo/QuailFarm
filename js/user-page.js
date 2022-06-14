@@ -17,7 +17,9 @@ $(document).ready(function() {
 
 $(document).on("submit", 'form', function (e) {
   e.preventDefault();
+  if (this.name == 'logout') {
   window.location.href = base_url+'module/logout.php';
+  }
 });
 
 
