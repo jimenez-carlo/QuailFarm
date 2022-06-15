@@ -8,6 +8,7 @@ if (!function_exists('clean_data')) {
     return $value;
   }
 }
+
 if (!function_exists('get_contents')) {
   function get_contents($url, $data = array())
   {
@@ -17,6 +18,7 @@ if (!function_exists('get_contents')) {
     return ob_get_clean();
   }
 }
+
 if (!function_exists('get_access')) {
   function get_access($access)
   {
@@ -26,7 +28,7 @@ if (!function_exists('get_access')) {
       case 2:
         return array('dashboard', 'users', 'products', 'inventory');
       case 3:
-        return array('dashboard', 'products');
+        return array('dashboard', 'home', 'shop', 'cart', 'customer_profile');
       default:
         return array();
     }
@@ -49,83 +51,21 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/inventory.php';
       case 'system':
         return '../layout/user-page/content/system.php';
+        #Customer
+      case 'home':
+        return '../layout/customer-page/content/home.php';
       case 'shop':
-        return '../layout/user-page/content/shop.php';
-      case 'shop':
-        return '../layout/user-page/content/shop.php';
+        return '../layout/customer-page/content/shop.php';
+      case 'cart':
+        return '../layout/customer-page/content/cart.php';
+      case 'customer_profile':
+        return '../layout/customer-page/content/profile.php';
+        // case 'shop':
+        //   return '../layout/user-page/content/shop.php';
       case 'denied':
         return '../layout/user-page/content/access_denied.php';
       default:
         return '../layout/user-page/content/not_found.php';
     }
-  }
-}
-
-class Modal
-{
-
-  private $conn;
-  public static $counter = 0;
-  public  $title = 'Modal_Title';
-  public  $id = 'modal_id_';
-  public  $form_name = 'form_name_';
-  public  $submit_show   = true;
-  public  $submit_id   = 'submit_id_';
-  public  $submit_text = 'Submit';
-  public  $cancel_show   = true;
-  public  $cancel_id = 'cancel_id_';
-  public  $cancel_text = 'Cancel';
-  public  $method = 'POST';
-
-  public function __construct($db)
-  {
-    self::$counter++;
-    $this->form_name = $this->form_name . self::$counter;
-    $this->conn = $db;
-  }
-
-  public function create_modal($url)
-  {
-    $modal = '<div class="modal fade" id="' . $this->id . '" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
-          <form name="' . $this->form_name . '" method="' . $this->method . '">
-         <div class="modal-dialog modal-dialog-centered">
-           <div class="modal-content">
-             <div class="modal-header bg-dark text-white">
-               <h5 class="modal-title" >' . $this->title . '</h5>
-               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-             </div>
-             <div class="modal-body">';
-    $modal   .= get_contents($url);
-    $modal   .= '</div>
-             <div class="modal-footer">';
-
-    $modal .= (!$this->cancel_show) ? '' : '<button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal"> ' . $this->cancel_text . ' <i class="fa fa-close"></i></button>';
-    $modal .= (!$this->submit_show) ? '' : '<button type="submit" class="btn btn-sm btn-warning">' . $this->submit_text . ' <i class="fa fa-check"></i></button>';
-    $modal .= '            
-            </div>
-          </div>
-        </div>
-      </form>
-      </div>';
-    return $modal;
-  }
-}
-
-class Kernel
-{
-  private $conn;
-  public function __construct($db)
-  {
-    $this->conn = $db;
-  }
-
-  public function get_list($sql)
-  {
-    $data = array();
-    $result = mysqli_query($this->conn, $sql);
-    while ($row = mysqli_fetch_assoc($result)) {
-      $data[] = $row;
-    }
-    return $data;
   }
 }

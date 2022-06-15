@@ -1,5 +1,5 @@
 <?php
-require_once('../db/database.php');
+require_once('../database/connection.php');
 require_once('common.php');
 if (!$_POST || !isset($_POST['form'])) {
   http_response_code(500);
@@ -71,8 +71,8 @@ if ($_POST['form'] == 'login') {
     $user_id = intval(mysqli_insert_id($conn));
     $sql = "INSERT INTO tbl_users_info (id, first_name, last_name, address, contact_no, gender_id) VALUES ($user_id, '$obj->first_name', '$obj->last_name', '$obj->address', $obj->contact_no, $obj->gender)";
     if (mysqli_query($conn, $sql)) {
-      $_SESSION['user'] = $obj;
-      $_SESSION['is_logged_in'] = true;
+      // $_SESSION['user'] = $obj;
+      // $_SESSION['is_logged_in'] = true;
       echo true;
       die;
     } else {

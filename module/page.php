@@ -1,5 +1,6 @@
 <?php
-require_once('../db/database.php');
+require('../database/connection.php');
+require_once('../class/kernel.php');
 require_once('common.php');
 if (!$_GET || !isset($_GET['page'])) {
   echo get_contents('../layout/user-page/content/not_found.php');
@@ -27,8 +28,15 @@ if (in_array($page, $pages)) {
       $data['products'] = $request->get_list("select * from tbl_product");
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
       break;
+    case 'cart':
+      $data['products'] = $request->get_list("select * from tbl_product");
+      $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
+      break;
     case 'users':
       $data['users'] = $request->get_list("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id");
+      break;
+    case 'customer_profile':
+      $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $_SESSION['user']->id);
       break;
   }
   echo get_contents(page_url($page), $data);
