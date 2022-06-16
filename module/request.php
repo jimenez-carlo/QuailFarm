@@ -20,6 +20,15 @@ switch ($form) {
   case 'update_cart_count':
     $result = $shop->get_cart_count();
     break;
+  case 'remove_from_cart':
+    $result = $shop->remove_from_cart($_POST['transaction_id']);
+    break;
+  case 'update_cart':
+    $result = $shop->update_cart($_POST['transaction_id'], $_POST['price'], $_POST['qty']);
+    break;
+  case 'checkout_cart':
+    $result = $shop->check_out_cart();
+    break;
   default:
     # code...
     break;

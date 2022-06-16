@@ -1,5 +1,4 @@
-<div class="container">
-  <br>
+<div class="container mt-3">
   <div class="row">
 
     <div class="col-12">
@@ -31,22 +30,30 @@
                       ?></td>
                   <td><?php echo $res['name']; ?></td>
                   <td class="text-end"><?php echo number_format($res['price'], 2); ?></td>
-                  <td class="text-end"><?php echo $res['qty']; ?></td>
-                  <td class="text-end"><?php echo number_format($res['sum_price'], 2); ?></td>
-                  <td>
-                    <button type="button" class="btn btn-sm btn-dark"><i class="fa fa-close"></i> </button>
+                  <td class="col-md-2">
+                    <form action="post" name="update_cart">
+                      <input type="hidden" name="transaction_id" value="<?php echo $res['id']; ?>">
+                      <input type="hidden" name="price" value="<?php echo $res['price']; ?>">
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-sm btn-warning" type="submit">Update <i class="fa fa-save"></i></button>
+                        </div>
+                        <input type="text" class="form-control form-control-sm" name="qty" value="<?php echo $res['qty']; ?>" style="text-align:right">
+                      </div>
+                    </form>
+                  </td>
+                  <td class="text-end" data-sub-total-id="<?php echo $res['id']; ?>"><?php echo number_format($res['sum_price'], 2); ?></td>
+                  <td class="">
+                    <form action="post" name="remove_from_cart">
+                      <input type="hidden" name="transaction_id" value="<?php echo $res['id']; ?>">
+                      <button type="submit" class="btn btn-sm btn-dark btn-remove-row"><i class="fa fa-close"></i> </button>
+                    </form>
                   </td>
                   <?php $price += $res['price']; ?>
                   <?php $total_price += $res['sum_price']; ?>
                   <?php $qty += $res['qty']; ?>
                 </tr>
               <?php } ?>
-              <!-- <tr>
-                <td colspan="2">Subtotal</td>
-                <td id="sub_total_price"></td>
-                <td id="sub_total_qty"></td>
-                <td></td>
-              </tr> -->
               <tr>
                 <td colspan="2">Total</td>
                 <td id="total_price" class="text-end"><?php echo number_format($price, 2); ?></td>
@@ -57,7 +64,9 @@
             </tbody>
           </table>
         </div>
-        <button class="btn btn-lg btn-warning font-bold rounded-0">Checkout Now <i class="fa fa-check fa-lg"></i></button>
+        <form action="post" name="checkout_cart">
+          <button class="btn btn-lg btn-warning font-bold rounded-0 w-100">Checkout Now <i class="fa fa-check fa-lg"></i></button>
+        </form>
       </div>
     </div>
   </div>

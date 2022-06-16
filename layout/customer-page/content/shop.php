@@ -1,10 +1,8 @@
-<div class="container">
-  <br>
+<div class="container mt-3">
+
   <div class="row">
     <div class="col-12">
 
-      <div class="result">
-      </div>
       <div class="card">
         <div class="card-header bg-dark text-warning">
           <i class="fa fa-shopping-bag"></i> Products

@@ -32,7 +32,7 @@ if (in_array($page, $pages)) {
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
       break;
     case 'cart':
-      $data['cart'] = $request->get_list("select t.id,t.price as sum_price,t.qty,t.product_id,p.name,p.description,p.price from tbl_transactions t inner join tbl_product p on p.id = t.product_id where t.buyer_id = '$customer_id' and t.status_id = 1 ");
+      $data['cart'] = $request->get_list("select t.id,t.price as sum_price,t.qty,t.product_id,p.name,p.description,p.price from tbl_transactions t inner join tbl_product p on p.id = t.product_id where t.buyer_id = '$customer_id' and t.status_id = 1 and t.is_deleted = 0");
       $data['products'] = $request->get_list("select * from tbl_product");
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
       break;
@@ -41,6 +41,15 @@ if (in_array($page, $pages)) {
       break;
     case 'customer_profile':
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $_SESSION['user']->id);
+      break;
+    case 'customer_orders':
+      $tmp = array();
+      $tmp_res = $request->get_list("select t.id,t.qty,s.status,i.invoice, i.date_created as invoice_date,p.name,p.price as product_price from tbl_transactions t inner join tbl_status s on s.id = t.status_id inner join tbl_invoice i on i.id = t.invoice_id  inner join tbl_product p on p.id = t.product_id where t.is_deleted = 0 and t.status_id > 1 and buyer_id = '$customer_id' order by t.date_created desc");
+
+      foreach ($tmp_res as $res) {
+        $tmp['invoice'][$res['invoice']][$res['id']] = $res;
+      }
+      $data['orders'] = $tmp;
       break;
   }
   echo get_contents(page_url($page), $data);
