@@ -1,6 +1,7 @@
 <?php
 require('../database/connection.php');
-require_once('../class/kernel.php');
+require_once('../class/main.php');
+require_once('../class/shop.php');
 require_once('common.php');
 if (!$_GET || !isset($_GET['page'])) {
   echo get_contents('../layout/user-page/content/not_found.php');
@@ -12,11 +13,13 @@ if (!$_GET || !isset($_GET['page'])) {
 
 $page = $_GET['page'];
 $access = $_SESSION['user']->access_id;
+$customer_id = $_SESSION['user']->id;
 $pages = get_access($access);
 
 if (in_array($page, $pages)) {
   $data = array();
-  $request = new Kernel($conn);
+  $request = new Main($conn);
+  $shop = new Shop($conn);
   switch ($page) {
     case 'products':
       $data['products'] = $request->get_list("select * from tbl_product");
@@ -29,6 +32,7 @@ if (in_array($page, $pages)) {
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
       break;
     case 'cart':
+      $data['cart'] = $request->get_list("select t.id,t.price as sum_price,t.qty,t.product_id,p.name,p.description,p.price from tbl_transactions t inner join tbl_product p on p.id = t.product_id where t.buyer_id = '$customer_id' and t.status_id = 1 ");
       $data['products'] = $request->get_list("select * from tbl_product");
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
       break;

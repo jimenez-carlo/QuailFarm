@@ -1,5 +1,5 @@
 <?php
-$result = $data['profile'][0];
+$result = $data['profile'];
 ?>
 <div class="container">
   <br>

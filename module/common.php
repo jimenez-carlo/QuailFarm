@@ -69,3 +69,41 @@ if (!function_exists('page_url')) {
     }
   }
 }
+
+if (!function_exists('error_msg')) {
+  function error_msg($message = "Oops Something Went Wrong!", $title = "Error! ")
+  {
+    $result = '<div class="alert alert-danger mb-3" role="alert">
+        <i class="fa fa-exclamation-triangle"></i>
+        <strong>' . $title . '</strong>
+        ' . $message . '
+        <button type="button" class="btn-close pull-right" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    return $result;
+  }
+}
+
+if (!function_exists('success_msg')) {
+  function success_msg($message = "Action Successfull!", $title = "Successfull! ")
+  {
+    $result = '<div class="alert alert-success mb-3" role="alert">
+        <i class="fa fa-check"> </i>
+        <strong>' . $title . '</strong>
+        ' . $message . '
+         <button type="button" class="btn-close pull-right" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    return $result;
+  }
+}
+
+
+if (!function_exists('def_response')) {
+  function def_response()
+  {
+    $result = new stdClass();
+    $result->status = false;
+    $result->result = error_msg();
+    $result->items = '';
+    return $result;
+  }
+}

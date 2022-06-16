@@ -35,7 +35,7 @@
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="home" href="#"><i class="fa fa-home"></i> Home</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="shop" href="#"><i class="fa fa-shopping-bag"></i> Products </a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="cart" href="#"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+          <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="cart" href="#"><i class="fa fa-shopping-cart"></i> My Cart(<?php echo $cart->items; ?>)</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_profile" href="#"><i class="fa fa-user"></i> Profile </a></li>
           <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li>
         </ul>

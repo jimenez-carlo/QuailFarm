@@ -1,5 +1,5 @@
 <?php
-class Kernel
+class Main
 {
   private $conn;
   public function __construct($db)
@@ -19,15 +19,10 @@ class Kernel
 
   public function get_one($sql)
   {
-    $data = array();
-    $result = mysqli_query($this->conn, $sql);
-    while ($obj = mysqli_fetch_object($result)) {
-      $data[] = $obj;
+    if ($result = mysqli_query($this->conn, $sql)) {
+      $obj = mysqli_fetch_object($result);
+      return $obj;
     }
-    return $data;
-  }
-
-  public function signup()
-  {
+    return false;
   }
 }
