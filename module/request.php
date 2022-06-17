@@ -1,5 +1,6 @@
 <?php
 require('../database/connection.php');
+require_once('../class/user.php');
 require_once('../class/shop.php');
 require_once('common.php');
 
@@ -11,9 +12,11 @@ if (!$_POST || !isset($_POST['form'])) {
 }
 
 $form = $_POST['form'];
+$user = new User($conn);
 $shop = new Shop($conn);
 
 switch ($form) {
+    // Customer
   case 'add_to_cart':
     $result = $shop->add_to_cart($_POST['product_id'], $_POST['qty'], $_POST['price']);
     break;
@@ -29,6 +32,13 @@ switch ($form) {
   case 'checkout_cart':
     $result = $shop->check_out_cart();
     break;
+  case 'customer_update':
+    $result = $user->customer_update();
+    break;
+  case 'customer_change_password':
+    $result = $user->customer_change_password();
+    break;
+    // Customer End
   default:
     # code...
     break;

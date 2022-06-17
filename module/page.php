@@ -40,6 +40,7 @@ if (in_array($page, $pages)) {
       $data['users'] = $request->get_list("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id");
       break;
     case 'customer_profile':
+      $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $_SESSION['user']->id);
       break;
     case 'customer_orders':

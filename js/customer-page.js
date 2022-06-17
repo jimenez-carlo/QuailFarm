@@ -14,6 +14,7 @@ $(document).ready(function () {
 
 $(document).on("submit", 'form', function (e) {
   e.preventDefault();
+  clearErrors();
   var form_raw = this;
   var form_name = this.name;
   
@@ -37,6 +38,9 @@ $(document).on("submit", 'form', function (e) {
       reload_cart_count();
       if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
         $( "#content" ).load( base_url+'module/page.php?page=cart' );
+      }
+      if (result.items != '') {
+        errorFields(result.items);
       }
     }
   });
