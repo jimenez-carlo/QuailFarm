@@ -10,7 +10,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Menor's Quail Farm</h1>
-            <p>To be soon</p>
+            <p>Always Fresh Eggs!</p>
             <p><a class="btn btn-lg btn-dark font-bold text-warning" href="#">ORDER NOW</a></p>
           </div>
         </div>
@@ -24,7 +24,6 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Fresh out of farm</h1>
-            <p>To be soon</p>
             <p><a class="btn btn-lg btn-warning font-bold" href="#products">Check Products!</a></p>
           </div>
         </div>
