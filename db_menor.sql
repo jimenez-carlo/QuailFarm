@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2022 at 07:56 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.26
+-- Generation Time: Jun 20, 2022 at 08:58 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_agroculture`
+-- Database: `db_menor`
 --
 
 -- --------------------------------------------------------
@@ -340,11 +340,12 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `access_id`, `date_created`, `is_deleted`) VALUES
-(2, 'admin', '$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6', 'jimenez.carlo.llabor@gmail.com', 1, '2022-06-12 02:42:14', 0),
+(2, 'admin', '$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6', 'carlosjustinearasa@gmail.com', 1, '2022-06-12 02:42:14', 0),
 (7, 'cashier', '$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6', 'cashier@gmail.com', 2, '2022-06-12 10:10:09', 0),
 (8, 'customer', '$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry', 'customer@gmail.com', 3, '2022-06-12 10:23:27', 0),
 (9, 'carrier', '$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6', 'carrier@gmail.com', 4, '2022-06-15 22:14:36', 0),
-(10, 'admin2', '$2y$10$/wkSAVsPPi.ooWYWZodyoeio4Xs9gPjEZCm4MMdG.LDlRGAEOxN82', 'admin2@gmail.com', 1, '2022-06-18 19:38:27', 0);
+(10, 'admin2', '$2y$10$/wkSAVsPPi.ooWYWZodyoeio4Xs9gPjEZCm4MMdG.LDlRGAEOxN82', 'admin2@gmail.com', 1, '2022-06-18 19:38:27', 0),
+(12, 'ace', '$2y$10$W1jUIDGVMJ42GdxLP/Z3k.vIU0bZdo46GxLfueMmdZ35ZrAdG4xiu', 'staph1414@gmail.com', 3, '2022-06-20 14:36:11', 0);
 
 -- --------------------------------------------------------
 
@@ -366,11 +367,12 @@ CREATE TABLE `tbl_users_info` (
 --
 
 INSERT INTO `tbl_users_info` (`id`, `first_name`, `last_name`, `address`, `contact_no`, `gender_id`) VALUES
-(2, 'Carlo', 'jimenez', 'poblaction sur bayambang pangasinan', 2147483647, 1),
-(7, 'Carlo', 'jimenez', 'poblaction sur bayambang pangasinan', 2147483647, 1),
-(8, 'customer', 'customer', 'poblaction sur bayambang pangasinan', 2147483647, 1),
-(9, 'Carlo', 'jimenez', 'poblaction sur bayambang pangasinan', 2147483647, 1),
-(10, 'admin2', 'admin2', 'poblaction sur bayambang pangasinan', 2147483647, 1);
+(2, 'Carlos', 'Arasa', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
+(7, 'Carlos', 'Arasa', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
+(8, 'customer', 'customer', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
+(9, 'Carlos', 'Arasa', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
+(10, 'admin2', 'admin2', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
+(12, 'ace', 'arasa', 'nibaliw sur bautista pangasinan', 2147483647, 1);
 
 --
 -- Indexes for dumped tables
@@ -504,13 +506,13 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_users_info`
 --
 ALTER TABLE `tbl_users_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
