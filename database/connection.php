@@ -3,7 +3,7 @@ session_start();
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "db_agroculture";
+$database = "db_menor";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 if (!$conn) {

@@ -11,7 +11,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Menor's Quail Farm</h1>
-            <p>To be soon</p>
+            <p>Always Fresh Eggs!</p>
             <p><a class="btn btn-lg btn-dark font-bold text-warning" href="#">ORDER NOW</a></p>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Fresh out of farm</h1>
-            <p>To be soon</p>
+            <p>Always Fresh Eggs!</p>
             <p><a class="btn btn-lg btn-warning font-bold" href="#products">Check Products!</a></p>
           </div>
         </div>
@@ -56,22 +56,22 @@
       <div class="col-lg-4 d-flex flex-column justify-content-center">
         <img src="images/landing/male_quail.jpg" class="rounded-circle align-self-center round-img" alt="" />
         <h2 class="fw-normal text-warning">Male Quail</h2>
-        <p>To be soon</p>
+        <p>Kal</p>
         <p><a class="btn btn-warning font-bold" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">BUY NOW »</a></p>
       </div>
       <div class="col-lg-4 d-flex flex-column justify-content-center">
         <img src="images/landing/female_quail.png" class="rounded-circle align-self-center round-img" alt="" />
 
         <h2 class="fw-normal text-warning">Female Quail</h2>
-        <p>To be soon</p>
+        <p>Laying Eggs</p>
         <p><a class="btn btn-warning font-bold" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">BUY NOW »</a></p>
       </div>
       <div class="col-lg-4 d-flex flex-column justify-content-center">
         <img src="images/landing/quail_egg.jpg" class="rounded-circle align-self-center round-img" alt="" />
         <h2 class="fw-normal text-warning">Quail Egg</h2>
-        <p>To be soon</p>
+        <p>Egg</p>
         <p><a class="btn btn-warning font-bold" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">BUY NOW »</a></p>
-      </div>
+   </div>
     </div>
 
     <hr class="featurette-divider">
