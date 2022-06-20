@@ -18,19 +18,22 @@ $shop = new Shop($conn);
 switch ($form) {
     // Customer
   case 'add_to_cart':
-    $result = $shop->add_to_cart($_POST['product_id'], $_POST['qty'], $_POST['price']);
+    $result = $shop->add_to_cart();
     break;
   case 'update_cart_count':
     $result = $shop->get_cart_count();
     break;
   case 'remove_from_cart':
-    $result = $shop->remove_from_cart($_POST['transaction_id']);
+    $result = $shop->remove_from_cart();
     break;
   case 'update_cart':
-    $result = $shop->update_cart($_POST['transaction_id'], $_POST['price'], $_POST['qty']);
+    $result = $shop->update_cart();
     break;
   case 'checkout_cart':
     $result = $shop->check_out_cart();
+    break;
+  case 'update_transaction':
+    $result = $shop->update_transaction($_POST['id'], $_POST['status']);
     break;
   case 'customer_update':
     $result = $user->customer_update();
@@ -38,7 +41,10 @@ switch ($form) {
   case 'customer_change_password':
     $result = $user->customer_change_password();
     break;
-    // Customer End
+    //  Admin
+  case 'register_user':
+    $result = $user->register_user();
+    break;
   default:
     # code...
     break;

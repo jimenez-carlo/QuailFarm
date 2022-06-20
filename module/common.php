@@ -23,11 +23,11 @@ if (!function_exists('get_access')) {
   function get_access($access)
   {
     switch ($access) {
-      case 1:
-        return array('dashboard', 'users', 'user_register', 'products', 'inventory', 'system', 'shop');
-      case 2:
-        return array('dashboard', 'users', 'products', 'inventory');
-      case 3:
+      case 1: //admin
+        return array('dashboard', 'users', 'user_register', 'user_edit', 'products', 'inventory', 'orders', 'system',);
+      case 2: //cashier
+        return array('dashboard', 'users', 'products', 'inventory', 'orders');
+      case 3: //customer
         return array('dashboard', 'home', 'shop', 'cart', 'customer_profile', 'customer_orders');
       default:
         return array();
@@ -45,12 +45,16 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/users.php';
       case 'user_register':
         return '../layout/user-page/content/user_register.php';
+      case 'user_edit':
+        return '../layout/user-page/content/user_edit.php';
       case 'products':
         return '../layout/user-page/content/products.php';
       case 'inventory':
         return '../layout/user-page/content/inventory.php';
       case 'system':
         return '../layout/user-page/content/system.php';
+      case 'orders':
+        return '../layout/user-page/content/orders.php';
         #Customer
       case 'home':
         return '../layout/customer-page/content/home.php';

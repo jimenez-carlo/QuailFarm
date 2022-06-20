@@ -20,13 +20,13 @@
         <td><span class="badge bg-warning text-dark"><?php echo $res['access']; ?></span></td>
         <td><?php echo $res['username']; ?></td>
         <td><?php echo $res['email']; ?></td>
-        <td><?php echo $res['first_name'] . ' ' . $res['last_name']; ?></td>
-        <td><?php echo $res['gender']; ?></td>
+        <td><?php echo ucwords($res['first_name'] . ' ' . $res['last_name']); ?></td>
+        <td><?php echo strtoupper($res['gender']); ?></td>
         <td><?php echo $res['contact_no']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
         <td>
-          <button type="button" class="btn btn-sm btn-warning"> Edit <i class="fa fa-edit"></i> </button>
-          <button type="button" class="btn btn-sm btn-danger"> Delete <i class="fa fa-trash"></i> </button>
+          <button type="button" class="btn btn-sm btn-warning btn-edit" name="user_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+          <button type="button" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
         </td>
       </tr>
     <?php } ?>
@@ -43,5 +43,15 @@
         $("#content").load(base_url + 'module/page.php?page=user_register');
       }
     }]
+  });
+
+  $(document).ready(function() {
+    $('.btn-edit').click(function() {
+      var page = $(this).attr('name');
+      var id = $(this).attr('value');
+      $(".result").html('');
+      console.log(base_url + 'module/page.php?page=' + page + '&id=' + id);
+      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
+    });
   });
 </script>

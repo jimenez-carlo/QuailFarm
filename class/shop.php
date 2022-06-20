@@ -7,11 +7,11 @@ class Shop
     $this->conn = $db;
   }
 
-  public function add_to_cart($product_id, $qty, $price)
+  public function add_to_cart()
   {
-    $qty = mysqli_real_escape_string($this->conn, intval($qty));
-    $price = mysqli_real_escape_string($this->conn, intval($price));
-    $product_id = mysqli_real_escape_string($this->conn, $product_id);
+    $qty = mysqli_real_escape_string($this->conn, intval($_POST['qty']));
+    $price = mysqli_real_escape_string($this->conn, intval($_POST['price']));
+    $product_id = mysqli_real_escape_string($this->conn, $_POST['product_id']);
 
     $result = def_response();
 
@@ -56,8 +56,12 @@ class Shop
     return $result;
   }
 
-  public function update_cart($id, $price, $qty)
+  public function update_cart()
   {
+    $qty = mysqli_real_escape_string($this->conn, intval($_POST['qty']));
+    $price = mysqli_real_escape_string($this->conn, intval($_POST['price']));
+    $id = mysqli_real_escape_string($this->conn, $_POST['transaction_id']);
+
     $result = def_response();
     $new_price = intval($price) * intval($qty);
     if ($qty > 0) {
@@ -71,13 +75,28 @@ class Shop
     return $result;
   }
 
-  public function remove_from_cart($id)
+  public function remove_from_cart()
   {
+    $id = mysqli_real_escape_string($this->conn, intval($_POST['transaction_id']));
     $result = def_response();
     $sql = "update tbl_transactions set is_deleted = 1  where id = $id";
     mysqli_query($this->conn, $sql);
     $result->status = true;
     $result->result = success_msg("Product Removed From Cart!");
+    return $result;
+  }
+
+  public function update_transaction($id, $status)
+  {
+    $user_id = $_SESSION['user']->id;
+    $id = mysqli_real_escape_string($this->conn, intval($id));
+    $status = mysqli_real_escape_string($this->conn, intval($status));
+    $result = def_response();
+    $date = date("Y-m-d h:i:s");
+    mysqli_query($this->conn, "update tbl_transactions set status_id = '$status',date_updated = '$date'  where id = $id");
+    mysqli_query($this->conn, "inser into tbl_status_history (transaction_id,status_id,created_by) values('$id', '$status', '$user_id')");
+    $result->status = true;
+    $result->result = success_msg("Transaction Updated!");
     return $result;
   }
 

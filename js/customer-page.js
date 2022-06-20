@@ -1,7 +1,5 @@
 
 $(document).ready(function () {  
-
-  
   $('[data-link="menu"]').click(function () {
       var page = $(this).attr('name');
       $('a.sidebar-btn').removeClass('active');
@@ -38,6 +36,9 @@ $(document).on("submit", 'form', function (e) {
       reload_cart_count();
       if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
         $( "#content" ).load( base_url+'module/page.php?page=cart' );
+      }
+      if (form_name == 'update_transaction') {
+        $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
       }
       if (result.items != '') {
         errorFields(result.items);

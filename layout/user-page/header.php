@@ -33,7 +33,6 @@
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="toggleNav">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#products"><i class="fa fa-shopping-cart"></i> My Cart </a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about-us"><i class="fa fa-user"></i> My Profile</a></li>
           <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li>
         </ul>
@@ -51,9 +50,10 @@
         <li><a href="#" name="users" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Users</a></li>
         <li><a href="#" name="products" class="nav-link sidebar-btn"><i class="fa fa-shopping-basket"></i> Products</a></li>
         <li><a href="#" name="inventory" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Inventory</a></li>
+        <li><a href="#" name="orders" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Orders</a></li>
         <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-cog"></i> System</a></li>
         <hr>
-      
+
       </ul>
       <hr>
       <div class="dropdown">
