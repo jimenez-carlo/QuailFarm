@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2022 at 08:31 AM
+-- Generation Time: Jun 20, 2022 at 08:58 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -345,7 +345,7 @@ INSERT INTO `tbl_users` (`id`, `username`, `password`, `email`, `access_id`, `da
 (8, 'customer', '$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry', 'customer@gmail.com', 3, '2022-06-12 10:23:27', 0),
 (9, 'carrier', '$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6', 'carrier@gmail.com', 4, '2022-06-15 22:14:36', 0),
 (10, 'admin2', '$2y$10$/wkSAVsPPi.ooWYWZodyoeio4Xs9gPjEZCm4MMdG.LDlRGAEOxN82', 'admin2@gmail.com', 1, '2022-06-18 19:38:27', 0),
-(11, 'ace', '$2y$10$Yjq7u1uuxi7z5FTjRgNyM.bacPp2AmzdHQTMggEOq.R16vGLVEwOu', 'astinpugi@gmail.com', 3, '2022-06-20 14:27:19', 0);
+(12, 'ace', '$2y$10$W1jUIDGVMJ42GdxLP/Z3k.vIU0bZdo46GxLfueMmdZ35ZrAdG4xiu', 'staph1414@gmail.com', 3, '2022-06-20 14:36:11', 0);
 
 -- --------------------------------------------------------
 
@@ -372,7 +372,7 @@ INSERT INTO `tbl_users_info` (`id`, `first_name`, `last_name`, `address`, `conta
 (8, 'customer', 'customer', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
 (9, 'Carlos', 'Arasa', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
 (10, 'admin2', 'admin2', 'Nibaliw Sur Bautista Pangasinan', 2147483647, 1),
-(11, 'cjj', 'arasa', 'nibaliw sur bautista pangasinan', 2147483647, 1);
+(12, 'ace', 'arasa', 'nibaliw sur bautista pangasinan', 2147483647, 1);
 
 --
 -- Indexes for dumped tables
@@ -506,13 +506,13 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_users_info`
 --
 ALTER TABLE `tbl_users_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
