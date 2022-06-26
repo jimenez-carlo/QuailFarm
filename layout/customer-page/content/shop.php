@@ -27,7 +27,7 @@
                         <center>
                           <img src="images/products/<?php echo $res['image']; ?>" style="width:100px;height:100px;text-align:center" />
                         </center>
-                        <h5 class="card-title">P <?php echo $res['price']; ?></h5>
+                        <h5 class="card-title">₱ <?php echo $res['price']; ?></h5>
                         <p class="card-text"><?php echo $res['description']; ?></p>
                       </div>
                       <div class="card-footer" style="display: flex;">

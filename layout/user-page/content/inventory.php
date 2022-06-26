@@ -4,7 +4,7 @@
     <tr>
       <th scope="col">ID#</th>
       <th scope="col">Name</th>
-      <th scope="col">Qty</th>
+      <th scope="col">Stock</th>
       <th scope="col">Price</th>
       <th scope="col">Date Created</th>
       <th scope="col">Actions</th>
@@ -18,9 +18,17 @@
         <td class="text-end"><?php echo $res['qty']; ?></td>
         <td class="text-end"><?php echo $res['price']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
-        <td>
-          <button type="button" class="btn btn-sm btn-warning"> Edit <i class="fa fa-edit"></i> </button>
-          <button type="button" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
+        <td style="width: 25%;">
+          <form method="post" name="update_product">
+            <input type="hidden" value="<?php echo $res['id']; ?>" name="product_id">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button class="btn btn-sm btn-warning" type="submit" name="type" value="re_stock_list">Re-Stock <i class="fa fa-save"></i></button>
+              </div>
+              <input type="text" class="form-control form-control-sm" name="qty" value="0" style="text-align:right;max-width:20%">
+              <button type="button" class="btn btn-sm btn-dark btn-edit" name="inventory_edit" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+            </div>
+          </form>
         </td>
       </tr>
     <?php } ?>
@@ -30,5 +38,13 @@
 <script>
   $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"l><"col-sm-2"p>>',
+  });
+  $(document).ready(function() {
+    $('.btn-edit').click(function() {
+      var page = $(this).attr('name');
+      var id = $(this).attr('value');
+      $(".result").html('');
+      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
+    });
   });
 </script>

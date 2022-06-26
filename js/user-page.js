@@ -59,6 +59,12 @@ $(document).on("submit", 'form', function (e) {
       if (form_name == 'update_product' && type_value == 'delete') {
         $( "#content" ).load( base_url+'module/page.php?page=products' );
       }
+      if (form_name == 'update_product' && type_value == 're_stock_list') {
+        $( "#content" ).load( base_url+'module/page.php?page=inventory' );
+      }
+      if (form_name == 'update_product' && type_value == 're_stock') {
+        $( "#content" ).load( base_url+'module/page.php?page=inventory_edit&id='+formdata.get('product_id') );
+      }
       if (result.items != '') {
         errorFields(result.items);
       }

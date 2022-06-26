@@ -1,9 +1,9 @@
-<h2><i class="fa fa-user-plus"></i> Product Edit</h2>
+<h2><i class="fa fa-shopping-basket"></i> Product Edit</h2>
 <form method="post" name="update_product" enctype="multipart/form-data">
   <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
   <div class="card">
     <div class="card-header bg-dark text-warning">
-      <i class="fa fa-user"></i> Product Details
+      <i class="fa fa-exclamation-circle"></i> Product Details
     </div>
     <div class="card-body">
       <div class="container-fluid">

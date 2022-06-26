@@ -1,8 +1,8 @@
-<h2><i class="fa fa-user-plus"></i> Product Creation</h2>
+<h2><i class="fa fa-plus"></i> Product Creation</h2>
 <form method="post" name="add_product" enctype="multipart/form-data">
   <div class="card">
     <div class="card-header bg-dark text-warning">
-      <i class="fa fa-user"></i> Product Details
+      <i class="fa fa-exclamation-circle"></i> Product Details
     </div>
     <div class="card-body">
       <div class="container-fluid">

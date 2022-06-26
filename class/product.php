@@ -62,6 +62,33 @@ class Product
     $result = def_response();
 
     switch ($type) {
+      case 're_stock_list':
+      case 're_stock':
+        $product_id = mysqli_real_escape_string($this->conn, $_POST['product_id']);
+        $qty = mysqli_real_escape_string($this->conn, $_POST['qty']);
+        $created_by = $_SESSION['user']->id;
+
+        $blank = 0;
+        $errors = array();
+        $msg = '';
+
+        if (empty($qty)) {
+          $errors[] = 'qty';
+        }
+
+        if (!empty($errors)) {
+          $msg .= "Please Fill Blank Fields!";
+          $result->result = error_msg($msg);
+          $result->items = implode(',', $errors);
+          return $result;
+        }
+
+        $original_qty = $this->get_one("select qty from tbl_inventory where product_id = '$product_id'")->qty;
+        mysqli_query($this->conn, "UPDATE tbl_inventory set qty = (qty + '$qty') where id = '$product_id'");
+        mysqli_query($this->conn, "INSERT into tbl_inventory_history (product_id,original_qty,qty,created_by) values ('$product_id', '$original_qty','$qty', '$created_by')");
+        $result->status = true;
+        $result->result = success_msg("Product Re-Stocked!");
+        break;
       case 'delete':
         $product_id = mysqli_real_escape_string($this->conn, $_POST['product_id']);
         mysqli_query($this->conn, "UPDATE tbl_product set is_deleted = 1 where id = '$product_id'");

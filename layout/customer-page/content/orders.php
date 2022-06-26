@@ -52,7 +52,7 @@
                   <?php $qty +=         (in_array(intval($sub_res['status_id']), array(1, 5, 6))) ? 0 : $sub_res['qty']; ?>
                 <?php } ?>
                 <tr>
-                  <td colspan="3">Total</td>
+                  <td colspan="4">Total</td>
                   <td id="total_price" class="text-end"><?php echo number_format($price, 2); ?></td>
                   <td id="total_qty" class="text-end"><?php echo $qty; ?></td>
                   <td id="total_final_price" class="text-end"><?php echo number_format($total_price, 2); ?></td>
