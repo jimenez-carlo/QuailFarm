@@ -54,7 +54,7 @@ $(document).on("submit", 'form', function (e) {
         $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
       }
       if (form_name == 'add_product') {
-        $("#preview").src = 'images/products/default.png';
+        $('#preview').attr('src','images/products/default.png');
       }
       if (result.items != '') {
         errorFields(result.items);
