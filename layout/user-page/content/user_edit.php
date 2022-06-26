@@ -1,5 +1,6 @@
 <h2><i class="fa fa-user-plus"></i> Account Update</h2>
-<form method="post" name="register_user">
+<form method="post" name="update_user">
+  <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
   <div class="card">
     <div class="card-header bg-dark text-warning">
       <i class="fa fa-user"></i> User Profile
@@ -58,9 +59,9 @@
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="button" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i></button>
-              <button type="submit" class="btn btn-sm btn-dark">Reset Password <i class="fa fa-lock"></i></button>
-              <button type="submit" class="btn btn-sm btn-warning">Update <i class="fa fa-save"></i></button>
+              <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i></button>
+              <button type="submit" class="btn btn-sm btn-dark" name="type" value="reset">Reset Password <i class="fa fa-lock"></i></button>
+              <button type="submit" class="btn btn-sm btn-warning" name="type" value="update">Update <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

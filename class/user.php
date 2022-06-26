@@ -95,6 +95,100 @@ class User
     return $result;
   }
 
+
+  public function update_user()
+  {
+    $type = isset($_POST['type']) ? $_POST['type'] : null;
+    $result = def_response();
+
+    switch ($type) {
+      case 'reset':
+        $user_id = mysqli_real_escape_string($this->conn, $_POST['user_id']);
+        $password = password_hash('123456', PASSWORD_DEFAULT);
+        mysqli_query($this->conn, "UPDATE tbl_users set password = '$password' where id = '$user_id'");
+        $result->status = true;
+        $result->result = success_msg("Password Reset!");
+        break;
+      case 'delete':
+        $user_id = mysqli_real_escape_string($this->conn, $_POST['user_id']);
+        mysqli_query($this->conn, "UPDATE tbl_users set is_deleted = 1 where id = '$user_id'");
+        $result->status = true;
+        $result->result = success_msg("User Deleted!");
+        break;
+      case 'update':
+        $user_id = mysqli_real_escape_string($this->conn, $_POST['user_id']);
+        $username = mysqli_real_escape_string($this->conn, $_POST['username']);
+        $email = mysqli_real_escape_string($this->conn, $_POST['email']);
+        $firstname = mysqli_real_escape_string($this->conn, $_POST['firstname']);
+        $lastname = mysqli_real_escape_string($this->conn, $_POST['lastname']);
+        $address = mysqli_real_escape_string($this->conn, $_POST['address']);
+        $contact = mysqli_real_escape_string($this->conn, $_POST['contact']);
+        $gender = mysqli_real_escape_string($this->conn, $_POST['gender']);
+        $access = mysqli_real_escape_string($this->conn, $_POST['access']);
+
+        $blank = 0;
+        $errors = array();
+        $msg = '';
+        $check_username = $this->get_one("select count(username) as `exists` from tbl_users where username = '$username' and id != '$user_id' group_by username limit 1");
+        $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' and id != '$user_id' group_by username limit 1");
+
+        if (empty($username)) {
+          $errors[] = 'username';
+          $blank++;
+        }
+        if (empty($email)) {
+          $errors[] = 'email';
+          $blank++;
+        }
+        if (empty($firstname)) {
+          $errors[] = 'firstname';
+          $blank++;
+        }
+        if (empty($lastname)) {
+          $errors[] = 'lastname';
+          $blank++;
+        }
+        if (empty($address)) {
+          $errors[] = 'address';
+          $blank++;
+        }
+        if (empty($contact)) {
+          $errors[] = 'contact';
+          $blank++;
+        }
+        if (empty($address)) {
+          $errors[] = 'address';
+          $blank++;
+        }
+
+        if (isset($check_username->exists) && !empty($check_username->exists)) {
+          $msg .= "Username Already In-Used!";
+          $errors[] = 'username';
+        }
+
+        if (isset($check_email->exists) && !empty($check_email->exists)) {
+          $msg .= "Email Already In-Used!";
+          $errors[] = 'email';
+        }
+
+        if (!empty($errors)) {
+          $msg .= "Please Fill Blank Fields!";
+          $result->result = error_msg($msg);
+          $result->items = implode(',', $errors);
+          return $result;
+        }
+
+        mysqli_query($this->conn, "UPDATE tbl_users_info set first_name = '$firstname', last_name = '$lastname', contact_no = '$contact', `address`= '$address', gender_id = '$gender' where id = '$user_id'");
+        mysqli_query($this->conn, "UPDATE tbl_users set username = '$username', email = '$email', access_id = '$access' where id = '$user_id'");
+
+        $result->status = true;
+        $result->result = success_msg("User Updated!");
+        break;
+    }
+
+    return $result;
+  }
+
   public function customer_update()
   {
     $customer_id = $_SESSION['user']->id;

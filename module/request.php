@@ -45,6 +45,9 @@ switch ($form) {
   case 'register_user':
     $result = $user->register_user();
     break;
+  case 'update_user':
+    $result = $user->update_user();
+    break;
   default:
     # code...
     break;
