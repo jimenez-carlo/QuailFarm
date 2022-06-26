@@ -15,8 +15,8 @@
       <tr>
         <td><?php echo $res['id']; ?></td>
         <td><?php echo $res['name']; ?></td>
-        <td><?php echo $res['qty']; ?></td>
-        <td><?php echo $res['price']; ?></td>
+        <td class="text-end"><?php echo $res['qty']; ?></td>
+        <td class="text-end"><?php echo $res['price']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
         <td>
           <button type="button" class="btn btn-sm btn-warning"> Edit <i class="fa fa-edit"></i> </button>

@@ -25,8 +25,11 @@
         <td><?php echo $res['contact_no']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
         <td>
-          <button type="button" class="btn btn-sm btn-warning btn-edit" name="user_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
-          <button type="button" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
+          <form method="post" name="update_user">
+            <button type="button" class="btn btn-sm btn-warning btn-edit" name="user_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+            <input type="hidden" value="<?php echo $res['id']; ?>" name="user_id">
+            <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i> </button>
+          </form>
         </td>
       </tr>
     <?php } ?>
@@ -50,7 +53,6 @@
       var page = $(this).attr('name');
       var id = $(this).attr('value');
       $(".result").html('');
-      console.log(base_url + 'module/page.php?page=' + page + '&id=' + id);
       $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
     });
   });

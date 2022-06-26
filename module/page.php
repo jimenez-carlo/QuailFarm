@@ -33,7 +33,10 @@ if (in_array($page, $pages)) {
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       break;
     case 'products':
-      $data['products'] = $request->get_list("select * from tbl_product");
+      $data['products'] = $request->get_list("select p.*,concat('(#',i.id,') ',i.last_name,', ',i.first_name) as created_by  from tbl_product p left join tbl_users_info i on i.id = p.created_by");
+      break;
+    case 'product_edit':
+      $data['profile'] = $request->get_one("select * from tbl_product p WHERE is_deleted = 0 and p.id = " . $id);
       break;
     case 'inventory':
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
@@ -47,7 +50,7 @@ if (in_array($page, $pages)) {
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $_SESSION['user']->id);
       break;
     case 'orders':
-      $data['orders'] = $request->get_list("select t.date_updated,t.id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(#',b.id,' ',b.last_name,', ',b.first_name,')') as buyer_name ,concat('(#',s.id,' ',s.last_name,', ',s.first_name,')') as seller_name FROM tbl_transactions t left join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 order by t.date_updated desc");
+      $data['orders'] = $request->get_list("select t.date_updated,t.id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t left join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 order by t.date_updated desc");
       break;
       // Customers
     case 'cart':

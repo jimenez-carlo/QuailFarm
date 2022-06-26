@@ -8,6 +8,7 @@
       <th scope="col">Price</th>
       <th scope="col">Description</th>
       <th scope="col">Date Created</th>
+      <th scope="col">Created By</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -17,12 +18,16 @@
         <td><?php echo $res['id']; ?></td>
         <td style="width: 0.1%;"><img src="images/products/<?php echo $res['image']; ?>" style="width:100px;height:100px" /></td>
         <td><?php echo $res['name']; ?></td>
-        <td><?php echo $res['price']; ?></td>
+        <td class="text-end"><?php echo $res['price']; ?></td>
         <td><?php echo $res['description']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
+        <td><?php echo $res['created_by']; ?></td>
         <td>
-          <button type="button" class="btn btn-sm btn-warning"> Edit <i class="fa fa-edit"></i> </button>
-          <button type="button" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
+          <form method="post" name="update_product">
+            <button type="button" class="btn btn-sm btn-warning btn-edit" name="product_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+            <input type="hidden" value="<?php echo $res['id']; ?>" name="product_id">
+            <button type="submit" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
+          </form>
         </td>
       </tr>
     <?php } ?>
@@ -36,8 +41,16 @@
       className: 'btn btn-sm btn-warning',
       text: '<i class="fa fa-plus"></i> Add Product',
       action: function(e, dt, node, config) {
-        alert('Button activated');
+        $("#content").load(base_url + 'module/page.php?page=product_add');
       }
     }]
+  });
+  $(document).ready(function() {
+    $('.btn-edit').click(function() {
+      var page = $(this).attr('name');
+      var id = $(this).attr('value');
+      $(".result").html('');
+      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
+    });
   });
 </script>

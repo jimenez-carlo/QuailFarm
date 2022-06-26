@@ -2,6 +2,7 @@
 require('../database/connection.php');
 require_once('../class/user.php');
 require_once('../class/shop.php');
+require_once('../class/product.php');
 require_once('common.php');
 
 $result = def_response();
@@ -14,6 +15,7 @@ if (!$_POST || !isset($_POST['form'])) {
 $form = $_POST['form'];
 $user = new User($conn);
 $shop = new Shop($conn);
+$product = new Product($conn);
 
 switch ($form) {
     // Customer
@@ -47,6 +49,9 @@ switch ($form) {
     break;
   case 'update_user':
     $result = $user->update_user();
+    break;
+  case 'add_product':
+    $result = $product->add_product();
     break;
   default:
     # code...

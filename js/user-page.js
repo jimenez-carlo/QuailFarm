@@ -28,6 +28,7 @@ $(document).on("submit", 'form', function (e) {
   }
   
   formdata = new FormData(this);
+  console.log(form_name);
   formdata.append('form', form_name);
   formdata.append(type, type_value);
 
@@ -41,7 +42,7 @@ $(document).on("submit", 'form', function (e) {
       var result = JSON.parse(res);
       $('.result').html(result.result);
       if (result.status == true) {
-         $(form_raw).trigger('reset');
+        $(form_raw).trigger('reset');
       }
       if (form_name == 'update_user' && type_value == 'delete') {
         $( "#content" ).load( base_url+'module/page.php?page=users' );
@@ -51,6 +52,9 @@ $(document).on("submit", 'form', function (e) {
       }
       if (form_name == 'update_transaction') {
         $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
+      }
+      if (form_name == 'add_product') {
+        $("#preview").src = 'images/products/default.png';
       }
       if (result.items != '') {
         errorFields(result.items);
