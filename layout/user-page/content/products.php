@@ -1,4 +1,4 @@
-<h2><i class="fa fa-shopping-basket"></i> Products</h2>
+<h2><i class="fa fa-tags"></i> Products</h2>
 <table class="table table-sm table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>

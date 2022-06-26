@@ -1,4 +1,4 @@
-<h2><i class="fa fa-shopping-basket"></i> Product Edit</h2>
+<h2><i class="fa fa-tags"></i> Product Edit</h2>
 <form method="post" name="update_product" enctype="multipart/form-data">
   <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
   <div class="card">

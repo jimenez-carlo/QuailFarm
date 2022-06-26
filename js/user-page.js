@@ -44,26 +44,28 @@ $(document).on("submit", 'form', function (e) {
       if (result.status == true) {
         $(form_raw).trigger('reset');
       }
-      if (form_name == 'update_user' && type_value == 'delete') {
-        $( "#content" ).load( base_url+'module/page.php?page=users' );
-      }
-      if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
-        $( "#content" ).load( base_url+'module/page.php?page=cart' );
-      }
-      if (form_name == 'update_transaction') {
-        $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
-      }
-      if (form_name == 'add_product') {
-        $('#preview').attr('src','images/products/default.png');
-      }
-      if (form_name == 'update_product' && type_value == 'delete') {
-        $( "#content" ).load( base_url+'module/page.php?page=products' );
-      }
-      if (form_name == 'update_product' && type_value == 're_stock_list') {
-        $( "#content" ).load( base_url+'module/page.php?page=inventory' );
-      }
-      if (form_name == 'update_product' && type_value == 're_stock') {
-        $( "#content" ).load( base_url+'module/page.php?page=inventory_edit&id='+formdata.get('product_id') );
+      if (result.status == true) {
+       if (form_name == 'update_user' && type_value == 'delete') {
+         $( "#content" ).load( base_url+'module/page.php?page=users' );
+       }
+       if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
+         $( "#content" ).load( base_url+'module/page.php?page=cart' );
+       }
+       if (form_name == 'update_transaction') {
+         $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
+       }
+       if (form_name == 'add_product') {
+         $('#preview').attr('src','images/products/default.png');
+       }
+       if (form_name == 'update_product' && type_value == 'delete') {
+         $( "#content" ).load( base_url+'module/page.php?page=products' );
+       }
+       if (form_name == 'update_product' && type_value == 're_stock_list') {
+         $( "#content" ).load( base_url+'module/page.php?page=inventory' );
+       }
+       if (form_name == 'update_product' && type_value == 're_stock') {
+         $( "#content" ).load( base_url+'module/page.php?page=inventory_edit&id='+formdata.get('product_id') );
+       }
       }
       if (result.items != '') {
         errorFields(result.items);
