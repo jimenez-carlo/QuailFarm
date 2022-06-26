@@ -26,7 +26,7 @@
           <form method="post" name="update_product">
             <button type="button" class="btn btn-sm btn-warning btn-edit" name="product_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
             <input type="hidden" value="<?php echo $res['id']; ?>" name="product_id">
-            <button type="submit" class="btn btn-sm btn-dark"> Delete <i class="fa fa-trash"></i> </button>
+            <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i> </button>
           </form>
         </td>
       </tr>

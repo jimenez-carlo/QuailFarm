@@ -53,6 +53,9 @@ switch ($form) {
   case 'add_product':
     $result = $product->add_product();
     break;
+  case 'update_product':
+    $result = $product->update_product();
+    break;
   default:
     # code...
     break;

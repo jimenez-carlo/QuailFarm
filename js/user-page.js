@@ -56,6 +56,9 @@ $(document).on("submit", 'form', function (e) {
       if (form_name == 'add_product') {
         $('#preview').attr('src','images/products/default.png');
       }
+      if (form_name == 'update_product' && type_value == 'delete') {
+        $( "#content" ).load( base_url+'module/page.php?page=products' );
+      }
       if (result.items != '') {
         errorFields(result.items);
       }

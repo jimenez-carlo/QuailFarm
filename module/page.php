@@ -33,10 +33,10 @@ if (in_array($page, $pages)) {
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       break;
     case 'products':
-      $data['products'] = $request->get_list("select p.*,concat('(#',i.id,') ',i.last_name,', ',i.first_name) as created_by  from tbl_product p left join tbl_users_info i on i.id = p.created_by");
+      $data['products'] = $request->get_list("select p.*,concat('(#',i.id,') ',i.last_name,', ',i.first_name) as created_by  from tbl_product p left join tbl_users_info i on i.id = p.created_by where p.is_deleted = 0");
       break;
     case 'product_edit':
-      $data['profile'] = $request->get_one("select * from tbl_product p WHERE is_deleted = 0 and p.id = " . $id);
+      $data['product'] = $request->get_one("select * from tbl_product p WHERE is_deleted = 0 and p.id = " . $id);
       break;
     case 'inventory':
       $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
