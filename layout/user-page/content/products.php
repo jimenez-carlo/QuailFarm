@@ -36,7 +36,7 @@
 </div>
 <script>
   $('table').DataTable({
-    dom: '<"top"<"left-col"><"center-col"><"right-col"Bf>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"l><"col-sm-2"p>>',
+    dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
     buttons: [{
       className: 'btn btn-sm btn-warning',
       text: '<i class="fa fa-plus"></i> Add Product',

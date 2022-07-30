@@ -41,7 +41,7 @@
   </div>
 </form>
 
-
+<br>
 <div class="card">
   <div class="card-header bg-dark text-warning">
     <i class="fa fa-history"></i> Restock History
@@ -83,7 +83,7 @@
 </div>
 <script>
   $('table').DataTable({
-    dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"l><"col-sm-2"p>>',
+    dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
     "order": []
   });
   $(document).ready(function() {

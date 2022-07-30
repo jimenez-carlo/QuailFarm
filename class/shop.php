@@ -27,7 +27,8 @@ class Shop
           $total_qty = intval($draft->qty) + $qty;
           $total_price = $total_qty * $price;
           $id = $draft->id;
-          $sql = "update tbl_transactions set qty = '$total_qty', price = '$total_price' where id = '$id'";
+          $date = date('Y-m-d H:i:s');
+          $sql = "update tbl_transactions set qty = '$total_qty', price = '$total_price', date_updated = '$date' where id = '$id'";
           mysqli_query($this->conn, $sql);
         } else {
           $total_price = $qty * intval($price);
@@ -130,7 +131,7 @@ class Shop
         $id = $res['id'];
         mysqli_query($this->conn, "insert into tbl_status_history (transaction_id,status_id,created_by) VALUES('$id',2,'$customer_id')");
       }
-      mysqli_query($this->conn, "update tbl_transactions set status_id = 2,invoice_id= '$invoice_id' where status_id = 1 and is_deleted = 0 and buyer_id = '$customer_id'");
+      mysqli_query($this->conn, "update tbl_transactions set status_id = 2, invoice_id= '$invoice_id' where status_id = 1 and is_deleted = 0 and buyer_id = '$customer_id'");
 
       $result->status = true;
       $result->result = success_msg("Successfully Checked Out!");

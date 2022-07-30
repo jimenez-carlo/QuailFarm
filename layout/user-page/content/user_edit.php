@@ -1,4 +1,4 @@
-<h2><i class="fa fa-user-plus"></i> Account Update</h2>
+<h2><i class="fa fa-user"></i> Account Update</h2>
 <form method="post" name="update_user">
   <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
   <div class="card">
