@@ -54,8 +54,8 @@
                   <?php $qty += $res['qty']; ?>
                 </tr>
               <?php } ?>
-              <tr>
-                <td colspan="2">Total</td>
+              <tr class="fw-bold">
+                <td colspan="2">Grand Total</td>
                 <td id="total_price" class="text-end"><?php echo number_format($price, 2); ?></td>
                 <td id="total_qty" class="text-end"><?php echo $qty; ?></td>
                 <td id="total_final_price" class="text-end"><?php echo number_format($total_price, 2); ?></td>

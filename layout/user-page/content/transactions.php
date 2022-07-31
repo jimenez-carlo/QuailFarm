@@ -2,10 +2,11 @@
 <table class="table table-sm table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>
-      <th scope="col">ID#</th>
-      <th scope="col">Order#</th>
+      <th scope="col">TXN#</th>
       <th scope="col">Status</th>
-      <th scope="col">Product</th>
+      <th scope="col">Order#</th>
+      <th scope="col">PID#</th>
+      <th scope="col">Product Name</th>
       <th scope="col">Qty</th>
       <th scope="col">Total Price</th>
       <th scope="col">Buyer</th>
@@ -18,8 +19,9 @@
     <?php foreach ($data['transactions'] as $res) { ?>
       <tr>
         <td><?php echo $res['id']; ?></td>
-        <td><?php echo $res['invoice']; ?></td>
         <td><?php echo strtoupper($res['status']); ?></td>
+        <td><?php echo $res['invoice']; ?></td>
+        <td><?php echo $res['product_id']; ?></td>
         <td><?php echo $res['name']; ?></td>
         <td class="text-end"><?php echo $res['qty']; ?></td>
         <td class="text-end"><?php echo $res['total_price']; ?></td>
@@ -28,11 +30,11 @@
         <td><?php echo $res['date_updated']; ?></td>
         <td>
           <?php if ($res['status_id'] == 2) { ?>
-            <button type="button" class="btn btn-sm btn-warning"> Approve <i class="fa fa-check"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark"> Reject <i class="fa fa-close"></i> </button>
-          <?php } else { ?>
             <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
+          <?php } else { ?>
+            <button type="button" class="btn btn-sm btn-warning"> Approve <i class="fa fa-check"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark"> Reject <i class="fa fa-close"></i> </button>
           <?php } ?>
         </td>
       </tr>

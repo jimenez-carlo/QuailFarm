@@ -55,7 +55,7 @@ if (in_array($page, $pages)) {
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $_SESSION['user']->id);
       break;
     case 'transactions':
-      $data['transactions'] = $request->get_list("select t.date_updated,t.id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t left join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 order by t.date_updated desc");
+      $data['transactions'] = $request->get_list("select t.date_updated,p.id as `product_id`,t.id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t left join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 order by t.date_updated desc");
       break;
     case 'orders':
       $statuses = array();
@@ -64,6 +64,12 @@ if (in_array($page, $pages)) {
       }
       $data['statuses'] = $statuses;
       $data['orders'] = $request->get_list("select t.date_updated,t.id,sum(IF(t.status_id in (2,3,4), t.price, 0)) as `total_price`,sum(IF(t.status_id in (2,3,4), t.qty, 0)) as qty,i.invoice,p.name,p.price,t.status_id,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name,CASE greatest(sum(IF(t.status_id = 1 , 1 , 0)),sum(IF(t.status_id = 2 , 1 , 0)),sum(IF(t.status_id = 3 , 1 , 0)),sum(IF(t.status_id = 4 , 1 , 0)),sum(IF(t.status_id = 5 , 1 , 0)),sum(IF(t.status_id = 6 , 1 , 0)),sum(IF(t.status_id = 7 , 1 , 0)))WHEN sum(IF(t.status_id = 1 , 1 , 0)) THEN 1 WHEN sum(IF(t.status_id = 2 , 1 , 0)) THEN 2 WHEN sum(IF(t.status_id = 3 , 1 , 0)) THEN 3 WHEN sum(IF(t.status_id = 4 , 1 , 0)) THEN 4 WHEN sum(IF(t.status_id = 5 , 1 , 0)) THEN 5 WHEN sum(IF(t.status_id = 6 , 1 , 0)) THEN 6 WHEN sum(IF(t.status_id = 7 , 1 , 0)) THEN 7 END as status_id FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id  where t.status_id > 1 and t.is_deleted = 0 group by t.invoice_id order by t.date_updated desc");
+      break;
+    case 'orders_view':
+      $main = $request->get_list("select t.date_updated,p.id as `product_id`,t.id,t.buyer_id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 and i.invoice = '$id' order by t.date_updated desc");
+      $customer_id = reset($main)['buyer_id'];
+      $data['transactions'] = $main;
+      $data['customer'] = $request->get_one("select ui.*,u.* from tbl_users_info ui inner join tbl_users u on u.id = ui.id WHERE ui.id = " . $customer_id . " limit 1");
       break;
       // Customers
     case 'cart':
@@ -75,7 +81,7 @@ if (in_array($page, $pages)) {
       break;
     case 'customer_orders':
       $tmp = array();
-      $tmp_res = $request->get_list("select t.id,t.qty,s.status,t.date_updated,t.status_id,i.invoice, i.date_created as invoice_date,p.name,p.price as product_price from tbl_transactions t inner join tbl_status s on s.id = t.status_id inner join tbl_invoice i on i.id = t.invoice_id  inner join tbl_product p on p.id = t.product_id where t.is_deleted = 0 and t.status_id > 1 and buyer_id = '$customer_id' order by t.date_created desc");
+      $tmp_res = $request->get_list("select t.id,t.qty,s.status,t.date_updated,t.status_id,i.invoice, i.date_created as invoice_date,p.id as `product_id`,p.name,p.price as product_price from tbl_transactions t inner join tbl_status s on s.id = t.status_id inner join tbl_invoice i on i.id = t.invoice_id  inner join tbl_product p on p.id = t.product_id where t.is_deleted = 0 and t.status_id > 1 and buyer_id = '$customer_id' order by t.date_created desc");
 
       foreach ($tmp_res as $res) {
         $tmp['invoice'][$res['invoice']][$res['id']] = $res;

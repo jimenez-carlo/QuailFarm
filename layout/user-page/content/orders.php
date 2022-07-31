@@ -2,7 +2,7 @@
 <table class="table table-sm table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>
-      <th scope="col">ID#</th>
+      <th scope="col">Order#</th>
       <th scope="col">Status</th>
       <th scope="col">Total Qty</th>
       <th scope="col">Total Price</th>
@@ -26,11 +26,11 @@
           <?php if (in_array($res['status_id'], array(2, 3))) { ?>
             <button type="button" class="btn btn-sm btn-warning"> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark"> Reject <i class="fa fa-close"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark"> View <i class="fa fa-eye"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } else { ?>
             <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark"> View <i class="fa fa-eye"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } ?>
         </td>
       </tr>
@@ -45,7 +45,7 @@
   });
 
   $(document).ready(function() {
-    $('.btn-edit').click(function() {
+    $('.btn-view').click(function() {
       var page = $(this).attr('name');
       var id = $(this).attr('value');
       $(".result").html('');
