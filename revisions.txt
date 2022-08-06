@@ -1,0 +1,41 @@
+picture of farm and quail
+-management of products 
+(information of products)
+
+-manage unit of measurement
+per piece per tray
+
+monitoring of daily quail egg harvest 
+monitoring of Quail
+sales of cages
+
+information of customers
+-name
+-address
+-contact #
+
+sales transaction
+-product buy
+-quantity
+-total price
+-date 
+-total payment
+-mod of payment
+
+"minimum downpayment"
+
+monitoring of costumer payments
+-history of payment
+
+costumer viewed and search products
+-notification for order
+-costumer transaction history product
+
+DELIVERY
+monitoring of delivery status
+
+
+
+
+
+

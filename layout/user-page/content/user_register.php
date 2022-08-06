@@ -56,7 +56,7 @@
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="button" class="btn btn-sm btn-dark"> Back <i class="fa fa-close"></i></button>
+              <!-- <button type="button" class="btn btn-sm btn-dark"> Back <i class="fa fa-close"></i></button> -->
               <button type="submit" class="btn btn-sm btn-warning">Register <i class="fa fa-save"></i></button>
             </div>
           </div>

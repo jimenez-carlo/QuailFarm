@@ -30,3 +30,15 @@ function requireFields(strings) {
   });
   return (errors == 0) ? true : false;
 }
+
+if ("page" in localStorage) {
+  localStorage.setItem('page', localStorage.getItem('page'));
+} else {
+  localStorage.setItem('page', '');
+}
+
+if ("id" in localStorage) {
+  localStorage.setItem('id', localStorage.getItem('id'));
+} else {
+  localStorage.setItem('id', '');
+}

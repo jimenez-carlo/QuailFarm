@@ -18,9 +18,9 @@
         <td><?php echo $res['invoice']; ?></td>
         <td><?php echo strtoupper($data['statuses'][$res['status_id']]); ?></td>
         <td class="text-end"><?php echo $res['qty']; ?></td>
-        <td class="text-end"><?php echo $res['total_price']; ?></td>
-        <td><a href="#"><?php echo $res['buyer_name']; ?></a></td>
-        <td><a href="#"><?php echo $res['seller_name']; ?></a></td>
+        <td class="text-end"><?php echo number_format($res['total_price'], 2); ?></td>
+        <td><a href="#" class="a-view" name="customer_view" value="<?php echo $res['buyer_id']; ?>"><?php echo $res['buyer_name']; ?></a></td>
+        <td><a href="#" class="a-view" name="user_view" value="<?php echo $res['seller_id']; ?>"><?php echo $res['seller_name']; ?></a></td>
         <td><?php echo $res['date_updated']; ?></td>
         <td>
           <?php if (in_array($res['status_id'], array(2, 3))) { ?>
@@ -42,14 +42,5 @@
   $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
     "order": []
-  });
-
-  $(document).ready(function() {
-    $('.btn-view').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
   });
 </script>

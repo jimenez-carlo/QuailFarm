@@ -3,6 +3,10 @@ require('database/connection.php');
 require('class/main.php');
 require('class/modal.php');
 
+if (!isset($_SESSION['base_url'])) {
+  $_SESSION['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
+
 if (isset($_SESSION['is_logged_in'])) {
   // Customer
   if ($_SESSION['user']->access_id == 3) {

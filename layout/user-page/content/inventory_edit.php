@@ -14,7 +14,7 @@
           </div>
           <div class="col-md-6">
             <label for="qty" class="form-label">*Re-Stock</label>
-            <input type="text" class="form-control form-control-sm" value="0" name="qty" id="qty">
+            <input type="number" class="form-control form-control-sm" value="0" name="qty" id="qty" min="0">
           </div>
           <div class="col-md-6">
             <label for="product_name" class="form-label">Name</label>
@@ -85,13 +85,5 @@
   $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
     "order": []
-  });
-  $(document).ready(function() {
-    $('.btn-edit').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
   });
 </script>

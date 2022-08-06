@@ -2,7 +2,7 @@
 <table class="table table-sm table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>
-      <th scope="col">ID#</th>
+      <th scope="col">PID#</th>
       <th scope="col" style="width: 0.1%;">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
@@ -44,13 +44,5 @@
         $("#content").load(base_url + 'module/page.php?page=product_add');
       }
     }]
-  });
-  $(document).ready(function() {
-    $('.btn-edit').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
   });
 </script>

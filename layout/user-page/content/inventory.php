@@ -2,7 +2,7 @@
 <table class="table table-sm table-striped table-hover table-bordered">
   <thead class="table-dark">
     <tr>
-      <th scope="col">ID#</th>
+      <th scope="col">PID#</th>
       <th scope="col">Name</th>
       <th scope="col">Stock</th>
       <th scope="col">Price</th>
@@ -38,13 +38,5 @@
 <script>
   $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
-  });
-  $(document).ready(function() {
-    $('.btn-edit').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
   });
 </script>

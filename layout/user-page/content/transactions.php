@@ -5,9 +5,8 @@
       <th scope="col">TXN#</th>
       <th scope="col">Status</th>
       <th scope="col">Order#</th>
-      <th scope="col">PID#</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Qty</th>
+      <th scope="col">Product</th>
+      <th scope="col">Total Qty</th>
       <th scope="col">Total Price</th>
       <th scope="col">Buyer</th>
       <th scope="col">Seller</th>
@@ -20,21 +19,22 @@
       <tr>
         <td><?php echo $res['id']; ?></td>
         <td><?php echo strtoupper($res['status']); ?></td>
-        <td><?php echo $res['invoice']; ?></td>
-        <td><?php echo $res['product_id']; ?></td>
-        <td><?php echo $res['name']; ?></td>
+        <td><a href="#" class="a-view" name="orders_view" value="<?php echo $res['invoice']; ?>"><?php echo $res['invoice']; ?></a></td>
+        <td><a href="#" class="a-view" name="product_edit" value="<?php echo $res['product_id']; ?>"> <?php echo "(PID#" . $res['product_id'] . ") " . $res['name']; ?></a></td>
         <td class="text-end"><?php echo $res['qty']; ?></td>
-        <td class="text-end"><?php echo $res['total_price']; ?></td>
-        <td><?php echo $res['buyer_name']; ?></td>
-        <td><?php echo $res['seller_name']; ?></td>
+        <td class="text-end"><?php echo number_format($res['total_price'], 2); ?></td>
+        <td><a href="#" class="a-view" name="customer_view" value="<?php echo $res['buyer_id']; ?>"><?php echo $res['buyer_name']; ?></a></td>
+        <td><a href="#" class="a-view" name="user_view" value="<?php echo $res['seller_id']; ?>"><?php echo $res['seller_name']; ?></a></td>
         <td><?php echo $res['date_updated']; ?></td>
         <td>
-          <?php if ($res['status_id'] == 2) { ?>
+          <?php if (in_array($res['status_id'], array(2, 3))) { ?>
             <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } else { ?>
             <button type="button" class="btn btn-sm btn-warning"> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark"> Reject <i class="fa fa-close"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } ?>
         </td>
       </tr>

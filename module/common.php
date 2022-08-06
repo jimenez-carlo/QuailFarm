@@ -24,9 +24,9 @@ if (!function_exists('get_access')) {
   {
     switch ($access) {
       case 1: //admin
-        return array('dashboard', 'users', 'user_register', 'user_edit', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'orders', 'orders_view', 'system',);
+        return array('dashboard', 'users', 'user_register', 'user_edit',  'user_view', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'transaction_view', 'orders', 'orders_view', 'customer_view', 'system',);
       case 2: //cashier
-        return array('dashboard', 'users', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'orders', 'orders_view');
+        return array('dashboard', 'users', 'user_view', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'transaction_view', 'orders', 'orders_view', 'customer_view');
       case 3: //customer
         return array('dashboard', 'home', 'shop', 'cart', 'customer_profile', 'customer_orders');
       default:
@@ -39,6 +39,8 @@ if (!function_exists('page_url')) {
   function page_url($page)
   {
     switch ($page) {
+      case 'customer_view':
+        return '../layout/user-page/content/customer_view.php';
       case 'dashboard':
         return '../layout/user-page/content/dashboard.php';
       case 'users':
@@ -47,6 +49,8 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/user_register.php';
       case 'user_edit':
         return '../layout/user-page/content/user_edit.php';
+      case 'user_view':
+        return '../layout/user-page/content/user_view.php';
       case 'products':
         return '../layout/user-page/content/products.php';
       case 'product_add':
@@ -61,6 +65,8 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/system.php';
       case 'transactions':
         return '../layout/user-page/content/transactions.php';
+      case 'transaction_view':
+        return '../layout/user-page/content/transaction_view.php';
       case 'orders':
         return '../layout/user-page/content/orders.php';
       case 'orders_view':
@@ -76,7 +82,6 @@ if (!function_exists('page_url')) {
         return '../layout/customer-page/content/profile.php';
       case 'customer_orders':
         return '../layout/customer-page/content/orders.php';
-
         // case 'shop':
         //   return '../layout/user-page/content/shop.php';
       case 'denied':

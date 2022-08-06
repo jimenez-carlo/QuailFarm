@@ -32,7 +32,7 @@
                 <tr>
                   <td><?php echo $res['id']; ?></td>
                   <td><?php echo strtoupper($res['status']); ?></td>
-                  <td><?php echo $res['product_id']; ?></td>
+                  <td><a href="#" name="product_edit" value="<?php echo $res['product_id']; ?>"><?php echo $res['product_id']; ?></td>
                   <td><?php echo $res['name']; ?></td>
                   <td class="text-end"><?php echo number_format($res['price'], 2); ?></td>
                   <td class="text-end"><?php echo $res['qty']; ?></td>
@@ -82,37 +82,35 @@
   </div>
 </div>
 <br>
-<form method="post" name="update_product" enctype="multipart/form-data">
-  <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
-  <div class="card">
-    <div class="card-header bg-dark text-warning">
-      <i class="fa fa-user"></i> Customer Details <button type="submit" class="btn btn-sm btn-warning pull-right" name="type" value="re_stock">View <i class="fa fa-eye"></i></button>
-    </div>
-    <div class="card-body">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <label for="" class="form-label">Customer ID</label>
-            <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->id; ?>">
-            <label for="" class="form-label">Full Name</label>
-            <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->first_name . ', ' . $customer->last_name; ?>">
-            <label for="" class="form-label">Email</label>
-            <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->email; ?>">
-          </div>
-          <div class="col-md-6">
-            <label for="description" class="form-label">Address</label>
-            <textarea class="form-control form-control-sm" rows="4" disabled><?php echo $customer->address; ?></textarea>
-            <label for="" class="form-label">Contact No</label>
-            <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->contact_no; ?>">
-          </div>
-
-
-        </div>
-      </div>
-
-    </div>
+<input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
+<div class="card">
+  <div class="card-header bg-dark text-warning">
+    <i class="fa fa-user"></i> Customer Details <button type="button" class="btn btn-sm btn-warning pull-right btn-view" name="customer_view" value="<?php echo $customer->id; ?>">View <i class="fa fa-eye"></i></button>
   </div>
-</form>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="" class="form-label">Customer ID</label>
+          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->id; ?>">
+          <label for="" class="form-label">Full Name</label>
+          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->first_name . ', ' . $customer->last_name; ?>">
+          <label for="" class="form-label">Email</label>
+          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->email; ?>">
+        </div>
+        <div class="col-md-6">
+          <label for="description" class="form-label">Address</label>
+          <textarea class="form-control form-control-sm" rows="4" disabled><?php echo $customer->address; ?></textarea>
+          <label for="" class="form-label">Contact No</label>
+          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->contact_no; ?>">
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <br>
 
@@ -121,12 +119,4 @@
   //   dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
   //   "order": []
   // });
-  $(document).ready(function() {
-    $('.btn-view,a-view').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
-  });
 </script>

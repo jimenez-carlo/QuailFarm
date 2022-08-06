@@ -47,13 +47,4 @@
       }
     }]
   });
-
-  $(document).ready(function() {
-    $('.btn-edit').click(function() {
-      var page = $(this).attr('name');
-      var id = $(this).attr('value');
-      $(".result").html('');
-      $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
-    });
-  });
 </script>

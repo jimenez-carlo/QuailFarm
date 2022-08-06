@@ -11,9 +11,45 @@ $(document).ready(function() {
       var page = $(this).attr('name');
       $('a.sidebar-btn').removeClass('active');
         $(this).addClass('active');
-            $(".result").html('');
-        $( "#content" ).load( base_url+'module/page.php?page='+page );
+        $(".result").html('');
+        $("#content").load(base_url + 'module/page.php?page=' + page);
+        localStorage.setItem('page', page);
       });
+  
+  
+  if (window.location.search) {
+    const path = new URLSearchParams(window.location.search);
+    
+    if (path.has('page')) {
+      const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasExample');
+      bsOffcanvas.toggle();
+      
+      let page = path.get('page');
+      $('a.sidebar-btn').removeClass('active');
+      $('a.sidebar-btn[name='+localStorage.getItem('page')+']').addClass('active');
+      page += (path.has('id')) ? "&id="+path.get('id') : "";
+      
+      $(".result").html('');
+      $("#content").load(base_url + 'module/page.php?page=' + page);
+    }
+  }
+});
+
+$(document).on("click", '.a-view', function () {  
+  var page = $(this).attr('name');
+  var id = $(this).attr('value');
+  window.open(base_url + "?page=" + page + "&id=" + id, '_blank');
+});
+
+
+$(document).on("click", '.btn-edit, .btn-view', function () {
+  
+  var page = $(this).attr('name');
+  var id = $(this).attr('value');
+  
+  $(".result").html('');
+  $("#content").load(base_url + 'module/page.php?page=' + page + '&id=' + id);
+  
 });
 
 $(document).on("submit", 'form', function (e) {
