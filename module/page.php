@@ -21,11 +21,21 @@ if (in_array($page, $pages)) {
   $shop = new Shop($conn);
   switch ($page) {
       // Admin
+    case 'customers':
+      $data['users'] = $request->get_list("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id and u.is_deleted = 0 where u.access_id = 3");
+      break;
+    case 'customer_register':
+      $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
+      break;
+    case 'customer_edit':
+      $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $id);
+      $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
+      break;
     case 'users':
-      $data['users'] = $request->get_list("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id and u.is_deleted = 0");
+      $data['users'] = $request->get_list("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id and u.is_deleted = 0 where u.access_id != 3");
       break;
     case 'user_register':
-      $data['access_list'] = $request->get_list("select id,UPPER(name) as 'access' from tbl_access");
+      $data['access_list'] = $request->get_list("select id,UPPER(name) as 'access' from tbl_access where id != 3");
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       break;
     case 'user_edit':
@@ -38,10 +48,20 @@ if (in_array($page, $pages)) {
       $data['access_list'] = $request->get_list("select id,UPPER(name) as 'access' from tbl_access");
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       break;
+    case 'categories':
+      $data['categories'] = $request->get_list("select * from tbl_category where is_deleted = 0");
+      break;
+    case 'category_edit':
+      $data['category'] = $request->get_one("select * from tbl_category c WHERE is_deleted = 0 and c.id = " . $id);
+      break;
     case 'products':
-      $data['products'] = $request->get_list("select p.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by  from tbl_product p left join tbl_users_info i on i.id = p.created_by where p.is_deleted = 0");
+      $data['products'] = $request->get_list("select c.name as category_name,p.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by from tbl_product p left join tbl_users_info i on i.id = p.created_by inner join tbl_category c on c.id = p.category_id where p.is_deleted = 0");
+      break;
+    case 'product_add':
+      $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       break;
     case 'product_edit':
+      $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       $data['product'] = $request->get_one("select * from tbl_product p WHERE is_deleted = 0 and p.id = " . $id);
       break;
     case 'inventory':
@@ -70,18 +90,16 @@ if (in_array($page, $pages)) {
       $data['transaction'] = $transaction;
       break;
     case 'orders':
-      $statuses = array();
-      foreach ($request->get_list("select id,UPPER(status) as 'status' from tbl_status") as $res) {
-        $statuses[$res['id']] = $res['status'];
-      }
-      $data['statuses'] = $statuses;
-      $data['orders'] = $request->get_list("select t.date_updated, s.id as `seller_id`, b.id as `buyer_id`, t.id,sum(IF(t.status_id in (2,3,4), t.price, 0)) as `total_price`,sum(IF(t.status_id in (2,3,4), t.qty, 0)) as qty,i.invoice,p.name,p.price,t.status_id,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name,CASE greatest(sum(IF(t.status_id = 1 , 1 , 0)),sum(IF(t.status_id = 2 , 1 , 0)),sum(IF(t.status_id = 3 , 1 , 0)),sum(IF(t.status_id = 4 , 1 , 0)),sum(IF(t.status_id = 5 , 1 , 0)),sum(IF(t.status_id = 6 , 1 , 0)),sum(IF(t.status_id = 7 , 1 , 0)))WHEN sum(IF(t.status_id = 1 , 1 , 0)) THEN 1 WHEN sum(IF(t.status_id = 2 , 1 , 0)) THEN 2 WHEN sum(IF(t.status_id = 3 , 1 , 0)) THEN 3 WHEN sum(IF(t.status_id = 4 , 1 , 0)) THEN 4 WHEN sum(IF(t.status_id = 5 , 1 , 0)) THEN 5 WHEN sum(IF(t.status_id = 6 , 1 , 0)) THEN 6 WHEN sum(IF(t.status_id = 7 , 1 , 0)) THEN 7 END as status_id FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id  where t.status_id > 1 and t.is_deleted = 0 group by t.invoice_id order by t.date_updated desc");
+      $data['orders'] = $request->get_list("select t.date_updated, s.id as `seller_id`, b.id as `buyer_id`, t.id,sum(IF(t.status_id in (2,3,4), t.price, 0)) as `total_price`,sum(IF(t.status_id in (2,3,4), t.qty, 0)) as qty,i.invoice,p.name,p.price,i.status_id,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name,is.status as `status` FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_invoice_status `is` on `is`.id = i.status_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id  where t.status_id > 1 and t.is_deleted = 0 group by t.invoice_id order by t.date_updated desc");
       break;
     case 'orders_view':
-      $main = $request->get_list("select t.date_updated,p.id as `product_id`,t.id,t.buyer_id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 and i.invoice = '$id' order by t.date_updated desc");
+      $main = $request->get_list("select t.invoice_id,t.date_updated,p.id as `product_id`,t.id,t.buyer_id,t.price as `total_price`,t.qty,i.invoice,p.name,p.price,t.status_id,ss.status,concat('(ID#',b.id,') ',b.last_name,', ',b.first_name) as buyer_name ,concat('(ID#',s.id,') ',s.last_name,', ',s.first_name) as seller_name FROM tbl_transactions t inner join tbl_invoice i on i.id = t.invoice_id inner join tbl_product p on p.id = t.product_id inner join tbl_users_info b on b.id = t.buyer_id left join tbl_users_info s on s.id = t.seller_id inner join tbl_status ss on ss.id = t.status_id where t.status_id > 1 and t.is_deleted = 0 and i.invoice = '$id' order by t.date_updated desc");
       $customer_id = reset($main)['buyer_id'];
+      $invoice_id = reset($main)['invoice_id'];
       $data['transactions'] = $main;
       $data['customer'] = $request->get_one("select ui.*,u.* from tbl_users_info ui inner join tbl_users u on u.id = ui.id WHERE ui.id = " . $customer_id . " limit 1");
+      $data['status_history'] = $request->get_list('select sh.date_created,sh.id,UPPER(s.status) as `status`,u.id as user_id,concat("(ID#",u.id,") ",u.last_name,", ", u.first_name) as `user`,ac.access_id FROM tbl_invoice_status_history sh inner join tbl_invoice_status s on s.id = sh.status_id inner join tbl_users_info u on u.id = sh.created_by inner join tbl_users ac on ac.id = sh.created_by where sh.invoice_id = ' . $invoice_id . ' order by date_created desc');
+
       break;
     case 'customer_view':
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $id);
@@ -104,9 +122,10 @@ if (in_array($page, $pages)) {
       break;
     case 'customer_orders':
       $tmp = array();
-      $tmp_res = $request->get_list("select t.id,t.qty,s.status,t.date_updated,t.status_id,i.invoice, i.date_created as invoice_date,p.id as `product_id`,p.name,p.price as product_price from tbl_transactions t inner join tbl_status s on s.id = t.status_id inner join tbl_invoice i on i.id = t.invoice_id  inner join tbl_product p on p.id = t.product_id where t.is_deleted = 0 and t.status_id > 1 and buyer_id = '$customer_id' order by t.date_created desc");
+      $tmp_res = $request->get_list("select t.id,t.qty,s.status,t.date_updated,t.status_id,i.invoice, i.date_created as invoice_date,is.status as `invoice_status`, p.id as `product_id`,p.name,p.price as product_price from tbl_transactions t inner join tbl_status s on s.id = t.status_id inner join tbl_invoice i on i.id = t.invoice_id  inner join tbl_product p on p.id = t.product_id inner join tbl_invoice_status `is` on is.id = i.status_id where t.is_deleted = 0 and t.status_id > 1 and buyer_id = '$customer_id' order by t.date_created desc");
       foreach ($tmp_res as $res) {
         $tmp['invoice'][$res['invoice']][$res['id']] = $res;
+        $tmp['status'][$res['invoice']] = $res['invoice_status'];
       }
       $data['orders'] = $tmp;
       break;
