@@ -3,6 +3,7 @@
 <div class="card">
   <div class="card-header bg-dark text-warning">
     <i class="fa fa-user"></i> Customer Profile
+    <button type="button" class="btn btn-sm btn-warning pull-right btn-edit" name="customer_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
   </div>
   <div class="card-body">
     <div class="container-fluid">
@@ -46,8 +47,8 @@
   </div>
 </div>
 
-<h2><i class="fa fa-cube"></i> Orders</h2>
 <?php if (isset($data['orders']['invoice'])) { ?>
+  <h2><i class="fa fa-cube"></i> Orders</h2>
   <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
     <div class="col-12 mb-3">
       <div class="card">
@@ -108,4 +109,7 @@
       </div>
     </div>
   <?php } ?>
+<?php } else { ?>
+
+  <h2><i class="fa fa-cube"></i> No Orders Yet.</h2>
 <?php } ?>

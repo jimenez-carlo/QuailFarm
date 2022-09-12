@@ -3,6 +3,7 @@
   <thead class="table-dark">
     <tr>
       <th scope="col">PID#</th>
+      <th scope="col">Category</th>
       <th scope="col" style="width: 0.1%;">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
@@ -16,6 +17,7 @@
     <?php foreach ($data['products'] as $res) { ?>
       <tr>
         <td><?php echo $res['id']; ?></td>
+        <td><span class="badge bg-warning text-dark"><?php echo $res['category_name']; ?></span></td>
         <td style="width: 0.1%;"><img src="images/products/<?php echo $res['image']; ?>" style="width:100px;height:100px" /></td>
         <td><?php echo $res['name']; ?></td>
         <td class="text-end"><?php echo $res['price']; ?></td>

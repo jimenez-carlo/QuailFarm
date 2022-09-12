@@ -32,7 +32,7 @@
                 <tr>
                   <td><?php echo $res['id']; ?></td>
                   <td><?php echo strtoupper($res['status']); ?></td>
-                  <td><a href="#" name="product_edit" value="<?php echo $res['product_id']; ?>"><?php echo $res['product_id']; ?></td>
+                  <td><a href="#" class="a-view" name="product_edit" value="<?php echo $res['product_id']; ?>"><?php echo $res['product_id']; ?></a></td>
                   <td><?php echo $res['name']; ?></td>
                   <td class="text-end"><?php echo number_format($res['price'], 2); ?></td>
                   <td class="text-end"><?php echo $res['qty']; ?></td>
@@ -111,9 +111,42 @@
 
   </div>
 </div>
-
 <br>
+<div class="card">
+  <div class="card-header bg-dark text-warning">
+    <i class="fa fa-history"></i> Status History
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
 
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <table class="table table-sm table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">ID#</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Date Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($status_history as $res) { ?>
+                <tr>
+                  <td><?php echo $res['id']; ?></td>
+                  <td><?php echo $res['status']; ?></td>
+                  <td><a href="#" class="a-view" name="<?php echo ($res['access_id'] == 3) ? 'customer_view' : 'user_view'; ?>" value="<?php echo $res['user_id']; ?>" value="<?php echo $res['user_id']; ?>"><?php echo $res['user']; ?></a></td>
+                  <td><?php echo $res['date_created']; ?></td>
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 <script>
   // $('table').DataTable({
   //   dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',

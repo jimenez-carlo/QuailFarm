@@ -18,7 +18,7 @@ class User
     $address = mysqli_real_escape_string($this->conn, $_POST['address']);
     $contact = mysqli_real_escape_string($this->conn, $_POST['contact']);
     $gender = mysqli_real_escape_string($this->conn, $_POST['gender']);
-    $access = mysqli_real_escape_string($this->conn, $_POST['access']);
+    $access = mysqli_real_escape_string($this->conn, (isset($_POST['access'])) ? $_POST['access'] : 3);
 
     $result = def_response();
     $blank = 0;
@@ -109,7 +109,8 @@ class User
         $result->status = true;
         $result->result = success_msg("Password Reset!");
         break;
-      case 'delete':
+      case 'delete_user':
+      case 'delete_customer':
         $user_id = mysqli_real_escape_string($this->conn, $_POST['user_id']);
         mysqli_query($this->conn, "UPDATE tbl_users set is_deleted = 1 where id = '$user_id'");
         $result->status = true;
@@ -124,7 +125,7 @@ class User
         $address = mysqli_real_escape_string($this->conn, $_POST['address']);
         $contact = mysqli_real_escape_string($this->conn, $_POST['contact']);
         $gender = mysqli_real_escape_string($this->conn, $_POST['gender']);
-        $access = mysqli_real_escape_string($this->conn, $_POST['access']);
+        $access = mysqli_real_escape_string($this->conn, (isset($_POST['access'])) ? $_POST['access'] : 3);
 
         $blank = 0;
         $errors = array();

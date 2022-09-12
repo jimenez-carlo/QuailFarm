@@ -11,10 +11,20 @@
           <div class="col-md-6">
             <label for="product_name" class="form-label">*Name</label>
             <input type="text" class="form-control form-control-sm" id="product_name" name="product_name" placeholder="Product Name" requireds value="<?php echo $product->name; ?>">
+            <label for="product_name" class="form-label">*Category</label>
+            <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="category" name="category" requireds style="width: 100%;">
+              <?php foreach ($category_list as $res) {
+                if ($product->category_id == $res['id']) {
+                  echo '<option value="' . $res['id'] . '" selected>' . $res['category'] . '</option>';
+                } else {
+                  echo '<option value="' . $res['id'] . '">' . $res['category'] . '</option>';
+                }
+              } ?>
+            </select>
             <label for="price" class="form-label">*Price</label>
             <input type="number" class="form-control form-control-sm" id="price" name="price" placeholder="0.00" requireds value="<?php echo $product->price; ?>">
             <label for="description" class="form-label">*Description</label>
-            <textarea class="form-control form-control-sm" id="description" name="description" rows="5" placeholder="Product description"><?php echo $product->description; ?></textarea>
+            <textarea class="form-control form-control-sm" id="description" name="description" rows="3" placeholder="Product description"><?php echo $product->description; ?></textarea>
           </div>
 
           <div class="col-md-6" style="display: flex;flex-direction:column">

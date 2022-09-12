@@ -1,13 +1,15 @@
-<div class="container mt-3">
+<div class="container mt-3 accordion" id="accordionExample">
   <h2><i class="fa fa-cube"></i> Orders</h2>
   <?php if (isset($data['orders']['invoice'])) { ?>
     <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
       <div class="col-12 mb-3">
         <div class="card">
           <div class="card-header bg-dark text-warning">
-            <i class="fa fa-cube"></i> #<?php echo $res; ?>
+            <i class="fa fa-cube"></i> #<?php echo $res; ?> - <?php echo $data['orders']['status'][$res]; ?>
+            <button class="accordion-button collapsed btn btn-sm btn-warning pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo str_replace('#', '', 'accordion_' . $res); ?>" aria-expanded="false">
+            </button>
           </div>
-          <div class="card-body">
+          <div class="card-body accordion-collapse collapse" id="<?php echo str_replace('#', '', 'accordion_' . $res); ?>">
             <table class="table table-sm table-striped table-hover table-bordered" style="width:100%">
               <thead class="table-dark">
                 <tr>
@@ -58,6 +60,7 @@
                   <td id="total_price" class="text-end"><?php echo number_format($price, 2); ?></td>
                   <td id="total_qty" class="text-end"><?php echo $qty; ?></td>
                   <td id="total_final_price" class="text-end"><?php echo number_format($total_price, 2); ?></td>
+                  <td></td>
                   <td></td>
                 </tr>
               </tbody>

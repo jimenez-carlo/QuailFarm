@@ -47,7 +47,9 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li><a href="#" name="dashboard" class="nav-link sidebar-btn sidebar-btn active"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-        <li><a href="#" name="users" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Users</a></li>
+        <li><a href="#" name="customers" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Customer Accounts</a></li>
+        <li><a href="#" name="users" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Users Accounts</a></li>
+        <li><a href="#" name="categories" class="nav-link sidebar-btn"><i class="fa fa-tag"></i> Categories</a></li>
         <li><a href="#" name="products" class="nav-link sidebar-btn"><i class="fa fa-tags"></i> Products</a></li>
         <li><a href="#" name="inventory" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Inventory</a></li>
         <li><a href="#" name="orders" class="nav-link sidebar-btn"><i class="fa fa-cube"></i> Orders</a></li>

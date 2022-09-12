@@ -81,15 +81,26 @@ $(document).on("submit", 'form', function (e) {
         $(form_raw).trigger('reset');
       }
       if (result.status == true) {
-       if (form_name == 'update_user' && type_value == 'delete') {
+       if (form_name == 'update_user' && type_value == 'delete_user') {
          $( "#content" ).load( base_url+'module/page.php?page=users' );
+       }
+       if (form_name == 'update_user' && type_value == 'delete_customer') {
+         $( "#content" ).load( base_url+'module/page.php?page=customers' );
        }
        if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
          $( "#content" ).load( base_url+'module/page.php?page=cart' );
        }
        if (form_name == 'update_transaction') {
          $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
-       }
+        }
+        
+       if (form_name == 'update_category' && type_value == 'delete') {
+         $( "#content" ).load( base_url+'module/page.php?page=categories' );
+        }
+        if (form_name == 'update_category' && type_value == 'update') {
+         $( "#content" ).load( base_url+'module/page.php?page=category_edit&id='+formdata.get('category_id') );
+        }
+        
        if (form_name == 'add_product') {
          $('#preview').attr('src','images/products/default.png');
        }
@@ -101,7 +112,10 @@ $(document).on("submit", 'form', function (e) {
        }
        if (form_name == 'update_product' && type_value == 're_stock') {
          $( "#content" ).load( base_url+'module/page.php?page=inventory_edit&id='+formdata.get('product_id') );
-       }
+        }
+       if (form_name == 'update_product' && type_value == 'update') {
+         $( "#content" ).load( base_url+'module/page.php?page=product_edit&id='+formdata.get('product_id') );
+        }
       }
       if (result.items != '') {
         errorFields(result.items);

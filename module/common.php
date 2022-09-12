@@ -24,11 +24,56 @@ if (!function_exists('get_access')) {
   {
     switch ($access) {
       case 1: //admin
-        return array('dashboard', 'users', 'user_register', 'user_edit',  'user_view', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'transaction_view', 'orders', 'orders_view', 'customer_view', 'system',);
+        return array(
+          'dashboard',
+          'customers',
+          'customer_register',
+          'customer_edit',
+          'users',
+          'user_register',
+          'user_edit',
+          'user_view',
+          'categories',
+          'category_add',
+          'category_edit',
+          'products',
+          'product_add',
+          'product_edit',
+          'inventory',
+          'inventory_edit',
+          'transactions',
+          'transaction_view',
+          'orders',
+          'orders_view',
+          'customer_view',
+          'system'
+        );
       case 2: //cashier
-        return array('dashboard', 'users', 'user_view', 'products', 'product_add', 'product_edit', 'inventory', 'inventory_edit', 'transactions', 'transaction_view', 'orders', 'orders_view', 'customer_view');
+        return array(
+          'dashboard',
+          'customers',
+          'users',
+          'user_view',
+          'products',
+          'product_add',
+          'product_edit',
+          'inventory',
+          'inventory_edit',
+          'transactions',
+          'transaction_view',
+          'orders',
+          'orders_view',
+          'customer_view'
+        );
       case 3: //customer
-        return array('dashboard', 'home', 'shop', 'cart', 'customer_profile', 'customer_orders');
+        return array(
+          'dashboard',
+          'home',
+          'shop',
+          'cart',
+          'customer_profile',
+          'customer_orders'
+        );
       default:
         return array();
     }
@@ -43,6 +88,12 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/customer_view.php';
       case 'dashboard':
         return '../layout/user-page/content/dashboard.php';
+      case 'customers':
+        return '../layout/user-page/content/customers.php';
+      case 'customer_register':
+        return '../layout/user-page/content/customer_register.php';
+      case 'customer_edit':
+        return '../layout/user-page/content/customer_edit.php';
       case 'users':
         return '../layout/user-page/content/users.php';
       case 'user_register':
@@ -51,6 +102,12 @@ if (!function_exists('page_url')) {
         return '../layout/user-page/content/user_edit.php';
       case 'user_view':
         return '../layout/user-page/content/user_view.php';
+      case 'categories':
+        return '../layout/user-page/content/category.php';
+      case 'category_add':
+        return '../layout/user-page/content/category_add.php';
+      case 'category_edit':
+        return '../layout/user-page/content/category_edit.php';
       case 'products':
         return '../layout/user-page/content/products.php';
       case 'product_add':

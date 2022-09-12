@@ -10,6 +10,7 @@ class Product
   public function add_product()
   {
     $product_name = mysqli_real_escape_string($this->conn, $_POST['product_name']);
+    $category = mysqli_real_escape_string($this->conn, $_POST['category']);
     $price = mysqli_real_escape_string($this->conn, $_POST['price']);
     $description = mysqli_real_escape_string($this->conn, $_POST['description']);
     $image_name = 'default.png';
@@ -46,7 +47,7 @@ class Product
     }
 
 
-    mysqli_query($this->conn, "INSERT INTO tbl_product (`name`,`description`,`image`,price,created_by) values ('$product_name', '$description', '$image_name', '$price', '$created_by')");
+    mysqli_query($this->conn, "INSERT INTO tbl_product (`name`,`category_id`,`description`,`image`, price,created_by) values ('$product_name', '$category','$description', '$image_name', '$price', '$created_by')");
     $last_id = mysqli_insert_id($this->conn);
     mysqli_query($this->conn, "INSERT INTO tbl_inventory (product_id,qty) VALUES ('$last_id', 0)");
 
@@ -98,6 +99,7 @@ class Product
       case 'update':
         $product_id = mysqli_real_escape_string($this->conn, $_POST['product_id']);
         $product_name = mysqli_real_escape_string($this->conn, $_POST['product_name']);
+        $category = mysqli_real_escape_string($this->conn, $_POST['category']);
         $price = mysqli_real_escape_string($this->conn, $_POST['price']);
         $description = mysqli_real_escape_string($this->conn, $_POST['description']);
         $image_name = $this->get_one("select image from tbl_product where id = '$product_id' limit 1")->image;
@@ -131,7 +133,7 @@ class Product
           move_uploaded_file($_FILES["image"]["tmp_name"],   '../images/products/' . $image_name);
         }
 
-        mysqli_query($this->conn, "UPDATE tbl_product set `name` = '$product_name',`description` = '$description', `image` = '$image_name', price = '$price' where id = '$product_id'");
+        mysqli_query($this->conn, "UPDATE tbl_product set `name` = '$product_name', `category_id`='$category',`description` = '$description', `image` = '$image_name', price = '$price' where id = '$product_id'");
 
         $result->status = true;
         $result->result = success_msg("Product Updated!");

@@ -3,6 +3,7 @@
 <div class="card">
   <div class="card-header bg-dark text-warning">
     <i class="fa fa-user"></i> User Profile
+    <button type="button" class="btn btn-sm btn-warning pull-right btn-edit" name="user_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
   </div>
   <div class="card-body">
     <div class="container-fluid">

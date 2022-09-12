@@ -3,6 +3,7 @@ require('../database/connection.php');
 require_once('../class/user.php');
 require_once('../class/shop.php');
 require_once('../class/product.php');
+require_once('../class/category.php');
 require_once('common.php');
 
 $result = def_response();
@@ -16,6 +17,7 @@ $form = $_POST['form'];
 $user = new User($conn);
 $shop = new Shop($conn);
 $product = new Product($conn);
+$category = new Category($conn);
 
 switch ($form) {
     // Customer
@@ -49,6 +51,12 @@ switch ($form) {
     break;
   case 'update_user':
     $result = $user->update_user();
+    break;
+  case 'add_category':
+    $result = $category->add_category();
+    break;
+  case 'update_category':
+    $result = $category->update_category();
     break;
   case 'add_product':
     $result = $product->add_product();

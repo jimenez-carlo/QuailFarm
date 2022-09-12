@@ -1,4 +1,4 @@
-<h2><i class="fa fa-user-plus"></i> User Registration</h2>
+<h2><i class="fa fa-user-plus"></i> Customer Registration</h2>
 <form method="post" name="register_user">
   <div class="card">
     <div class="card-header bg-dark text-warning">
@@ -7,14 +7,6 @@
     <div class="card-body">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
-            <label for="password" class="form-label">*User Access</label>
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="access" name="access" requireds style="width: 100%;">
-              <?php foreach ($access_list as $res) {
-                echo '<option value="' . $res['id'] . '">' . $res['access'] . '</option>';
-              } ?>
-            </select>
-          </div>
           <div class="col-md-6">
             <label for="password" class="form-label">*Username</label>
             <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="John Doe" requireds>

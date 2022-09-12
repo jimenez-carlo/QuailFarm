@@ -48,7 +48,7 @@
             <textarea class="form-control form-control-sm" rows="5" disabled><?php echo $product->description; ?></textarea>
           </div>
 
-          <div class="col-md-6" style="display: flex;flex-direction:column">
+          <div class="col-md-6 pt-5" style="display: flex;flex-direction:column">
             <img src="images/products/<?php echo $product->image; ?>" alt="" style="width:200px;height:200px;align-self: center;" id="preview">
           </div>
 

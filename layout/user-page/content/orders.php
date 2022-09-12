@@ -16,7 +16,7 @@
     <?php foreach ($data['orders'] as $res) { ?>
       <tr>
         <td><?php echo $res['invoice']; ?></td>
-        <td><?php echo strtoupper($data['statuses'][$res['status_id']]); ?></td>
+        <td><?php echo $res['status']; ?></td>
         <td class="text-end"><?php echo $res['qty']; ?></td>
         <td class="text-end"><?php echo number_format($res['total_price'], 2); ?></td>
         <td><a href="#" class="a-view" name="customer_view" value="<?php echo $res['buyer_id']; ?>"><?php echo $res['buyer_name']; ?></a></td>
