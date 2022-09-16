@@ -87,6 +87,39 @@ class Shop
     return $result;
   }
 
+  public function get_transaction_count($where_id, $status_id)
+  {
+    $res = $this->get_one("select count(*) as result from tbl_transactions where invoice_id = $where_id and status_id = $status_id group by invoice_id limit 1");
+    return isset($res->result) ? $res->result : 0;
+  }
+
+
+  public function has_stocks($id)
+  {
+    $transaction = $this->get_one("select product_id,qty from tbl_transactions where id = $id limit 1");
+    $stock = $this->get_one("select qty from tbl_inventory where product_id = $transaction->product_id")->qty;
+    return ($transaction->qty > $stock) ? false : $stock;
+  }
+
+  public function update_order($id, $status)
+  {
+    $id = mysqli_real_escape_string($this->conn, intval($id));
+    $status = mysqli_real_escape_string($this->conn, intval($status));
+
+    $invoice_id = $this->get_one("select id from tbl_invoice where invoice = $id")->id;
+    $list = $this->get_list("select * from tbl_transactions where invoice_id = $invoice_id");
+
+    foreach ($list as $res) {
+      $this->update_transaction($res['id'], $status);
+    }
+
+    $result = def_response();
+
+    $result->status = true;
+    $result->result = success_msg("Order Updated!");
+    return $result;
+  }
+
   public function update_transaction($id, $status)
   {
     $user_id = $_SESSION['user']->id;
@@ -94,8 +127,79 @@ class Shop
     $status = mysqli_real_escape_string($this->conn, intval($status));
     $result = def_response();
     $date = date("Y-m-d h:i:s");
-    mysqli_query($this->conn, "update tbl_transactions set status_id = '$status',date_updated = '$date'  where id = $id");
-    mysqli_query($this->conn, "inser into tbl_status_history (transaction_id,status_id,created_by) values('$id', '$status', '$user_id')");
+    $seller = '';
+
+    $stock = $this->has_stocks($id);
+    if ($status == 3 && !$stock) {
+      $result->status = false;
+      $result->result = error_msg("Insuficient Stock!");
+      return $result;
+    }
+
+    if (in_array($status, array(3, 6))) {
+      $seller = ", seller_id = $user_id";
+    }
+    $invoice = $this->get_one("select invoice_id,status_id,product_id,qty,buyer_id from tbl_transactions where id = $id limit 1");
+    mysqli_query($this->conn, "update tbl_transactions set status_id = '$status',date_updated = '$date' $seller  where id = $id");
+    mysqli_query($this->conn, "insert into tbl_status_history (transaction_id,status_id,created_by) values('$id', '$status', '$user_id')");
+
+    if (in_array($status, array(3, 5, 6))) {
+      $tmp = $this->get_one("select count(*) as result from tbl_transactions where invoice_id = $invoice->invoice_id group by invoice_id limit 1");
+      $items = isset($tmp->result) ? $tmp->result : 0;
+      $pending = $this->get_transaction_count($invoice->invoice_id, 2);
+      $rejected = $this->get_transaction_count($invoice->invoice_id, 6);
+      $cancelled = $this->get_transaction_count($invoice->invoice_id, 5);
+      if ($status == 3) {
+        mysqli_query($this->conn, "insert into tbl_inventory_history (product_id,original_qty,qty,created_by) values('$invoice->product_id', $stock, -$invoice->qty, '$invoice->buyer_id')");
+        mysqli_query($this->conn, "update tbl_inventory set qty = (qty - $invoice->qty) where product_id = $invoice->product_id");
+        // approved
+        if ($pending == 0) {
+          mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->product_id', 3, '$user_id')");
+          mysqli_query($this->conn, "update tbl_invoice set qty where id = $invoice->product_id");
+        } else {
+          mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 2, '$user_id')");
+          mysqli_query($this->conn, "update tbl_invoice set status_id = 2 where id = $invoice->invoice_id");
+        }
+      } else if ($status == 5) {
+        // cancelled
+        if ($cancelled == $items) {
+          mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 6, '$user_id')");
+          mysqli_query($this->conn, "update tbl_invoice set status_id = 6 where id = $invoice->invoice_id");
+        } else {
+          if ($pending == 0) {
+            mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 3, '$user_id')");
+            mysqli_query($this->conn, "update tbl_invoice set status_id = 3 where id = $invoice->invoice_id");
+          } else if ($pending == 0) {
+            if ($cancelled > $rejected) {
+              mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 6, '$user_id')");
+              mysqli_query($this->conn, "update tbl_invoice set status_id = 6 where id = $invoice->invoice_id");
+            } else {
+              mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 7, '$user_id')");
+              mysqli_query($this->conn, "update tbl_invoice set status_id = 7 where id = $invoice->invoice_id");
+            }
+          }
+        }
+      } else if ($status == 6) {
+        // rejected
+        if ($rejected == $items) {
+          mysqli_query($this->conn, "insert into tbl_invoice_status_history (transaction_id,status_id,created_by) values('$invoice->invoice_id', 7, '$user_id')");
+          mysqli_query($this->conn, "update tbl_invoice set status_id = 7 where id = $invoice->invoice_id");
+        } else {
+          if ($pending == 0) {
+            mysqli_query($this->conn, "insert into tbl_invoice_status_history (transaction_id,status_id,created_by) values('$invoice->invoice_id', 3, '$user_id')");
+            mysqli_query($this->conn, "update tbl_invoice set status_id = 3 where id = $invoice->invoice_id");
+          } else if ($pending == 0) {
+            if ($cancelled > $rejected) {
+              mysqli_query($this->conn, "insert into tbl_invoice_status_history (transaction_id,status_id,created_by) values('$invoice->invoice_id', 6, '$user_id')");
+              mysqli_query($this->conn, "update tbl_invoice set status_id = 6 where id = $invoice->invoice_id");
+            } else {
+              mysqli_query($this->conn, "insert into tbl_invoice_status_history (transaction_id,status_id,created_by) values('$invoice->invoice_id', 7, '$user_id')");
+              mysqli_query($this->conn, "update tbl_invoice set status_id = 7 where id = $invoice->invoice_id");
+            }
+          }
+        }
+      }
+    }
     $result->status = true;
     $result->result = success_msg("Transaction Updated!");
     return $result;

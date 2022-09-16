@@ -19,6 +19,16 @@
           <div class="col-md-6">
             <label for="product_name" class="form-label">Name</label>
             <input type="text" class="form-control form-control-sm" disabled value="<?php echo $product->name; ?>">
+            <label for="product_name" class="form-label">*Category</label>
+            <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="category" name="category" requireds style="width: 100%;">
+              <?php foreach ($category_list as $res) {
+                if ($product->category_id == $res['id']) {
+                  echo '<option value="' . $res['id'] . '" selected>' . $res['category'] . '</option>';
+                } else {
+                  echo '<option value="' . $res['id'] . '">' . $res['category'] . '</option>';
+                }
+              } ?>
+            </select>
             <label for="price" class="form-label">Price</label>
             <input type="number" class="form-control form-control-sm" disabled value="<?php echo $product->price; ?>">
             <label for="description" class="form-label">Description</label>
@@ -67,8 +77,8 @@
                 <tr>
                   <td><?php echo $res['id']; ?></td>
                   <td class="text-end"><span class="badge bg-secondary"><?php echo $res['original_qty']; ?></span></td>
-                  <td class="text-end"><span class="badge bg-success"><?php echo $res['qty']; ?>+</span> </td>
-                  <td class="text-end"><span class="badge bg-success"><?php echo $res['qty'] + $res['original_qty']; ?></span></td>
+                  <td class="text-end"><span class="badge <?php echo ($res['qty'] + $res['original_qty'] > $res['original_qty']) ? 'bg-success' : 'bg-danger'; ?>"><?php echo abs($res['qty']); ?><?php echo ($res['qty'] + $res['original_qty'] > $res['original_qty']) ? '+' : '-'; ?></span> </td>
+                  <td class="text-end"><span class="badge <?php echo ($res['qty'] + $res['original_qty'] > $res['original_qty']) ? 'bg-success' : 'bg-danger'; ?>"><?php echo $res['qty'] + $res['original_qty']; ?></span></td>
                   <td><?php echo $res['created_by']; ?></td>
                   <td><?php echo $res['date_created']; ?></td>
                 </tr>

@@ -196,3 +196,10 @@ color: black!important;
 background-color: #ffc107!important;
 box-shadow:unset!important;
 }
+.flex{
+display: flex;
+}
+
+.flex>form,.flex>button{
+  margin-right: 4px;
+}

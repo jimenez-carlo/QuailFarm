@@ -65,15 +65,19 @@ if (in_array($page, $pages)) {
       $data['product'] = $request->get_one("select * from tbl_product p WHERE is_deleted = 0 and p.id = " . $id);
       break;
     case 'inventory':
-      $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
+      $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id where is_deleted = 0");
       break;
     case 'inventory_edit':
+      $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       $data['product'] = $request->get_one("select p.*,i.qty from tbl_product p left join tbl_inventory i on i.product_id = p.id WHERE p.is_deleted = 0 and p.id = " . $id);
       $data['product_history'] = $request->get_list("select h.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by from tbl_inventory_history h left join tbl_users_info i on i.id = h.created_by where h.product_id =" . $id . " order by h.date_created desc");
       break;
     case 'shop':
+      $where = '';
+      $where .= ($id == 'all') ? '' : "and p.category_id = $id";
+      $data['tag'] = ($id != 'all') ? "Product " . $request->get_one("select UPPER(name) as category from tbl_category where id = $id")->category : 'All Products';
       $data['products'] = $request->get_list("select * from tbl_product");
-      $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id");
+      $data['inventory'] = $request->get_list("select i.qty,p.* from tbl_product p inner join tbl_inventory i on i.product_id = p.id where 1 = 1 $where");
       break;
     case 'admin_profile':
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
@@ -98,7 +102,8 @@ if (in_array($page, $pages)) {
       $invoice_id = reset($main)['invoice_id'];
       $data['transactions'] = $main;
       $data['customer'] = $request->get_one("select ui.*,u.* from tbl_users_info ui inner join tbl_users u on u.id = ui.id WHERE ui.id = " . $customer_id . " limit 1");
-      $data['status_history'] = $request->get_list('select sh.date_created,sh.id,UPPER(s.status) as `status`,u.id as user_id,concat("(ID#",u.id,") ",u.last_name,", ", u.first_name) as `user`,ac.access_id FROM tbl_invoice_status_history sh inner join tbl_invoice_status s on s.id = sh.status_id inner join tbl_users_info u on u.id = sh.created_by inner join tbl_users ac on ac.id = sh.created_by where sh.invoice_id = ' . $invoice_id . ' order by date_created desc');
+      $data['status_history'] = $request->get_list('select sh.date_created,sh.id,UPPER(s.status) as `status`,u.id as user_id,concat("(ID#",u.id,") ",u.last_name,", ", u.first_name) as `user`,ac.access_id FROM tbl_invoice_status_history sh inner join tbl_invoice_status s on s.id = sh.status_id inner join tbl_users_info u on u.id = sh.created_by inner join tbl_users ac on ac.id = sh.created_by where sh.invoice_id = ' . $invoice_id . ' order by id desc');
+
 
       break;
     case 'customer_view':
@@ -128,6 +133,9 @@ if (in_array($page, $pages)) {
         $tmp['status'][$res['invoice']] = $res['invoice_status'];
       }
       $data['orders'] = $tmp;
+      break;
+    case 'customer_category':
+      $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       break;
   }
   echo get_contents(page_url($page), $data);

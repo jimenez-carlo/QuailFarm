@@ -38,10 +38,14 @@
                   <td class="text-end"><?php echo $res['qty']; ?></td>
                   <td class="text-end"><?php echo number_format($res['total_price'], 2); ?></td>
                   <td><?php echo $res['date_updated']; ?></td>
-                  <td> <?php if (in_array($res['status_id'], array(1, 5, 6, 7))) { ?>
-                      <button type="button" class="btn btn-sm btn-warning"> Approve <i class="fa fa-check"></i> </button>
-                      <button type="button" class="btn btn-sm btn-dark"> Reject <i class="fa fa-close"></i> </button>
-                      <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+                  <td> <?php if (in_array($res['status_id'], array(2))) { ?>
+                      <form method="post" name="update_order_transaction">
+                        <input type="hidden" name="id" value="<?php echo $res['id']; ?>">
+                        <input type="hidden" name="invoice_id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
+                        <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
+                        <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
+                        <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+                      </form>
                       <?php $approvable++; ?>
                     <?php } else { ?>
                       <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
@@ -68,8 +72,11 @@
         <div class="col-md-12 mt-3">
           <div class="pull-right">
             <?php if (!empty($approvable)) { ?>
-              <button type="button" class="btn btn-sm btn-warning"> Approve All <i class="fa fa-check"></i> </button>
-              <button type="button" class="btn btn-sm btn-dark"> Reject All <i class="fa fa-close"></i> </button>
+              <form method="post" name="update_orders_view">
+                <input type="hidden" name="id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
+                <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve All <i class="fa fa-check"></i> </button>
+                <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject All <i class="fa fa-close"></i> </button>
+              </form>
             <?php } else { ?>
               <button type="button" class="btn btn-sm btn-warning" disabled> Approve All <i class="fa fa-check"></i> </button>
               <button type="button" class="btn btn-sm btn-dark" disabled> Reject All <i class="fa fa-close"></i> </button>

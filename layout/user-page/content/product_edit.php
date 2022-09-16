@@ -12,7 +12,7 @@
             <label for="product_name" class="form-label">*Name</label>
             <input type="text" class="form-control form-control-sm" id="product_name" name="product_name" placeholder="Product Name" requireds value="<?php echo $product->name; ?>">
             <label for="product_name" class="form-label">*Category</label>
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="category" name="category" requireds style="width: 100%;">
+            <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="category" name="category" requireds style="width: 100%; disabled">
               <?php foreach ($category_list as $res) {
                 if ($product->category_id == $res['id']) {
                   echo '<option value="' . $res['id'] . '" selected>' . $res['category'] . '</option>';

@@ -89,9 +89,26 @@ $(document).on("submit", 'form', function (e) {
        }
        if (form_name == 'remove_from_cart' || form_name == 'update_cart' || form_name == 'checkout_cart') {
          $( "#content" ).load( base_url+'module/page.php?page=cart' );
-       }
-       if (form_name == 'update_transaction') {
+        }
+        
+       if (form_name == 'update_transaction' && type_value == '5') {
          $( "#content" ).load( base_url+'module/page.php?page=customer_orders' );
+        }
+       if (form_name == 'update_transaction' && (type_value == '3' || type_value == '6')) {
+         $( "#content" ).load( base_url+'module/page.php?page=transactions' );
+        }
+       if (form_name == 'update_transaction_view' && (type_value == '3' || type_value == '6')) {
+         $( "#content" ).load( base_url+'module/page.php?page=transaction_view&id=' +formdata.get('id'));
+        }
+        
+        if (form_name == 'update_order' && (type_value == '3' || type_value == '6')) {
+         $( "#content" ).load( base_url+'module/page.php?page=orders' );
+        }
+       if (form_name == 'update_orders_view' && (type_value == '3' || type_value == '6')) {
+         $( "#content" ).load( base_url+'module/page.php?page=orders_view&id=' +formdata.get('id'));
+        }
+       if (form_name == 'update_order_transaction' && (type_value == '3' || type_value == '6')) {
+         $( "#content" ).load( base_url+'module/page.php?page=orders_view&id=' +formdata.get('invoice_id'));
         }
         
        if (form_name == 'update_category' && type_value == 'delete') {

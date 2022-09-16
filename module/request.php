@@ -39,6 +39,20 @@ switch ($form) {
   case 'update_transaction':
     $result = $shop->update_transaction($_POST['id'], $_POST['status']);
     break;
+  case 'update_transaction_view':
+    $result = $shop->update_transaction($_POST['id'], $_POST['status']);
+    break;
+  case 'update_order_transaction':
+    $result = $shop->update_transaction($_POST['id'], $_POST['status']);
+    break;
+
+  case 'update_order':
+    $result = $shop->update_order($_POST['id'], $_POST['status']);
+    break;
+  case 'update_orders_view':
+    $result = $shop->update_order($_POST['id'], $_POST['status']);
+    break;
+
   case 'customer_update':
     $result = $user->customer_update();
     break;

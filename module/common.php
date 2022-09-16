@@ -72,7 +72,8 @@ if (!function_exists('get_access')) {
           'shop',
           'cart',
           'customer_profile',
-          'customer_orders'
+          'customer_orders',
+          'customer_category'
         );
       default:
         return array();
@@ -139,6 +140,8 @@ if (!function_exists('page_url')) {
         return '../layout/customer-page/content/profile.php';
       case 'customer_orders':
         return '../layout/customer-page/content/orders.php';
+      case 'customer_category':
+        return '../layout/customer-page/content/category.php';
         // case 'shop':
         //   return '../layout/user-page/content/shop.php';
       case 'denied':

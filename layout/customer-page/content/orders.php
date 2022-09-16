@@ -42,7 +42,7 @@
                     <td><?php echo $sub_res['date_updated']; ?></td>
                     <td class="text-end" style="width: 0.1%;">
                       <?php if ($sub_res['status_id'] == 2) { ?>
-                        <form method="" name="update_transaction">
+                        <form method="post" name="update_transaction">
                           <input type="hidden" name="id" value="<?php echo $sub_res['id']; ?>">
                           <input type="hidden" name="status" value="5">
                           <button type="submit" class="btn btn-sm btn-warning"> Cancel</button>

@@ -8,7 +8,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Description</th>
-      <th scope="col">Date Created</th>
+      <!-- <th scope="col">Date Created</th> -->
       <th scope="col">Created By</th>
       <th scope="col">Actions</th>
     </tr>
@@ -22,7 +22,7 @@
         <td><?php echo $res['name']; ?></td>
         <td class="text-end"><?php echo $res['price']; ?></td>
         <td><?php echo $res['description']; ?></td>
-        <td><?php echo $res['date_created']; ?></td>
+        <!-- <td><?php echo $res['date_created']; ?></td> -->
         <td><?php echo $res['created_by']; ?></td>
         <td>
           <form method="post" name="update_product">

@@ -54,7 +54,7 @@
         <li><a href="#" name="inventory" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Inventory</a></li>
         <li><a href="#" name="orders" class="nav-link sidebar-btn"><i class="fa fa-cube"></i> Orders</a></li>
         <li><a href="#" name="transactions" class="nav-link sidebar-btn"><i class="fa fa-file-text"></i> Transactions</a></li>
-        <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-cog"></i> System</a></li>
+        <!-- <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-cog"></i> System</a></li> -->
         <hr>
 
       </ul>
