@@ -84,6 +84,12 @@ $(document).on("submit", 'form', function (e) {
        if (form_name == 'update_user' && type_value == 'delete_user') {
          $( "#content" ).load( base_url+'module/page.php?page=users' );
        }
+       if (form_name == 'update_user' && type_value == 'update' && formdata.get('access') == null) {
+         $( "#content" ).load( base_url+'module/page.php?page=customer_edit&id=' +formdata.get('user_id'));
+       }
+       if (form_name == 'update_user' && type_value == 'update' && formdata.get('access')) {
+         $( "#content" ).load( base_url+'module/page.php?page=user_edit&id=' +formdata.get('user_id'));
+       }
        if (form_name == 'update_user' && type_value == 'delete_customer') {
          $( "#content" ).load( base_url+'module/page.php?page=customers' );
        }
