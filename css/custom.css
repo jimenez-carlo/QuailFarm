@@ -202,4 +202,5 @@ display: flex;
 
 .flex>form,.flex>button{
   margin-right: 4px;
+word-wrap: no-wrap;
 }
