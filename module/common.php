@@ -24,6 +24,7 @@ if (!function_exists('get_access')) {
   {
     switch ($access) {
       case 1: //admin
+      case 5: //admin
         return array(
           'dashboard',
           'customers',
@@ -48,12 +49,9 @@ if (!function_exists('get_access')) {
           'customer_view',
           'system'
         );
-      case 2: //cashier
+      case 2: //Salesclerk
         return array(
           'dashboard',
-          'customers',
-          'users',
-          'user_view',
           'products',
           'product_add',
           'product_edit',
@@ -75,6 +73,22 @@ if (!function_exists('get_access')) {
           'customer_orders',
           'customer_category'
         );
+      case 4: //inventory clerk
+        return array(
+          'dashboard',
+          'products',
+          'product_add',
+          'product_edit',
+          'inventory',
+          'inventory_edit',
+          'transactions',
+          'transaction_view',
+          'orders',
+          'orders_view',
+          'customer_view',
+          'system'
+        );
+
       default:
         return array();
     }

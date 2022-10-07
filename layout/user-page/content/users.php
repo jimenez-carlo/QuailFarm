@@ -14,6 +14,7 @@
     </tr>
   </thead>
   <tbody>
+
     <?php foreach ($data['users'] as $res) { ?>
       <tr>
         <td><?php echo $res['id']; ?></td>
@@ -25,13 +26,20 @@
         <td><?php echo $res['contact_no']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
         <td>
-          <form method="post" name="update_user">
-            <button type="button" class="btn btn-sm btn-warning btn-edit" name="user_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark btn-edit" name="user_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
-            <input type="hidden" value="<?php echo $res['id']; ?>" name="user_id">
-            <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete_user"> Delete <i class="fa fa-trash"></i> </button>
-          </form>
+          <?php if ($res['access_id'] == 1) { ?>
+            <button type="button" class="btn btn-sm btn-warning" disabled> Edit <i class="fa fa-edit"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark" disabled> View <i class="fa fa-eye"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark" disabled> Delete <i class="fa fa-trash"></i> </button>
         </td>
+      <?php } else { ?>
+        <form method="post" name="update_user">
+          <button type="button" class="btn btn-sm btn-warning btn-edit" name="user_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+          <button type="button" class="btn btn-sm btn-dark btn-edit" name="user_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+          <input type="hidden" value="<?php echo $res['id']; ?>" name="user_id">
+          <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete_user"> Delete <i class="fa fa-trash"></i> </button>
+        </form>
+        </td>
+      <?php } ?>
       </tr>
     <?php } ?>
   </tbody>

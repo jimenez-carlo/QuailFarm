@@ -40,7 +40,7 @@ if (in_array($page, $pages)) {
       break;
     case 'user_edit':
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $id);
-      $data['access_list'] = $request->get_list("select id,UPPER(name) as 'access' from tbl_access");
+      $data['access_list'] = $request->get_list("select id,UPPER(name) as 'access' from tbl_access where id != 1");
       $data['gender_list'] = $request->get_list("select id,UPPER(gender) as 'gender' from tbl_gender");
       break;
     case 'user_view':
