@@ -70,7 +70,7 @@ if (in_array($page, $pages)) {
     case 'inventory_edit':
       $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       $data['product'] = $request->get_one("select p.*,i.qty from tbl_product p left join tbl_inventory i on i.product_id = p.id WHERE p.is_deleted = 0 and p.id = " . $id);
-      $data['product_history'] = $request->get_list("select h.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by from tbl_inventory_history h left join tbl_users_info i on i.id = h.created_by where h.product_id =" . $id . " and p.is_deleted = 0 order by h.date_created desc");
+      $data['product_history'] = $request->get_list("select h.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by from tbl_inventory_history h left join tbl_users_info i on i.id = h.created_by where h.product_id =" . $id . " order by h.date_created desc");
       break;
     case 'shop':
       $where = '';

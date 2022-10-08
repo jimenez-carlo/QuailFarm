@@ -50,6 +50,7 @@ class Product
     mysqli_query($this->conn, "INSERT INTO tbl_product (`name`,`category_id`,`description`,`image`, price,created_by) values ('$product_name', '$category','$description', '$image_name', '$price', '$created_by')");
     $last_id = mysqli_insert_id($this->conn);
     mysqli_query($this->conn, "INSERT INTO tbl_inventory (product_id,qty) VALUES ('$last_id', 0)");
+    // mysqli_query($this->conn, "INSERT INTO tbl_inventory_history (product_id,original_qty,qty,created_by) VALUES ('$last_id', 0,0,$created_by)");
 
     $result->status = true;
     $result->result = success_msg("New Product Added!");

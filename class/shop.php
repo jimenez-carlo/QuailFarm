@@ -155,10 +155,10 @@ class Shop
         // approved
         if ($pending == 0) {
           mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->product_id', 3, '$user_id')");
-          mysqli_query($this->conn, "update tbl_invoice set qty where id = $invoice->product_id");
+          mysqli_query($this->conn, "update tbl_invoice set status_id = 3 where id = $invoice->invoice_id");
         } else {
-          mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 2, '$user_id')");
-          mysqli_query($this->conn, "update tbl_invoice set status_id = 2 where id = $invoice->invoice_id");
+          mysqli_query($this->conn, "insert into tbl_invoice_status_history (invoice_id,status_id,created_by) values('$invoice->invoice_id', 3, '$user_id')");
+          mysqli_query($this->conn, "update tbl_invoice set status_id = 3 where id = $invoice->invoice_id");
         }
       } else if ($status == 5) {
         // cancelled
@@ -228,7 +228,7 @@ class Shop
       }
 
       $invoice = time();
-      mysqli_query($this->conn, "insert into tbl_invoice (invoice,customer_id) VALUES('$invoice','$customer_id')");
+      mysqli_query($this->conn, "insert into tbl_invoice (invoice,customer_id,status_id) VALUES('$invoice','$customer_id',1)");
       $invoice_id = mysqli_insert_id($this->conn);
 
       foreach ($items as $res) {
