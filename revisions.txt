@@ -34,8 +34,16 @@ costumer viewed and search products
 DELIVERY
 monitoring of delivery status
 
+admin
+-remove transaction
+-add menu reports
+-add walkin (POS)
 
+orders
+-add paid/unpaid status
+-add payment
 
-
-
+inventory
+-remove product details
+-remove created date
 

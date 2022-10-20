@@ -13,7 +13,7 @@ $result = $data['profile'];
           <div class="row">
             <div class="col-md-6">
               <label for="password" class="form-label">*Username</label>
-              <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="John Doe" requireds value="<?php echo $result->username; ?>">
+              <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="Username" requireds value="<?php echo $result->username; ?>">
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label">*Email Address</label>

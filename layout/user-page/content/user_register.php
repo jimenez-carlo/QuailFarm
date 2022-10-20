@@ -17,7 +17,7 @@
           </div>
           <div class="col-md-6">
             <label for="password" class="form-label">*Username</label>
-            <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="John Doe" requireds>
+            <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="Username" requireds>
           </div>
           <div class="col-md-6">
             <label for="email" class="form-label">*Email Address</label>
