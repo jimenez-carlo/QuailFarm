@@ -82,3 +82,4 @@ function validateSignup() {
   }
   return result;
 }
+

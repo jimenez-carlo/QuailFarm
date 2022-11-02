@@ -12,7 +12,7 @@
               <tr>
                 <th scope="col">TXN#</th>
                 <th scope="col">Status</th>
-                <th scope="col">PID#</th>
+                <!-- <th scope="col">PID#</th> -->
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Qty</th>
@@ -32,7 +32,7 @@
                 <tr>
                   <td><?php echo $res['id']; ?></td>
                   <td><?php echo strtoupper($res['status']); ?></td>
-                  <td><a href="#" class="a-view" name="product_edit" value="<?php echo $res['product_id']; ?>"><?php echo $res['product_id']; ?></a></td>
+                  <!-- <td><a href="#" class="a-view" name="product_edit" value="<?php echo $res['product_id']; ?>"><?php echo $res['product_id']; ?></a></td> -->
                   <td><?php echo $res['name']; ?></td>
                   <td class="text-end"><?php echo number_format($res['price'], 2); ?></td>
                   <td class="text-end"><?php echo $res['qty']; ?></td>
@@ -44,13 +44,13 @@
                         <input type="hidden" name="invoice_id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
                         <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
                         <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
-                        <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+                        <!-- <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button> -->
                       </form>
                       <?php $approvable++; ?>
                     <?php } else { ?>
                       <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
                       <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
-                      <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
+                      <!-- <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button> -->
                     <?php } ?>
                   </td>
                 </tr>
@@ -59,9 +59,11 @@
                 <?php $qty += $res['qty']; ?>
               <?php } ?>
               <tr class="fw-bold">
-                <td colspan="4">Grand Total</td>
-                <td id="total_price" class="text-end"><?php echo number_format($price, 2); ?></td>
-                <td id="total_qty" class="text-end"><?php echo $qty; ?></td>
+                <td colspan="3">Grand Total</td>
+                <td id="total_price" class="text-end"><?php //echo number_format($price, 2); 
+                                                      ?></td>
+                <td id="total_qty" class="text-end"><?php //echo $qty; 
+                                                    ?></td>
                 <td id="total_final_price" class="text-end"><?php echo number_format($total_price, 2); ?></td>
                 <td></td>
                 <td></td>
@@ -92,7 +94,8 @@
 <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
 <div class="card">
   <div class="card-header bg-dark text-warning">
-    <i class="fa fa-user"></i> Customer Details <button type="button" class="btn btn-sm btn-warning pull-right btn-view" name="customer_view" value="<?php echo $customer->id; ?>">View <i class="fa fa-eye"></i></button>
+    <i class="fa fa-user"></i> Customer Details
+    <!-- <button type="button" class="btn btn-sm btn-warning pull-right btn-view" name="customer_view" value="<?php echo $customer->id; ?>">View <i class="fa fa-eye"></i></button> -->
   </div>
   <div class="card-body">
     <div class="container-fluid">

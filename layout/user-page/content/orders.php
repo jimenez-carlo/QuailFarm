@@ -3,6 +3,7 @@
   <thead class="table-dark">
     <tr>
       <th scope="col">Order#</th>
+      <th scope="col">Paid/Unpaid</th>
       <th scope="col">Status</th>
       <th scope="col">Total Qty</th>
       <th scope="col">Total Price</th>
@@ -16,6 +17,7 @@
     <?php foreach ($data['orders'] as $res) { ?>
       <tr>
         <td><?php echo $res['invoice']; ?></td>
+        <td><?php echo $res['paid_status']; ?></td>
         <td><?php echo $res['status']; ?></td>
         <td class="text-end"><?php echo $res['qty']; ?></td>
         <td class="text-end"><?php echo number_format($res['total_price'], 2); ?></td>

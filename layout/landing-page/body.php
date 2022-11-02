@@ -71,7 +71,7 @@
         <h2 class="fw-normal text-warning">Quail Egg</h2>
         <p>Egg</p>
         <p><a class="btn btn-warning font-bold" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">BUY NOW »</a></p>
-   </div>
+      </div>
     </div>
 
     <hr class="featurette-divider">

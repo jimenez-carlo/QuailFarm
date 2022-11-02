@@ -2,7 +2,7 @@
   <h2><i class="fa fa-cube"></i> Orders</h2>
   <?php if (isset($data['orders']['invoice'])) { ?>
     <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
-      <div class="col-12 mb-3">
+      <!-- <div class="col-12 mb-3">
         <div class="card">
           <div class="card-header bg-dark text-warning">
             <i class="fa fa-cube"></i> #<?php echo $res; ?> - <?php echo $data['orders']['status'][$res]; ?>
@@ -67,7 +67,7 @@
             </table>
           </div>
         </div>
-      </div>
+      </div> -->
     <?php } ?>
   <?php } ?>
 </div>
