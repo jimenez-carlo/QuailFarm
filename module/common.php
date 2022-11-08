@@ -20,7 +20,7 @@ if (!function_exists('get_contents')) {
 }
 
 if (!function_exists('get_access')) {
-  function get_access($access)
+  function get_access($access = null)
   {
     switch ($access) {
       case 1: //admin
@@ -90,7 +90,7 @@ if (!function_exists('get_access')) {
         );
 
       default:
-        return array();
+        return array('about_us_1', 'products_1', 'contact_us_1', 'tutorial_1');
     }
   }
 }
@@ -156,6 +156,15 @@ if (!function_exists('page_url')) {
         return '../layout/customer-page/content/orders.php';
       case 'customer_category':
         return '../layout/customer-page/content/category.php';
+
+      case 'about_us_1':
+        return '../layout/landing-page/content/about.php';
+      case 'products_1':
+        return '../layout/landing-page/content/products.php';
+      case 'contact_us_1':
+        return '../layout/landing-page/content/contact.php';
+      case 'tutorial_1':
+        return '../layout/landing-page/content/tutorial.php';
         // case 'shop':
         //   return '../layout/user-page/content/shop.php';
       case 'denied':

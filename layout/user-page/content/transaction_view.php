@@ -2,7 +2,7 @@
 <form method="post" name="update_transaction_view" enctype="multipart/form-data">
   <input type="hidden" id="id" name="id" requireds value="<?php echo $transaction->id; ?>">
   <div class="card">
-    <div class="card-header bg-dark text-warning">
+    <div class="card-header bg-dark text-white">
       <i class="fa fa-exclamation-circle"></i> Transaction Details
     </div>
     <div class="card-body">
@@ -65,7 +65,7 @@
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="submit" class="btn btn-sm btn-warning" name="status" value="3" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Approve <i class="fa fa-check"></i></button>
+              <button type="submit" class="btn btn-sm btn-dark" name="status" value="3" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Approve <i class="fa fa-check"></i></button>
               <button type="submit" class="btn btn-sm btn-dark" name="status" value="6" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Reject <i class="fa fa-close"></i></button>
             </div>
           </div>
@@ -78,7 +78,7 @@
 
 <br>
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-history"></i> Status History
   </div>
   <div class="card-body">

@@ -28,17 +28,17 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNav" aria-controls="toggleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand col-8 col-auto mr-auto text-warning" href="#">
-        <h2><i class="fa fa-home"></i> Menor's Quail Farm</h2>
+      <a class="navbar-brand col-8 col-auto mr-auto text-white" href="#">
+        <h2></i> Menor's Quail Farm</h2>
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="toggleNav">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="home" href="#"><i class="fa fa-home"></i> Home</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_category" href="#"><i class="fa fa-shopping-bag"></i> Products </a></li>
-          <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="cart" href="#"><i class="fa fa-shopping-cart"></i> My Cart(<?php echo $cart->items; ?>)</a></li>
-          <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="customer_orders" href="#"><i class="fa fa-archive"></i> Orders</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_profile" href="#"><i class="fa fa-user"></i> Profile </a></li>
-          <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" aria-current="page" href="module/logout.php"></i> Logout</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="home" href="#"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_category" href="#"> Products </a></li>
+          <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="cart" href="#"> My Cart(<?php echo $cart->items; ?>)</a></li>
+          <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="customer_orders" href="#"> Orders</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_profile" href="#"> Profile </a></li>
+          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-dark" aria-current="page" href="module/logout.php"> Logout</a></li>
         </ul>
       </div>
     </div>

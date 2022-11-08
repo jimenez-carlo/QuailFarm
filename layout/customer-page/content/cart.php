@@ -3,7 +3,7 @@
 
     <div class="col-12">
       <div class="card">
-        <div class="card-header bg-dark text-warning">
+        <div class="card-header bg-dark text-white">
           <i class="fa fa-shopping-cart"></i> My Cart
         </div>
         <div class="card-body">
@@ -36,7 +36,7 @@
                       <input type="hidden" name="price" value="<?php echo $res['price']; ?>">
                       <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                          <button class="btn btn-sm btn-warning" type="submit">Update <i class="fa fa-save"></i></button>
+                          <button class="btn btn-sm btn-dark" type="submit">Update <i class="fa fa-save"></i></button>
                         </div>
                         <input type="text" class="form-control form-control-sm" name="qty" value="<?php echo $res['qty']; ?>" style="text-align:right">
                       </div>
@@ -65,7 +65,7 @@
           </table>
         </div>
         <form action="post" name="checkout_cart">
-          <button class="btn btn-lg btn-warning font-bold rounded-0 w-100">Checkout Now <i class="fa fa-check fa-lg"></i></button>
+          <button class="btn btn-lg btn-dark font-bold rounded-0 w-100">Checkout Now <i class="fa fa-check fa-lg"></i></button>
         </form>
       </div>
     </div>

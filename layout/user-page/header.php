@@ -28,14 +28,15 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNav" aria-controls="toggleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand col-8 col-auto mr-auto text-warning" aria-current="page" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">
+      <a class="navbar-brand col-8 col-auto mr-auto text-white" aria-current="page" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">
         <h2><i class="fa fa-bars"></i> Menu</h2>
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="toggleNav">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about-us"><i class="fa fa-user"></i> My Profile</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" href="module/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
-          <!-- <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" aria-current="page" href="module/logout.php" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li> -->
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about-us"><i class="fa fa-user"></i> <?= $_SESSION['user']->access_name ?></a></li>
+
+          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-dark" href="module/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
+          <!-- <li class="nav-item"><a class="nav-link btn btn-dark font-bold text-dark" aria-current="page" href="module/logout.php" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li> -->
         </ul>
       </div>
     </div>
@@ -47,15 +48,15 @@
       <h2 class="text-center">Menor's Quail Farm</h2>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
-        <li><a href="#" name="dashboard" class="nav-link sidebar-btn sidebar-btn active"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-        <li><a href="#" name="customers" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Customer Accounts</a></li>
-        <li><a href="#" name="users" class="nav-link sidebar-btn"><i class="fa fa-users"></i> Users Accounts</a></li>
-        <li><a href="#" name="categories" class="nav-link sidebar-btn"><i class="fa fa-tag"></i> Categories</a></li>
-        <li><a href="#" name="products" class="nav-link sidebar-btn"><i class="fa fa-tags"></i> Products</a></li>
-        <li><a href="#" name="inventory" class="nav-link sidebar-btn"><i class="fa fa-archive"></i> Inventory</a></li>
-        <li><a href="#" name="orders" class="nav-link sidebar-btn"><i class="fa fa-cube"></i> Orders</a></li>
-        <li><a href="#" name="x" class="nav-link sidebar-btn"><i class="fa fa-files-o"></i> Reports</a></li>
-        <li><a href="#" name="x" class="nav-link sidebar-btn"><i class="fa fa-desktop"></i> Walkin(POS)</a></li>
+        <li><a href="#" name="dashboard" class="nav-link sidebar-btn sidebar-btn active"> Dashboard</a></li>
+        <li><a href="#" name="customers" class="nav-link sidebar-btn"> Customer Accounts</a></li>
+        <li><a href="#" name="users" class="nav-link sidebar-btn"> Users Accounts</a></li>
+        <li><a href="#" name="categories" class="nav-link sidebar-btn"> Categories</a></li>
+        <li><a href="#" name="products" class="nav-link sidebar-btn"> Products</a></li>
+        <li><a href="#" name="inventory" class="nav-link sidebar-btn"> Inventory</a></li>
+        <li><a href="#" name="orders" class="nav-link sidebar-btn"> Orders</a></li>
+        <li><a href="#" name="x" class="nav-link sidebar-btn"> Reports</a></li>
+        <!-- <li><a href="#" name="x" class="nav-link sidebar-btn"><i class="fa fa-desktop"></i> Walkin(POS)</a></li> -->
         <!-- <li><a href="#" name="transactions" class="nav-link sidebar-btn"><i class="fa fa-file-text"></i> Transactions</a></li> -->
         <!-- <li><a href="#" name="system" class="nav-link sidebar-btn"><i class="fa fa-cog"></i> System</a></li> -->
         <hr>

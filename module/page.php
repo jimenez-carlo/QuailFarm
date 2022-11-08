@@ -11,8 +11,8 @@ if (!$_GET || !isset($_GET['page'])) {
 
 $page = $_GET['page'];
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
-$access = $_SESSION['user']->access_id;
-$customer_id = $_SESSION['user']->id;
+$access = (isset($_SESSION['user']) && !empty($_SESSION['user'])) ? $_SESSION['user']->access_id : null;
+$customer_id = (isset($_SESSION['user']) && !empty($_SESSION['user'])) ? $_SESSION['user']->id : null;
 $pages = get_access($access);
 
 if (in_array($page, $pages)) {

@@ -17,7 +17,7 @@
         <td style="width: 25%;">
           <form method="post" name="update_category">
             <input type="hidden" value="<?php echo $res['id']; ?>" name="category_id">
-            <button type="button" class="btn btn-sm btn-warning btn-edit" name="category_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark btn-edit" name="category_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
             <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i> </button>
           </form>
         </td>
@@ -30,7 +30,7 @@
   $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"li><"col-sm-2"p>>',
     buttons: [{
-      className: 'btn btn-sm btn-warning',
+      className: 'btn btn-sm btn-dark',
       text: '<i class="fa fa-plus"></i> Add Category',
       action: function(e, dt, node, config) {
         $("#content").load(base_url + 'module/page.php?page=category_add');

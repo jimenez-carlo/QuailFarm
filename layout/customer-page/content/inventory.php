@@ -19,7 +19,7 @@
         <td><?php echo $res['price']; ?></td>
         <td><?php echo $res['date_created']; ?></td>
         <td>
-          <button type="button" class="btn btn-sm btn-warning"> Edit <i class="fa fa-edit"></i> </button>
+          <button type="button" class="btn btn-sm btn-dark"> Edit <i class="fa fa-edit"></i> </button>
           <button type="button" class="btn btn-sm btn-danger"> Delete <i class="fa fa-trash"></i> </button>
         </td>
       </tr>

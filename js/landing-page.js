@@ -83,3 +83,13 @@ function validateSignup() {
   return result;
 }
 
+$(document).ready(function () {  
+  $('[data-link="menu"]').click(function () {
+      var page = $(this).attr('name');
+      $('a.sidebar-btn').removeClass('active');
+    $(this).addClass('active');
+    
+    $(".result").html('');
+    $( "#content" ).load( base_url+'module/page.php?page='+page );
+  });
+});

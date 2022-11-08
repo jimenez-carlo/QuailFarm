@@ -1,13 +1,16 @@
 body{
-    transition: margin .5s;
+    /* transition: margin .5s; */
 }
 .sidebar-btn{
   color:#fff;
 }
 .sidebar-btn.active{
-  background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+  background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
   color: rgb(0, 0, 0)!important;
 font-weight: bold;
+}
+.offcanvas{
+transition: unset;
 }
 .offcanvas.offcanvas-start{
   width: 250px;
@@ -204,3 +207,10 @@ display: flex;
   margin-right: 4px;
 word-wrap: no-wrap;
 }
+body{
+/* font-family: revert!important; */
+}
+
+/* .offcanvas.offcanvas-start{
+  transform: unset;
+} */

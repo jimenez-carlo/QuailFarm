@@ -28,13 +28,13 @@
         <td><?php echo $res['date_updated']; ?></td>
         <td class="flex">
           <?php if (in_array($res['status_id'], array(1, 3, 5, 6))) { ?>
-            <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark" disabled> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
             <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } else { ?>
             <form method="post" name="update_transaction">
               <input type="hidden" name="id" value="<?php echo $res['id']; ?>">
-              <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
+              <button type="submit" class="btn btn-sm btn-dark" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
               <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
             </form>
             <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>

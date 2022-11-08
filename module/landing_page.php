@@ -8,7 +8,7 @@ if (!$_POST || !isset($_POST['form'])) {
 if ($_POST['form'] == 'login') {
   $user = mysqli_real_escape_string($conn, clean_data($_POST['login_username']));
   $password = mysqli_real_escape_string($conn, clean_data($_POST['login_password']));
-  $sql = "SELECT *,count(*) as user_count FROM tbl_users u inner join tbl_users_info ui on ui.id = u.id WHERE (u.username = '$user' OR u.email = '$user')";
+  $sql = "SELECT a.name as access_name,ui.*,u.*,count(*) as user_count FROM tbl_users u inner join tbl_users_info ui on ui.id = u.id  inner join tbl_access a on a.id = u.access_id WHERE (u.username = '$user' OR u.email = '$user')";
   if ($result = mysqli_query($conn, $sql)) {
     while ($obj = mysqli_fetch_object($result)) {
       if (!empty($obj->user_count)) {

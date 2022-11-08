@@ -1,9 +1,9 @@
 <h2><i class="fa fa-user"></i> User ID#<?php echo $profile->id; ?></h2>
 <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-user"></i> User Profile
-    <button type="button" class="btn btn-sm btn-warning pull-right btn-edit" name="user_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
+    <button type="button" class="btn btn-sm btn-dark pull-right btn-edit" name="user_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
   </div>
   <div class="card-body">
     <div class="container-fluid">

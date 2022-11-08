@@ -2,7 +2,7 @@
 <form method="post" name="update_user">
   <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
   <div class="card">
-    <div class="card-header bg-dark text-warning">
+    <div class="card-header bg-dark text-white">
       <i class="fa fa-user"></i> User Profile
     </div>
     <div class="card-body">
@@ -61,7 +61,7 @@
             <div class="pull-right">
               <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i></button>
               <button type="submit" class="btn btn-sm btn-dark" name="type" value="reset">Reset Password <i class="fa fa-lock"></i></button>
-              <button type="submit" class="btn btn-sm btn-warning" name="type" value="update">Update <i class="fa fa-save"></i></button>
+              <button type="submit" class="btn btn-sm btn-dark" name="type" value="update">Update <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

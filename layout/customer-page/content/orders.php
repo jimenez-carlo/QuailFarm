@@ -4,9 +4,9 @@
     <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
       <!-- <div class="col-12 mb-3">
         <div class="card">
-          <div class="card-header bg-dark text-warning">
+          <div class="card-header bg-dark text-white">
             <i class="fa fa-cube"></i> #<?php echo $res; ?> - <?php echo $data['orders']['status'][$res]; ?>
-            <button class="accordion-button collapsed btn btn-sm btn-warning pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo str_replace('#', '', 'accordion_' . $res); ?>" aria-expanded="false">
+            <button class="accordion-button collapsed btn btn-sm btn-dark pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo str_replace('#', '', 'accordion_' . $res); ?>" aria-expanded="false">
             </button>
           </div>
           <div class="card-body accordion-collapse collapse" id="<?php echo str_replace('#', '', 'accordion_' . $res); ?>">
@@ -45,7 +45,7 @@
                         <form method="post" name="update_transaction">
                           <input type="hidden" name="id" value="<?php echo $sub_res['id']; ?>">
                           <input type="hidden" name="status" value="5">
-                          <button type="submit" class="btn btn-sm btn-warning"> Cancel</button>
+                          <button type="submit" class="btn btn-sm btn-dark"> Cancel</button>
                         </form>
                       <?php } ?>
                     </td>

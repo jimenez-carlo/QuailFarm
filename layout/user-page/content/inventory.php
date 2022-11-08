@@ -23,7 +23,7 @@
             <input type="hidden" value="<?php echo $res['id']; ?>" name="product_id">
             <div class="input-group">
               <div class="input-group-prepend">
-                <button class="btn btn-sm btn-warning" type="submit" name="type" value="re_stock_list">Re-Stock <i class="fa fa-save"></i></button>
+                <button class="btn btn-sm btn-dark" type="submit" name="type" value="re_stock_list">Re-Stock <i class="fa fa-save"></i></button>
               </div>
               <input type="text" class="form-control form-control-sm" name="qty" value="0" style="text-align:right;max-width:20%">
               <button type="button" class="btn btn-sm btn-dark btn-edit" name="inventory_edit" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button>

@@ -25,16 +25,17 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNav" aria-controls="toggleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand col-8 col-auto mr-auto text-warning" href="#">
-        <h2><i class="fa fa-home"></i> Menor's Quail Farm</h2>
+      <a class="navbar-brand col-8 col-auto mr-auto text-white" href="#">
+        <h2> Menor's Quail Farm</h2>
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="toggleNav">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home"><i class="fa fa-home"></i> Home</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about-us"><i class="fa fa-info"></i> About Us</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#products"><i class="fa fa-shopping-cart"></i> Products </a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#contact-us"><i class="fa fa-phone"></i> Contact Us</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-warning font-bold text-dark" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="index.php"> Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="about_us_1">About Us</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="products_1"> Products </a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="contact_us_1"> Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="tutorial_1"> Tutorial</a></li>
+          <li class="nav-item"><a class="nav-link active btn btn-light font-bold text-dark" aria-current="page" data-bs-toggle="modal" data-bs-target="#modalLogin"> Login</a></li>
         </ul>
       </div>
     </div>

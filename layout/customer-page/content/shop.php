@@ -4,7 +4,7 @@
     <div class="col-12">
 
       <div class="card">
-        <div class="card-header bg-dark text-warning">
+        <div class="card-header bg-dark text-white">
           <i class="fa fa-shopping-bag"></i> <?php echo $data['tag']; ?>
         </div>
         <div class="card-body">
@@ -21,7 +21,7 @@
                       <input type="hidden" name="product_id" value="<?php echo $res['id']; ?>">
                       <input type="hidden" name="price" value="<?php echo $res['price']; ?>">
                       <div class="card">
-                        <div class="card-header bg-dark text-warning">
+                        <div class="card-header bg-dark text-white">
                           <i class="fa fa-tags"></i> <?php echo $res['name']; ?>
                         </div>
                         <div class="card-body">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-footer" style="display: flex;">
                           <div class="input-group mb-3">
-                            <button class="btn btn-warning" type="submit" id="button-addon1">Add To Cart <i class="fa fa-plus"></i></button>
+                            <button class="btn btn-dark" type="submit" id="button-addon1">Add To Cart <i class="fa fa-plus"></i></button>
                             <input type="number" name="qty" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="1" min="1" max="<?php echo $res['qty']; ?>">
                           </div>
                         </div>

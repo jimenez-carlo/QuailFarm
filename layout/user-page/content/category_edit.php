@@ -2,7 +2,7 @@
 <form method="post" name="update_category" class="col-md-6">
   <input type="hidden" id="category_id" value="<?php echo $category->id; ?>" name="category_id">
   <div class="card">
-    <div class="card-header bg-dark text-warning">
+    <div class="card-header bg-dark text-white">
       <i class="fa fa-exclamation-circle"></i> Category Details
     </div>
     <div class="card-body">
@@ -15,7 +15,7 @@
           <div class="col-md-12 mt-3">
             <div class="pull-right">
               <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i></button>
-              <button type="submit" class="btn btn-sm btn-warning" name="type" value="update">Update <i class="fa fa-save"></i></button>
+              <button type="submit" class="btn btn-sm btn-dark" name="type" value="update">Update <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

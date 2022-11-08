@@ -1,6 +1,6 @@
 <h2><i class="fa fa-archive"></i> Order #<?php echo reset($data['transactions'])['invoice']; ?></h2>
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-shopping-cart"></i> Cart Details
   </div>
   <div class="card-body">
@@ -42,13 +42,13 @@
                       <form method="post" name="update_order_transaction">
                         <input type="hidden" name="id" value="<?php echo $res['id']; ?>">
                         <input type="hidden" name="invoice_id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
-                        <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
+                        <button type="submit" class="btn btn-sm btn-dark" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
                         <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
                         <!-- <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button> -->
                       </form>
                       <?php $approvable++; ?>
                     <?php } else { ?>
-                      <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
+                      <button type="button" class="btn btn-sm btn-dark" disabled> Approve <i class="fa fa-check"></i> </button>
                       <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
                       <!-- <button type="button" class="btn btn-sm btn-dark btn-view" name="transaction_view" value="<?php echo $res['id']; ?>"> View <i class="fa fa-eye"></i> </button> -->
                     <?php } ?>
@@ -76,11 +76,11 @@
             <?php if (!empty($approvable)) { ?>
               <form method="post" name="update_orders_view">
                 <input type="hidden" name="id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
-                <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve All <i class="fa fa-check"></i> </button>
+                <button type="submit" class="btn btn-sm btn-dark" name="status" value="3"> Approve All <i class="fa fa-check"></i> </button>
                 <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject All <i class="fa fa-close"></i> </button>
               </form>
             <?php } else { ?>
-              <button type="button" class="btn btn-sm btn-warning" disabled> Approve All <i class="fa fa-check"></i> </button>
+              <button type="button" class="btn btn-sm btn-dark" disabled> Approve All <i class="fa fa-check"></i> </button>
               <button type="button" class="btn btn-sm btn-dark" disabled> Reject All <i class="fa fa-close"></i> </button>
             <?php } ?>
           </div>
@@ -93,9 +93,9 @@
 <br>
 <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-user"></i> Customer Details
-    <!-- <button type="button" class="btn btn-sm btn-warning pull-right btn-view" name="customer_view" value="<?php echo $customer->id; ?>">View <i class="fa fa-eye"></i></button> -->
+    <!-- <button type="button" class="btn btn-sm btn-dark pull-right btn-view" name="customer_view" value="<?php echo $customer->id; ?>">View <i class="fa fa-eye"></i></button> -->
   </div>
   <div class="card-body">
     <div class="container-fluid">
@@ -123,7 +123,7 @@
 </div>
 <br>
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-history"></i> Status History
   </div>
   <div class="card-body">

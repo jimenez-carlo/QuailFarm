@@ -1,9 +1,9 @@
 <h2><i class="fa fa-user"></i> Customer ID#<?php echo $profile->id; ?></h2>
 <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
 <div class="card">
-  <div class="card-header bg-dark text-warning">
+  <div class="card-header bg-dark text-white">
     <i class="fa fa-user"></i> Customer Profile
-    <button type="button" class="btn btn-sm btn-warning pull-right btn-edit" name="customer_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
+    <button type="button" class="btn btn-sm btn-dark pull-right btn-edit" name="customer_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button>
   </div>
   <div class="card-body">
     <div class="container-fluid">
@@ -52,8 +52,8 @@
   <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
     <div class="col-12 mb-3">
       <div class="card">
-        <div class="card-header bg-dark text-warning">
-          <i class="fa fa-cube"></i> #<?php echo $res; ?> <button type="button" class="btn btn-sm btn-warning pull-right btn-view" name="orders_view" value="<?php echo $res; ?>">View <i class="fa fa-eye"></i></button>
+        <div class="card-header bg-dark text-white">
+          <i class="fa fa-cube"></i> #<?php echo $res; ?> <button type="button" class="btn btn-sm btn-dark pull-right btn-view" name="orders_view" value="<?php echo $res; ?>">View <i class="fa fa-eye"></i></button>
         </div>
         <div class="card-body">
           <table class="table table-sm table-striped table-hover table-bordered" style="width:100%">

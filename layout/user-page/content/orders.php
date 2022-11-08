@@ -28,12 +28,12 @@
           <?php if (in_array($res['status_id'], array(1, 2))) { ?>
             <form method="post" name="update_order">
               <input type="hidden" name="id" value="<?php echo $res['invoice']; ?>">
-              <button type="submit" class="btn btn-sm btn-warning" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
+              <button type="submit" class="btn btn-sm btn-dark" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
               <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
               <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
             </form>
           <?php } else { ?>
-            <button type="button" class="btn btn-sm btn-warning" disabled> Approve <i class="fa fa-check"></i> </button>
+            <button type="button" class="btn btn-sm btn-dark" disabled> Approve <i class="fa fa-check"></i> </button>
             <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
             <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } ?>
