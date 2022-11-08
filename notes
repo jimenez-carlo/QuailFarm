@@ -9,3 +9,11 @@ admin
  -remove icons
  -display access
  -remove walking POS
+ -add services
+ -center title/forms
+
+customer
+  -center title/forms
+
+table fixed 10 items
+
