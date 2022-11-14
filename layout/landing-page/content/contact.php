@@ -1,4 +1,4 @@
-<hr class="featurette-divider">
+<!-- <hr class="featurette-divider"> -->
 <div class="row g-5">
   <h1 class=" display-4 fw-normal text-center" style="margin-bottom:2rem" id="contact-us">Contact Us</h1>
   <div class="col-md-5 col-lg-4 order-md-last">

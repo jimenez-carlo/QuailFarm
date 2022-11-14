@@ -55,6 +55,7 @@ if (in_array($page, $pages)) {
       $data['category'] = $request->get_one("select * from tbl_category c WHERE is_deleted = 0 and c.id = " . $id);
       break;
     case 'products':
+      $data['category_list'] = $request->get_list("select id,UPPER(name) as 'category' from tbl_category where is_deleted = 0");
       $data['products'] = $request->get_list("select c.name as category_name,p.*,concat('(ID#',i.id,') ',i.last_name,', ',i.first_name) as created_by from tbl_product p left join tbl_users_info i on i.id = p.created_by inner join tbl_category c on c.id = p.category_id where p.is_deleted = 0");
       break;
     case 'product_add':

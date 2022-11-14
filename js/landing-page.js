@@ -90,6 +90,7 @@ $(document).ready(function () {
     $(this).addClass('active');
     
     $(".result").html('');
+    $("#myCarousel").html('');
     $( "#content" ).load( base_url+'module/page.php?page='+page );
   });
 });

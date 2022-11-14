@@ -90,7 +90,7 @@ if (!function_exists('get_access')) {
         );
 
       default:
-        return array('about_us_1', 'products_1', 'contact_us_1', 'tutorial_1');
+        return array('about_us_1', 'products_1', 'contact_us_1', 'tutorial_1', 'login_1');
     }
   }
 }
@@ -165,6 +165,8 @@ if (!function_exists('page_url')) {
         return '../layout/landing-page/content/contact.php';
       case 'tutorial_1':
         return '../layout/landing-page/content/tutorial.php';
+      case 'login_1':
+        return '../layout/landing-page/content/login.php';
         // case 'shop':
         //   return '../layout/user-page/content/shop.php';
       case 'denied':

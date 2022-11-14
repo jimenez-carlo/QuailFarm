@@ -18,6 +18,7 @@
       <tr>
         <td><?php echo $res['id']; ?></td>
         <td><span class="badge bg-dark text-light"><?php echo $res['category_name']; ?></span></td>
+        <!-- <td><?php echo $res['category_name']; ?></td> -->
         <td style="width: 0.1%;"><img src="images/products/<?php echo $res['image']; ?>" style="width:100px;height:100px" /></td>
         <td><?php echo $res['name']; ?></td>
         <td class="text-end"><?php echo $res['price']; ?></td>
@@ -37,7 +38,7 @@
 </table>
 </div>
 <script>
-  $('table').DataTable({
+  var tbl = $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"i><"col-sm-2"p>>',
     buttons: [{
       className: 'btn btn-sm btn-dark',
@@ -46,5 +47,18 @@
         $("#content").load(base_url + 'module/page.php?page=product_add');
       }
     }]
+  });
+
+
+
+  $(document).ready(function() {
+    $('<select name="category" id="category" class="select" style="margin-left:5px;vertical-align:middle"> <option value="">All</option><?php foreach ($data['category_list'] as $res) { ?><option><?php echo $res['category']; ?></option><?php } ?></select>').insertAfter(".dt-button");
+    $(document).on("change", '#category ', function() {
+      var val = $(this).val(); //attr('value');
+      tbl
+        .column(1)
+        .search(val)
+        .draw();
+    });
   });
 </script>

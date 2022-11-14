@@ -35,7 +35,8 @@
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="products_1"> Products </a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="contact_us_1"> Contact Us</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="tutorial_1"> Tutorial</a></li>
-          <li class="nav-item"><a class="nav-link active btn btn-light font-bold text-dark" aria-current="page" data-bs-toggle="modal" data-bs-target="#modalLogin"> Login</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" href="#" name="login_1"> Login</a></li>
+          <!-- <li class="nav-item"><a class="nav-link active btn btn-light font-bold text-dark" aria-current="page" data-bs-toggle="modal" data-bs-target="#modalLogin"> Login</a></li> -->
         </ul>
       </div>
     </div>

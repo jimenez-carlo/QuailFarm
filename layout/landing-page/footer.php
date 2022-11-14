@@ -1,7 +1,7 @@
 <div class="container">
   <footer class="py-5">
     <a class="btn btn-dark back-top" href="#home"> <i class="fa fa-arrow-up"></i></a>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-9 col-md-3 mb-6">
         <h5 class="text-white">Menor's Quail Farm</h5>
         <ul class="nav flex-column">
@@ -29,7 +29,7 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
       <p>© 2022 Menor's Quail Farm, Inc. All rights reserved.</p>

@@ -1,6 +1,6 @@
-<h2><i class="fa fa-user-plus"></i> User Registration</h2>
+<h2 class="form-header"><i class="fa fa-user-plus"></i> User Registration</h2>
 <form method="post" name="register_user">
-  <div class="card">
+  <div class="card col-6 justify-content-md-center">
     <div class="card-header bg-dark text-white">
       <i class="fa fa-user"></i> User Profile
     </div>
@@ -15,35 +15,35 @@
               } ?>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="password" class="form-label">*Username</label>
             <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="Username" requireds>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="email" class="form-label">*Email Address</label>
             <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="user@example.com" requireds>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="password" class="form-label">*Password</label>
             <input type="password" class="form-control form-control-sm" id="new_password" name="new_password" placeholder="password" requireds>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="password_retype" class="form-label">*Re-Type Password</label>
             <input type="password" class="form-control form-control-sm" id="re_password" name="re_password" placeholder="re-type password" requireds>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="firstname" class="form-label">*First Name</label>
             <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" placeholder="firstname">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="lastname" class="form-label">*Last Name</label>
             <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" placeholder="lastname">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="address" class="form-label">*Address</label>
             <textarea class="form-control form-control-sm" id="address" name="address" rows="4"></textarea>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="contact" class="form-label">*Contact No</label>
             <input type="text" class="form-control form-control-sm" id="contact" name="contact" placeholder="09xxxxxxxxx" requireds>
             <label for="contact" class="form-label">*Gender</label>

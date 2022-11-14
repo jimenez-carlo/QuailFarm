@@ -22,7 +22,7 @@
 
 
     <!-- /END THE FEATURETTES -->
-    <hr class="featurette-divider">
+    <!-- <hr class="featurette-divider"> -->
   </div><!-- /.container -->
 </main>
 

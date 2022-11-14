@@ -1,13 +1,13 @@
-<h2><i class="fa fa-plus"></i> Product Creation</h2>
+<h2 class="form-header"><i class="fa fa-plus"></i> Product Creation</h2>
 <form method="post" name="add_product" enctype="multipart/form-data">
-  <div class="card">
+  <div class="card col-6 justify-content-md-center">
     <div class="card-header bg-dark text-white">
       <i class="fa fa-exclamation-circle"></i> Product Details
     </div>
     <div class="card-body">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label for="product_name" class="form-label">*Name</label>
             <input type="text" class="form-control form-control-sm" id="product_name" name="product_name" placeholder="Product Name" requireds>
             <label for="price" class="form-label">*Category</label>
@@ -22,7 +22,7 @@
             <textarea class="form-control form-control-sm" id="description" name="description" rows="3" placeholder="Product description"></textarea>
           </div>
 
-          <div class="col-md-6" style="display: flex;flex-direction:column">
+          <div class="col-md-12" style="display: flex;flex-direction:column">
             <label for="image" class="form-label">*Image</label>
             <img src="images/products/default.png" alt="" style="width:200px;height:200px;align-self: center;" id="preview">
             <input type="file" class="form-control form-control-sm" id="image" name="image" accept="image/*">
@@ -30,7 +30,6 @@
 
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="button" class="btn btn-sm btn-dark"> Back <i class="fa fa-close"></i></button>
               <button type="submit" class="btn btn-sm btn-dark">Register <i class="fa fa-save"></i></button>
             </div>
           </div>

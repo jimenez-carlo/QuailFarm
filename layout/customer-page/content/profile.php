@@ -47,7 +47,7 @@ $result = $data['profile'];
             </div>
             <div class="col-md-12 mt-3">
               <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-dark"> Cancel <i class="fa fa-close"></i></button>
+
                 <button type="submit" class="btn btn-sm btn-dark">Update <i class="fa fa-save"></i></button>
               </div>
             </div>
@@ -81,7 +81,7 @@ $result = $data['profile'];
 
             <div class="col-md-12 mt-3">
               <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-dark"> Cancel <i class="fa fa-close"></i></button>
+
                 <button type="submit" class="btn btn-sm btn-dark">Update <i class="fa fa-save"></i></button>
               </div>
             </div>
