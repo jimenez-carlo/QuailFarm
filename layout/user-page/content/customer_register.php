@@ -1,7 +1,7 @@
 <h2 class="form-header"><i class="fa fa-user-plus"></i> Customer Registration</h2>
 <form method="post" name="register_user">
   <div class="card col-6 justify-content-md-center">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-user"></i> User Profile
     </div>
     <div class="card-body">
@@ -12,8 +12,12 @@
             <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="Username" requireds>
           </div>
           <div class="col-md-12">
-            <label for="email" class="form-label">*Email Address</label>
-            <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="user@example.com" requireds>
+            <label for="firstname" class="form-label">*First Name</label>
+            <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" placeholder="firstname">
+          </div>
+          <div class="col-md-12">
+            <label for="lastname" class="form-label">*Last Name</label>
+            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" placeholder="lastname">
           </div>
           <div class="col-md-12">
             <label for="password" class="form-label">*Password</label>
@@ -24,20 +28,14 @@
             <input type="password" class="form-control form-control-sm" id="re_password" name="re_password" placeholder="re-type password" requireds>
           </div>
           <div class="col-md-12">
-            <label for="firstname" class="form-label">*First Name</label>
-            <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" placeholder="firstname">
-          </div>
-          <div class="col-md-12">
-            <label for="lastname" class="form-label">*Last Name</label>
-            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" placeholder="lastname">
+            <label for="contact" class="form-label">*Contact No</label>
+            <input type="text" class="form-control form-control-sm" id="contact" name="contact" placeholder="09xxxxxxxxx" requireds>
           </div>
           <div class="col-md-12">
             <label for="address" class="form-label">*Address</label>
             <textarea class="form-control form-control-sm" id="address" name="address" rows="4"></textarea>
           </div>
           <div class="col-md-12">
-            <label for="contact" class="form-label">*Contact No</label>
-            <input type="text" class="form-control form-control-sm" id="contact" name="contact" placeholder="09xxxxxxxxx" requireds>
             <label for="contact" class="form-label">*Gender</label>
             <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="gender" name="gender" requireds style="width: 100%;">
               <?php foreach ($gender_list as $res) {
@@ -48,8 +46,8 @@
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <!-- <button type="button" class="btn btn-sm btn-dark"> Back <i class="fa fa-close"></i></button> -->
-              <button type="submit" class="btn btn-sm btn-dark">Register <i class="fa fa-save"></i></button>
+              <!-- <button type="button" class="btn btn-sm btn-primary"> Back <i class="fa fa-close"></i></button> -->
+              <button type="submit" class="btn btn-sm btn-primary">Register <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

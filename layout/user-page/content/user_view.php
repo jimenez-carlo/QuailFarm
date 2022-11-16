@@ -2,9 +2,9 @@
 <form method="">
   <input type="hidden" id="user_id" name="user_id" requireds value="<?php echo $profile->id; ?>">
   <div class="card col-6 justify-content-md-center">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-user"></i> User Profile
-      <!-- <button type="button" class="btn btn-sm btn-dark pull-right btn-edit" name="user_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button> -->
+      <!-- <button type="button" class="btn btn-sm btn-primary pull-right btn-edit" name="user_edit" value="<?php echo $profile->id; ?>">Edit <i class="fa fa-edit"></i></button> -->
     </div>
     <div class="card-body">
       <div class="container-fluid">
@@ -26,10 +26,6 @@
             <input type="text" class="form-control form-control-sm" id="username" name="username" placeholder="Username" requireds value="<?php echo $profile->username; ?>" disabled>
           </div>
           <div class="col-md-12">
-            <label for="email" class="form-label">*Email Address</label>
-            <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="user@example.com" requireds value="<?php echo $profile->email; ?>" disabled>
-          </div>
-          <div class="col-md-12">
             <label for="firstname" class="form-label">*First Name</label>
             <input type="text" class="form-control form-control-sm" id="firstname" name="firstname" placeholder="firstname" value="<?php echo $profile->first_name; ?>" disabled>
           </div>
@@ -38,12 +34,14 @@
             <input type="text" class="form-control form-control-sm" id="lastname" name="lastname" placeholder="lastname" value="<?php echo $profile->last_name; ?>" disabled>
           </div>
           <div class="col-md-12">
+            <label for="contact" class="form-label">*Contact No</label>
+            <input type="text" class="form-control form-control-sm" id="contact" name="contact" placeholder="09xxxxxxxxx" requireds value="<?php echo $profile->contact_no; ?>" disabled>
+          </div>
+          <div class="col-md-12">
             <label for="address" class="form-label">*Address</label>
             <textarea class="form-control form-control-sm" id="address" name="address" rows="4" disabled><?php echo $profile->address; ?></textarea>
           </div>
           <div class="col-md-12">
-            <label for="contact" class="form-label">*Contact No</label>
-            <input type="text" class="form-control form-control-sm" id="contact" name="contact" placeholder="09xxxxxxxxx" requireds value="<?php echo $profile->contact_no; ?>" disabled>
             <label for="contact" class="form-label">*Gender</label>
             <select class="form-select form-select-sm" aria-label=".form-select-lg example" id="gender" name="gender" requireds style="width: 100%;" disabled>
               <?php foreach ($gender_list as $res) {

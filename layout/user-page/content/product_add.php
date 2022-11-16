@@ -1,7 +1,7 @@
 <h2 class="form-header"><i class="fa fa-plus"></i> Product Creation</h2>
 <form method="post" name="add_product" enctype="multipart/form-data">
   <div class="card col-6 justify-content-md-center">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-exclamation-circle"></i> Product Details
     </div>
     <div class="card-body">
@@ -30,7 +30,7 @@
 
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="submit" class="btn btn-sm btn-dark">Register <i class="fa fa-save"></i></button>
+              <button type="submit" class="btn btn-sm btn-primary">Register <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

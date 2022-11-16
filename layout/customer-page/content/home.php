@@ -7,7 +7,7 @@
                 <div class="carousel-caption">
                   <h1>Fresh out of farm</h1>
                   <p>Always Fresh Eggs!</p>
-                  <p><a class="btn btn-lg btn-dark font-bold" href="#products">Check Products!</a></p>
+                  <p><a class="btn btn-lg btn-primary font-bold" href="#products">Check Products!</a></p>
                 </div>
               </div>
             </div>

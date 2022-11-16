@@ -47,7 +47,8 @@ if (!function_exists('get_access')) {
           'orders',
           'orders_view',
           'customer_view',
-          'system'
+          'system',
+          'tae_alias',
         );
       case 2: //Salesclerk
         return array(
@@ -167,6 +168,9 @@ if (!function_exists('page_url')) {
         return '../layout/landing-page/content/tutorial.php';
       case 'login_1':
         return '../layout/landing-page/content/login.php';
+
+      case 'tae_alias':
+        return '../layout/user-page/content/test.php';
         // case 'shop':
         //   return '../layout/user-page/content/shop.php';
       case 'denied':

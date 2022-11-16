@@ -1,6 +1,6 @@
 <h2><i class="fa fa-tags"></i> Products</h2>
 <table class="table table-sm table-striped table-hover table-bordered">
-  <thead class="table-dark">
+  <thead class="table-primary">
     <tr>
       <th scope="col">PID#</th>
       <th scope="col">Category</th>
@@ -17,7 +17,7 @@
     <?php foreach ($data['products'] as $res) { ?>
       <tr>
         <td><?php echo $res['id']; ?></td>
-        <td><span class="badge bg-dark text-light"><?php echo $res['category_name']; ?></span></td>
+        <td><span class="badge bg-primary text-light"><?php echo $res['category_name']; ?></span></td>
         <!-- <td><?php echo $res['category_name']; ?></td> -->
         <td style="width: 0.1%;"><img src="images/products/<?php echo $res['image']; ?>" style="width:100px;height:100px" /></td>
         <td><?php echo $res['name']; ?></td>
@@ -27,9 +27,9 @@
         <td><?php echo $res['created_by']; ?></td>
         <td>
           <form method="post" name="update_product">
-            <button type="button" class="btn btn-sm btn-dark btn-edit" name="product_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
+            <button type="button" class="btn btn-sm btn-primary btn-edit" name="product_edit" value="<?php echo $res['id']; ?>"> Edit <i class="fa fa-edit"></i> </button>
             <input type="hidden" value="<?php echo $res['id']; ?>" name="product_id">
-            <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i> </button>
+            <button type="submit" class="btn btn-sm btn-primary" name="type" value="delete"> Delete <i class="fa fa-trash"></i> </button>
           </form>
         </td>
       </tr>
@@ -41,7 +41,7 @@
   var tbl = $('table').DataTable({
     dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"i><"col-sm-2"p>>',
     buttons: [{
-      className: 'btn btn-sm btn-dark',
+      className: 'btn btn-sm btn-primary',
       text: '<i class="fa fa-plus"></i> Add Product',
       action: function(e, dt, node, config) {
         $("#content").load(base_url + 'module/page.php?page=product_add');

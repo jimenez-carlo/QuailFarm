@@ -10,7 +10,6 @@ class User
   public function register_user()
   {
     $username = mysqli_real_escape_string($this->conn, $_POST['username']);
-    $email = mysqli_real_escape_string($this->conn, $_POST['email']);
     $new_password = mysqli_real_escape_string($this->conn, $_POST['new_password']);
     $re_password = mysqli_real_escape_string($this->conn, $_POST['re_password']);
     $firstname = mysqli_real_escape_string($this->conn, $_POST['firstname']);
@@ -25,16 +24,16 @@ class User
     $errors = array();
     $msg = '';
     $check_username = $this->get_one("select count(username) as `exists` from tbl_users where username = '$username' group_by username limit 1");
-    $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' group_by username limit 1");
+    // $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' group_by username limit 1");
 
     if (empty($username)) {
       $errors[] = 'username';
       $blank++;
     }
-    if (empty($email)) {
-      $errors[] = 'email';
-      $blank++;
-    }
+    // if (empty($email)) {
+    //   $errors[] = 'email';
+    //   $blank++;
+    // }
     if (empty($new_password)) {
       $errors[] = 'new_password';
       $blank++;
@@ -71,10 +70,10 @@ class User
       $errors[] = 'username';
     }
 
-    if (isset($check_email->exists) && !empty($check_email->exists)) {
-      $msg .= "Email Already In-Used!";
-      $errors[] = 'email';
-    }
+    // if (isset($check_email->exists) && !empty($check_email->exists)) {
+    //   $msg .= "Email Already In-Used!";
+    //   $errors[] = 'email';
+    // }
 
     if (!empty($errors)) {
       $msg .= "Please Fill Blank Fields!";
@@ -85,7 +84,7 @@ class User
 
     $password = password_hash($new_password, PASSWORD_DEFAULT);
 
-    mysqli_query($this->conn, "INSERT INTO tbl_users (username,`password`,email,access_id) values ('$username', '$password', '$email', '$access')");
+    mysqli_query($this->conn, "INSERT INTO tbl_users (username,`password`,access_id) values ('$username', '$password', '$access')");
     $last_id = mysqli_insert_id($this->conn);
     mysqli_query($this->conn, "INSERT INTO tbl_users_info (id,first_name,last_name,`address`,contact_no,gender_id) VALUES ('$last_id', '$firstname', '$lastname', '$address','$contact','$gender')");
 
@@ -119,7 +118,6 @@ class User
       case 'update':
         $user_id = mysqli_real_escape_string($this->conn, $_POST['user_id']);
         $username = mysqli_real_escape_string($this->conn, $_POST['username']);
-        $email = mysqli_real_escape_string($this->conn, $_POST['email']);
         $firstname = mysqli_real_escape_string($this->conn, $_POST['firstname']);
         $lastname = mysqli_real_escape_string($this->conn, $_POST['lastname']);
         $address = mysqli_real_escape_string($this->conn, $_POST['address']);
@@ -131,16 +129,16 @@ class User
         $errors = array();
         $msg = '';
         $check_username = $this->get_one("select count(username) as `exists` from tbl_users where username = '$username' and id != '$user_id' group_by username limit 1");
-        $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' and id != '$user_id' group_by username limit 1");
+        // $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' and id != '$user_id' group_by username limit 1");
 
         if (empty($username)) {
           $errors[] = 'username';
           $blank++;
         }
-        if (empty($email)) {
-          $errors[] = 'email';
-          $blank++;
-        }
+        // if (empty($email)) {
+        //   $errors[] = 'email';
+        //   $blank++;
+        // }
         if (empty($firstname)) {
           $errors[] = 'firstname';
           $blank++;
@@ -167,10 +165,10 @@ class User
           $errors[] = 'username';
         }
 
-        if (isset($check_email->exists) && !empty($check_email->exists)) {
-          $msg .= "Email Already In-Used!";
-          $errors[] = 'email';
-        }
+        // if (isset($check_email->exists) && !empty($check_email->exists)) {
+        //   $msg .= "Email Already In-Used!";
+        //   $errors[] = 'email';
+        // }
 
         if (!empty($errors)) {
           $msg .= "Please Fill Blank Fields!";
@@ -180,7 +178,7 @@ class User
         }
 
         mysqli_query($this->conn, "UPDATE tbl_users_info set first_name = '$firstname', last_name = '$lastname', contact_no = '$contact', `address`= '$address', gender_id = '$gender' where id = '$user_id'");
-        mysqli_query($this->conn, "UPDATE tbl_users set username = '$username', email = '$email', access_id = '$access' where id = '$user_id'");
+        mysqli_query($this->conn, "UPDATE tbl_users set username = '$username', access_id = '$access' where id = '$user_id'");
 
         $result->status = true;
         $result->result = success_msg("User Updated!");
@@ -194,7 +192,7 @@ class User
   {
     $customer_id = $_SESSION['user']->id;
     $username = mysqli_real_escape_string($this->conn, $_POST['username']);
-    $email = mysqli_real_escape_string($this->conn, $_POST['email']);
+    // $email = mysqli_real_escape_string($this->conn, $_POST['email']);
     $firstname = mysqli_real_escape_string($this->conn, $_POST['firstname']);
     $lastname = mysqli_real_escape_string($this->conn, $_POST['lastname']);
     $address = mysqli_real_escape_string($this->conn, $_POST['address']);
@@ -206,16 +204,16 @@ class User
     $errors = array();
     $msg = '';
     $check_username = $this->get_one("select count(username) as `exists` from tbl_users where username = '$username' and id != '$customer_id' group_by username limit 1");
-    $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' and id != '$customer_id' group_by username limit 1");
+    // $check_email = $this->get_one("select count(email) as `exists` from tbl_users where email = '$email' and id != '$customer_id' group_by username limit 1");
 
     if (empty($username)) {
       $errors[] = 'username';
       $blank++;
     }
-    if (empty($email)) {
-      $errors[] = 'email';
-      $blank++;
-    }
+    // if (empty($email)) {
+    //   $errors[] = 'email';
+    //   $blank++;
+    // }
     if (empty($firstname)) {
       $errors[] = 'firstname';
       $blank++;
@@ -242,10 +240,10 @@ class User
       $errors[] = 'username';
     }
 
-    if (isset($check_email->exists) && !empty($check_email->exists)) {
-      $msg .= "Email Already In-Used!";
-      $errors[] = 'email';
-    }
+    // if (isset($check_email->exists) && !empty($check_email->exists)) {
+    //   $msg .= "Email Already In-Used!";
+    //   $errors[] = 'email';
+    // }
 
     if (!empty($errors)) {
       $msg .= "Please Fill Blank Fields!";
@@ -255,7 +253,7 @@ class User
     }
 
     mysqli_query($this->conn, "UPDATE tbl_users_info set first_name = '$firstname', last_name = '$lastname', contact_no = '$contact', `address`= '$address', gender_id = '$gender' where id = '$customer_id'");
-    mysqli_query($this->conn, "UPDATE tbl_users set username = '$username', email = '$email' where id = '$customer_id'");
+    mysqli_query($this->conn, "UPDATE tbl_users set username = '$username' where id = '$customer_id'");
 
     $result->status = true;
     $result->result = success_msg("Profile Updated!");

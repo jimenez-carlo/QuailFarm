@@ -23,7 +23,7 @@
 </script>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="home">
+  <nav class="navbar navbar-expand-lg navbar-primary bg-primary" id="home">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNav" aria-controls="toggleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,15 +35,15 @@
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="#about-us"><i class="fa fa-user"></i> <?= $_SESSION['user']->access_name ?></a></li>
 
-          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-dark" href="module/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
-          <!-- <li class="nav-item"><a class="nav-link btn btn-dark font-bold text-dark" aria-current="page" href="module/logout.php" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li> -->
+          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-primary" href="module/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
+          <!-- <li class="nav-item"><a class="nav-link btn btn-primary font-bold text-primary" aria-current="page" href="module/logout.php" data-bs-toggle="modal" data-bs-target="#modal_id_1"><i class="fa fa-power-off"></i> Logout</a></li> -->
         </ul>
       </div>
     </div>
   </nav>
 
 
-  <div class="offcanvas offcanvas-start text-white bg-dark col-sm" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas offcanvas-start text-white bg-primary col-sm" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="d-flex flex-column flex-shrink-0 p-3 vh-100">
       <h2 class="text-center">Menor's Quail Farm</h2>
       <hr>

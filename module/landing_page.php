@@ -34,7 +34,6 @@ if ($_POST['form'] == 'login') {
 } else if ($_POST['form'] == 'signup') {
   $obj = new stdClass();
   $obj->username = mysqli_real_escape_string($conn, clean_data($_POST['username']));
-  $obj->email = mysqli_real_escape_string($conn, clean_data($_POST['email']));
   $obj->password = mysqli_real_escape_string($conn, clean_data($_POST['password']));
   $obj->password_retype = mysqli_real_escape_string($conn, clean_data($_POST['password_retype']));
   $obj->first_name = mysqli_real_escape_string($conn, clean_data($_POST['firstname']));
@@ -66,7 +65,7 @@ if ($_POST['form'] == 'login') {
     die;
   }
   $password = password_hash($obj->password, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO tbl_users (username, password, email) VALUES ('$obj->username', '$password', '$obj->email')";
+  $sql = "INSERT INTO tbl_users (username, password) VALUES ('$obj->username', '$password')";
   if (mysqli_query($conn, $sql)) {
     $user_id = intval(mysqli_insert_id($conn));
     $sql = "INSERT INTO tbl_users_info (id, first_name, last_name, address, contact_no, gender_id) VALUES ($user_id, '$obj->first_name', '$obj->last_name', '$obj->address', $obj->contact_no, $obj->gender)";

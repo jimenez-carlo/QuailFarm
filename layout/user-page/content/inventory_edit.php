@@ -3,7 +3,7 @@
 
 <br>
 <div class="card">
-  <div class="card-header bg-dark text-white">
+  <div class="card-header bg-primary text-white">
     <i class="fa fa-history"></i> Restock History
   </div>
   <div class="card-body">
@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-md-12 mt-3">
           <table class="table table-sm table-striped table-hover table-bordered">
-            <thead class="table-dark">
+            <thead class="table-primary">
               <tr>
                 <th scope="col">ID#</th>
                 <th scope="col">Original Qty</th>

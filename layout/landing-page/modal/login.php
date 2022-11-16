@@ -2,7 +2,7 @@
 <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header bg-dark text-white">
+      <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="modalLoginLabel"> Get Started!</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -29,8 +29,8 @@
                 <input type="password" class="form-control form-control-sm" id="login_password" name="login_password" placeholder="password">
               </div>
               <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal"> Cancel <i class="fa fa-close"></i></button>
-                <button type="submit" class="btn btn-sm btn-dark">Submit <i class="fa fa-check"></i></button>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"> Cancel <i class="fa fa-close"></i></button>
+                <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fa fa-check"></i></button>
               </div>
             </form>
           </div>
@@ -81,8 +81,8 @@
                 </div>
               </div>
               <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-dark" data-bs-dismiss="modal"> Cancel <i class="fa fa-close"></i></button>
-                <button type="submit" class="btn btn-sm btn-dark">Submit <i class="fa fa-check"></i></button>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"> Cancel <i class="fa fa-close"></i></button>
+                <button type="submit" class="btn btn-sm btn-primary">Submit <i class="fa fa-check"></i></button>
               </div>
             </form>
           </div>

@@ -23,7 +23,7 @@
 </script>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="home">
+  <nav class="navbar navbar-expand-lg navbar-primary bg-primary" id="home">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNav" aria-controls="toggleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
           <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="cart" href="#"> My Cart(<?php echo $cart->items; ?>)</a></li>
           <li class="nav-item"> <a class="nav-link active" aria-current="page" data-link="menu" name="customer_orders" href="#"> Orders</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" data-link="menu" name="customer_profile" href="#"> Profile </a></li>
-          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-dark" aria-current="page" href="module/logout.php"> Logout</a></li>
+          <li class="nav-item"><a class="nav-link btn btn-light font-bold text-primary" aria-current="page" href="module/logout.php"> Logout</a></li>
         </ul>
       </div>
     </div>

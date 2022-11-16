@@ -1,6 +1,6 @@
 <h2><i class="fa fa-cube"></i> Orders</h2>
 <table class="table table-sm table-striped table-hover table-bordered">
-  <thead class="table-dark">
+  <thead class="table-primary">
     <tr>
       <th scope="col">Order#</th>
       <th scope="col">Paid/Unpaid</th>
@@ -28,14 +28,14 @@
           <?php if (in_array($res['status_id'], array(1, 2))) { ?>
             <form method="post" name="update_order">
               <input type="hidden" name="id" value="<?php echo $res['invoice']; ?>">
-              <button type="submit" class="btn btn-sm btn-dark" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
-              <button type="submit" class="btn btn-sm btn-dark" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
-              <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
+              <button type="submit" class="btn btn-sm btn-primary" name="status" value="3"> Approve <i class="fa fa-check"></i> </button>
+              <button type="submit" class="btn btn-sm btn-primary" name="status" value="6"> Reject <i class="fa fa-close"></i> </button>
+              <button type="button" class="btn btn-sm btn-primary btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
             </form>
           <?php } else { ?>
-            <button type="button" class="btn btn-sm btn-dark" disabled> Approve <i class="fa fa-check"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark" disabled> Reject <i class="fa fa-close"></i> </button>
-            <button type="button" class="btn btn-sm btn-dark btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
+            <button type="button" class="btn btn-sm btn-primary" disabled> Approve <i class="fa fa-check"></i> </button>
+            <button type="button" class="btn btn-sm btn-primary" disabled> Reject <i class="fa fa-close"></i> </button>
+            <button type="button" class="btn btn-sm btn-primary btn-view" name="orders_view" value="<?php echo $res['invoice']; ?>"> View <i class="fa fa-eye"></i> </button>
           <?php } ?>
         </td>
       </tr>

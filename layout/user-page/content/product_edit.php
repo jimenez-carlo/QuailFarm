@@ -2,7 +2,7 @@
 <form method="post" name="update_product" enctype="multipart/form-data">
   <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
   <div class="card col-6 justify-content-md-center">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-exclamation-circle"></i> Product Details
     </div>
     <div class="card-body">
@@ -35,8 +35,8 @@
 
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="submit" class="btn btn-sm btn-dark" name="type" value="delete"> Delete <i class="fa fa-trash"></i></button>
-              <button type="submit" class="btn btn-sm btn-dark" name="type" value="update">Update <i class="fa fa-save"></i></button>
+              <button type="submit" class="btn btn-sm btn-primary" name="type" value="delete"> Delete <i class="fa fa-trash"></i></button>
+              <button type="submit" class="btn btn-sm btn-primary" name="type" value="update">Update <i class="fa fa-save"></i></button>
             </div>
           </div>
         </div>

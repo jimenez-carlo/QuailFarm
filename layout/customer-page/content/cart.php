@@ -3,12 +3,12 @@
 
     <div class="col-12">
       <div class="card">
-        <div class="card-header bg-dark text-white">
+        <div class="card-header bg-primary text-white">
           <i class="fa fa-shopping-cart"></i> My Cart
         </div>
         <div class="card-body">
           <table class="table table-sm table-striped table-hover table-bordered">
-            <thead class="table-dark">
+            <thead class="table-primary">
               <tr>
                 <th scope="col">ID#</th>
                 <th scope="col">Name</th>
@@ -36,7 +36,7 @@
                       <input type="hidden" name="price" value="<?php echo $res['price']; ?>">
                       <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                          <button class="btn btn-sm btn-dark" type="submit">Update <i class="fa fa-save"></i></button>
+                          <button class="btn btn-sm btn-primary" type="submit">Update <i class="fa fa-save"></i></button>
                         </div>
                         <input type="text" class="form-control form-control-sm" name="qty" value="<?php echo $res['qty']; ?>" style="text-align:right">
                       </div>
@@ -46,7 +46,7 @@
                   <td class="">
                     <form action="post" name="remove_from_cart">
                       <input type="hidden" name="transaction_id" value="<?php echo $res['id']; ?>">
-                      <button type="submit" class="btn btn-sm btn-dark btn-remove-row"><i class="fa fa-close"></i> </button>
+                      <button type="submit" class="btn btn-sm btn-primary btn-remove-row"><i class="fa fa-close"></i> </button>
                     </form>
                   </td>
                   <?php $price += $res['price']; ?>
@@ -65,7 +65,7 @@
           </table>
         </div>
         <form action="post" name="checkout_cart">
-          <button class="btn btn-lg btn-dark font-bold rounded-0 w-100">Checkout Now <i class="fa fa-check fa-lg"></i></button>
+          <button class="btn btn-lg btn-primary font-bold rounded-0 w-100">Checkout Now <i class="fa fa-check fa-lg"></i></button>
         </form>
       </div>
     </div>

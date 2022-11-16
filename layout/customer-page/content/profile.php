@@ -4,7 +4,7 @@ $result = $data['profile'];
 <div class="container">
   <br>
   <div class="card">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-user"></i> My Profile
     </div>
     <div class="card-body">
@@ -48,7 +48,7 @@ $result = $data['profile'];
             <div class="col-md-12 mt-3">
               <div class="pull-right">
 
-                <button type="submit" class="btn btn-sm btn-dark">Update <i class="fa fa-save"></i></button>
+                <button type="submit" class="btn btn-sm btn-primary">Update <i class="fa fa-save"></i></button>
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@ $result = $data['profile'];
   </div>
   <br>
   <div class="card">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-lock"></i> Change Password
     </div>
     <div class="card-body">
@@ -82,7 +82,7 @@ $result = $data['profile'];
             <div class="col-md-12 mt-3">
               <div class="pull-right">
 
-                <button type="submit" class="btn btn-sm btn-dark">Update <i class="fa fa-save"></i></button>
+                <button type="submit" class="btn btn-sm btn-primary">Update <i class="fa fa-save"></i></button>
               </div>
             </div>
           </div>

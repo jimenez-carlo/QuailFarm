@@ -4,14 +4,14 @@
     <?php foreach ($data['orders']['invoice'] as $res => $invoice_key) { ?>
       <!-- <div class="col-12 mb-3">
         <div class="card">
-          <div class="card-header bg-dark text-white">
+          <div class="card-header bg-primary text-white">
             <i class="fa fa-cube"></i> #<?php echo $res; ?> - <?php echo $data['orders']['status'][$res]; ?>
-            <button class="accordion-button collapsed btn btn-sm btn-dark pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo str_replace('#', '', 'accordion_' . $res); ?>" aria-expanded="false">
+            <button class="accordion-button collapsed btn btn-sm btn-primary pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo str_replace('#', '', 'accordion_' . $res); ?>" aria-expanded="false">
             </button>
           </div>
           <div class="card-body accordion-collapse collapse" id="<?php echo str_replace('#', '', 'accordion_' . $res); ?>">
             <table class="table table-sm table-striped table-hover table-bordered" style="width:100%">
-              <thead class="table-dark">
+              <thead class="table-primary">
                 <tr>
                   <th scope="col">TXN#</th>
                   <th scope="col">Status</th>
@@ -45,7 +45,7 @@
                         <form method="post" name="update_transaction">
                           <input type="hidden" name="id" value="<?php echo $sub_res['id']; ?>">
                           <input type="hidden" name="status" value="5">
-                          <button type="submit" class="btn btn-sm btn-dark"> Cancel</button>
+                          <button type="submit" class="btn btn-sm btn-primary"> Cancel</button>
                         </form>
                       <?php } ?>
                     </td>

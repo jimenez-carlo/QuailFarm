@@ -2,7 +2,7 @@
 <form method="post" name="update_transaction_view" enctype="multipart/form-data">
   <input type="hidden" id="id" name="id" requireds value="<?php echo $transaction->id; ?>">
   <div class="card">
-    <div class="card-header bg-dark text-white">
+    <div class="card-header bg-primary text-white">
       <i class="fa fa-exclamation-circle"></i> Transaction Details
     </div>
     <div class="card-body">
@@ -13,7 +13,7 @@
             <label for="product_name" class="form-label">Order#</label>
             <div class="input-group">
               <input type="text" class="form-control form-control-sm" value="<?php echo $transaction->invoice; ?>" disabled>
-              <button type="button" class="btn btn-sm btn-dark btn-edit" name="orders_view" value="<?php echo $transaction->invoice; ?>" <?php echo empty($transaction->invoice) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
+              <button type="button" class="btn btn-sm btn-primary btn-edit" name="orders_view" value="<?php echo $transaction->invoice; ?>" <?php echo empty($transaction->invoice) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
             </div>
           </div>
           <div class="col-md-6">
@@ -27,14 +27,14 @@
             <label for="product_name" class="form-label">Buyer</label>
             <div class="input-group">
               <input type="text" class="form-control form-control-sm" value="<?php echo $transaction->buyer_name; ?>" disabled>
-              <button type="button" class="btn btn-sm btn-dark btn-edit" name="customer_view" value="<?php echo $transaction->buyer_id; ?>" <?php echo empty($transaction->buyer_id) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
+              <button type="button" class="btn btn-sm btn-primary btn-edit" name="customer_view" value="<?php echo $transaction->buyer_id; ?>" <?php echo empty($transaction->buyer_id) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
             </div>
           </div>
           <div class="col-md-6">
             <label for="product_name" class="form-label">Seller</label>
             <div class="input-group">
               <input type="text" class="form-control form-control-sm" value="<?php echo $transaction->seller_name; ?>" disabled>
-              <button type="button" class="btn btn-sm btn-dark btn-edit" name="user_view" value="<?php echo $transaction->seller_id; ?>" <?php echo empty($transaction->seller_id) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
+              <button type="button" class="btn btn-sm btn-primary btn-edit" name="user_view" value="<?php echo $transaction->seller_id; ?>" <?php echo empty($transaction->seller_id) ? 'disabled' : ''; ?>> View <i class="fa fa-eye"></i> </button>
             </div>
           </div>
         </div>
@@ -65,8 +65,8 @@
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
-              <button type="submit" class="btn btn-sm btn-dark" name="status" value="3" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Approve <i class="fa fa-check"></i></button>
-              <button type="submit" class="btn btn-sm btn-dark" name="status" value="6" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Reject <i class="fa fa-close"></i></button>
+              <button type="submit" class="btn btn-sm btn-primary" name="status" value="3" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Approve <i class="fa fa-check"></i></button>
+              <button type="submit" class="btn btn-sm btn-primary" name="status" value="6" <?php echo in_array($transaction->status_id, array(3, 5, 6, 7)) ? 'disabled' : ''; ?>> Reject <i class="fa fa-close"></i></button>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@
 
 <br>
 <div class="card">
-  <div class="card-header bg-dark text-white">
+  <div class="card-header bg-primary text-white">
     <i class="fa fa-history"></i> Status History
   </div>
   <div class="card-body">
@@ -87,7 +87,7 @@
       <div class="row">
         <div class="col-md-12 mt-3">
           <table class="table table-sm table-striped table-hover table-bordered">
-            <thead class="table-dark">
+            <thead class="table-primary">
               <tr>
                 <th scope="col">ID#</th>
                 <th scope="col">Status</th>

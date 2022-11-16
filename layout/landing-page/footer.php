@@ -1,6 +1,6 @@
 <div class="container">
   <footer class="py-5">
-    <a class="btn btn-dark back-top" href="#home"> <i class="fa fa-arrow-up"></i></a>
+    <!-- <a class="btn btn-primary back-top" href="#home"> <i class="fa fa-arrow-up"></i></a> -->
     <!-- <div class="row">
       <div class="col-9 col-md-3 mb-6">
         <h5 class="text-white">Menor's Quail Farm</h5>
@@ -25,15 +25,15 @@
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
             <label for="newsletter1" class="visually-hidden">Email address</label>
             <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-            <button class="btn btn-dark font-bold" type="button">Subscribe</button>
+            <button class="btn btn-primary font-bold" type="button">Subscribe</button>
           </div>
         </form>
       </div>
     </div> -->
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <!-- <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
       <p>© 2022 Menor's Quail Farm, Inc. All rights reserved.</p>
-    </div>
+    </div> -->
   </footer>
 </div>
 </body>

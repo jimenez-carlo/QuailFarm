@@ -10,11 +10,11 @@
 
     </select>
     <!-- <div class="col-3" style="margin-bottom: 1rem;">
-      <button class="btn btn-lg btn-dark font-bold rounded-0 w-100 btn-view" name="shop" value="all" type="button">All <i class="fa fa-tags"></i></button>
+      <button class="btn btn-lg btn-primary font-bold rounded-0 w-100 btn-view" name="shop" value="all" type="button">All <i class="fa fa-tags"></i></button>
     </div>
     <?php foreach ($category_list as $res) { ?>
       <div class="col-3" style="margin-bottom: 1rem;">
-        <button class="btn btn-lg btn-dark font-bold rounded-0 w-100 btn-view" name="shop" value="<?php echo $res['id']; ?>" type="button"><?php echo $res['category']; ?> <i class="fa fa-tags"></i></button>
+        <button class="btn btn-lg btn-primary font-bold rounded-0 w-100 btn-view" name="shop" value="<?php echo $res['id']; ?>" type="button"><?php echo $res['category']; ?> <i class="fa fa-tags"></i></button>
       </div>
     <?php } ?> -->
   </div>

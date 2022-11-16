@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8">
       <div class="card">
-        <div class="card-header bg-dark text-white">
+        <div class="card-header bg-primary text-white">
           <i class="fa fa-shopping-bag"></i> Products
         </div>
         <div class="card-body">
@@ -16,7 +16,7 @@
                 <div class="col-4 item-box" data-name="<?php echo strtolower($res['name']); ?>">
                   <form method="post">
                     <div class="card">
-                      <div class="card-header bg-dark text-white">
+                      <div class="card-header bg-primary text-white">
                         <i class="fa fa-tags"></i> <?php echo $res['name']; ?>
                       </div>
                       <div class="card-body">
@@ -28,7 +28,7 @@
                       </div>
                       <div class="card-footer" style="display: flex;">
                         <div class="input-group mb-3">
-                          <button class="btn btn-dark" type="submit" id="button-addon1">Add To Cart <i class="fa fa-plus"></i></button>
+                          <button class="btn btn-primary" type="submit" id="button-addon1">Add To Cart <i class="fa fa-plus"></i></button>
                           <input type="number" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="1" min="1" max="<?php echo $res['qty']; ?>">
                         </div>
                       </div>
@@ -44,12 +44,12 @@
     </div>
     <div class="col-4">
       <div class="card">
-        <div class="card-header bg-dark text-white">
+        <div class="card-header bg-primary text-white">
           <i class="fa fa-shopping-cart"></i> My Cart
         </div>
         <div class="card-body">
           <table class="table table-sm table-striped table-hover table-bordered">
-            <thead class="table-dark">
+            <thead class="table-primary">
               <tr>
                 <th scope="col">ID#</th>
                 <th scope="col">Name</th>
@@ -66,7 +66,7 @@
                   <td class="text-end"><?php echo $res['price']; ?></td>
                   <td class="text-end"><?php echo $res['qty']; ?></td>
                   <td>
-                    <button type="button" class="btn btn-sm btn-dark"><i class="fa fa-close"></i> </button>
+                    <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-close"></i> </button>
                   </td>
                 </tr>
               <?php } ?>
@@ -85,7 +85,7 @@
             </tbody>
           </table>
         </div>
-        <button class="btn btn-lg btn-dark font-bold rounded-0">Checkout Now <i class="fa fa-check fa-lg"></i></button>
+        <button class="btn btn-lg btn-primary font-bold rounded-0">Checkout Now <i class="fa fa-check fa-lg"></i></button>
       </div>
     </div>
   </div>
