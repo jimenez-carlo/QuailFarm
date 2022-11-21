@@ -2,7 +2,7 @@
   <div id="myCarousel" class="carousel slide carousel-container" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/landing/farm2.jpg" class="d-block w-100" />
+        <img src="images/landing/farm3.jpg" class="d-block w-100" />
 
         <div class="container">
           <div class="carousel-caption">

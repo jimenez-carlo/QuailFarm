@@ -108,6 +108,7 @@ if (in_array($page, $pages)) {
       $data['transactions'] = $main;
       $data['customer'] = $request->get_one("select ui.*,u.* from tbl_users_info ui inner join tbl_users u on u.id = ui.id WHERE ui.id = " . $customer_id . " limit 1");
       $data['status_history'] = $request->get_list('select sh.date_created,sh.id,UPPER(s.status) as `status`,u.id as user_id,concat("(ID#",u.id,") ",u.last_name,", ", u.first_name) as `user`,ac.access_id FROM tbl_invoice_status_history sh inner join tbl_invoice_status s on s.id = sh.status_id inner join tbl_users_info u on u.id = sh.created_by inner join tbl_users ac on ac.id = sh.created_by where sh.invoice_id = ' . $invoice_id . ' order by id desc');
+      $data['actual_invoice'] = $request->get_one("SELECT * FROM tbl_invoice where invoice = '$id' limit 1");
       break;
     case 'customer_view':
       $data['profile'] = $request->get_one("select g.gender,UPPER(a.name) as 'access',ui.*,u.* from tbl_users u inner join tbl_users_info ui on ui.id = u.id inner join tbl_access a on a.id = u.access_id inner join tbl_gender g on g.id = ui.gender_id WHERE u.id = " . $id);

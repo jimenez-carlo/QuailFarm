@@ -116,6 +116,9 @@ $(document).on("submit", 'form', function (e) {
        if (form_name == 'update_order_transaction' && (type_value == '3' || type_value == '6')) {
          $( "#content" ).load( base_url+'module/page.php?page=orders_view&id=' +formdata.get('invoice_id'));
         }
+       if (form_name == 'pay_order') {
+         $( "#content" ).load( base_url+'module/page.php?page=orders_view&id=' +formdata.get('pay'));
+        }
         
        if (form_name == 'update_category' && type_value == 'delete') {
          $( "#content" ).load( base_url+'module/page.php?page=categories' );

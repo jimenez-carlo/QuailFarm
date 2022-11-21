@@ -159,6 +159,8 @@ CREATE TABLE `tbl_invoice` (
   `status_id` int(11) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `contact_no` varchar(45) DEFAULT NULL,
+  `amount` varchar(45) DEFAULT NULL,
+  `change` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -169,7 +171,7 @@ CREATE TABLE `tbl_invoice` (
 
 LOCK TABLES `tbl_invoice` WRITE;
 /*!40000 ALTER TABLE `tbl_invoice` DISABLE KEYS */;
-INSERT INTO `tbl_invoice` VALUES (1,'1665157742',14,1,'2022-10-07 23:49:02',NULL,NULL,NULL),(2,'1665242387',14,1,'2022-10-08 23:19:47',3,NULL,NULL),(3,'1666254302',8,1,'2022-10-20 16:25:02',1,NULL,NULL),(4,'1667370786',8,1,'2022-11-02 14:33:06',1,NULL,NULL),(5,'1667370824',8,1,'2022-11-02 14:33:44',1,NULL,NULL);
+INSERT INTO `tbl_invoice` VALUES (1,'1665157742',14,1,'2022-10-07 23:49:02',NULL,NULL,NULL,NULL,NULL),(2,'1665242387',14,1,'2022-10-08 23:19:47',3,NULL,NULL,NULL,NULL),(3,'1666254302',8,1,'2022-10-20 16:25:02',1,NULL,NULL,'50','9'),(4,'1667370786',8,1,'2022-11-02 14:33:06',1,NULL,NULL,'',''),(5,'1667370824',8,1,'2022-11-02 14:33:44',1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tbl_invoice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,7 +384,7 @@ CREATE TABLE `tbl_users` (
   `date_created` datetime DEFAULT current_timestamp(),
   `is_deleted` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,7 +393,7 @@ CREATE TABLE `tbl_users` (
 
 LOCK TABLES `tbl_users` WRITE;
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-INSERT INTO `tbl_users` VALUES (2,'admin','$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry','cjarasa@gmail.com',1,'2022-06-12 02:42:14',0),(7,'Salesclerk','$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6','cashier@gmail.com',2,'2022-06-12 10:10:09',0),(8,'customer','$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry','customer@gmail.com',3,'2022-06-12 10:23:27',1),(9,'carrier','$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6','carrier@gmail.com',4,'2022-06-15 22:14:36',0),(10,'admin2','$2y$10$/wkSAVsPPi.ooWYWZodyoeio4Xs9gPjEZCm4MMdG.LDlRGAEOxN82','admin2@gmail.com',1,'2022-06-18 19:38:27',1),(11,'customer2','$2y$10$NUrJmzQsyD.zE6K2kOXLLeHKY75trAqrWoS5eZRjy0IxHWTcV3mZa','customer2@gmail.com',3,'2022-06-20 14:36:28',1),(12,'arasa1234','$2y$10$sEYi97dPYqYy0IOAij8vQ.wfZS0y5/8kI6jR0pLZjSqPnp6wZW/.G','testlords@gmail.com',1,'2022-08-06 16:11:57',1),(13,'cjarasa@gmail.com','$2y$10$bi1p.UAHwe3BLFmsvu3q2eHBPRH7nwtYaCyFlIXpg2J2Dl68weOwK','cjarasa@gmail.com',3,'2022-09-12 16:30:13',0),(14,'ace','$2y$10$LKNeHFTMH6nQCcdXoUVWteQIUTviz9M4JgYKGYhlXRZGRi2GYRV..','ace@gmail.com',3,'2022-10-07 22:16:22',0),(15,'customer','$2y$10$ezTqV.umJtY2xiQjxQFNBepazzvmhJiBULgFtv4tqQP6WNd9/x3hS','customer@gmail.com',3,'2022-10-07 23:35:20',0),(16,'admin1','$2y$10$cIv49/hzXeEXmMoHp4iP.ez.TBSmI9I7MYO5znWWiiDtA8J9s5mTe','admin1@gmail.com',5,'2022-10-12 17:18:49',1),(17,'test','$2y$10$3TxN8Pd4DQ6x/9QU4oLd0u4NoQD7Qqtvr5ffMmCptf.IMHj7x8aLS','jimenez.carlo.llabor@gmail.com',5,'2022-10-20 16:31:15',0);
+INSERT INTO `tbl_users` VALUES (2,'admin','$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry','cjarasa@gmail.com',1,'2022-06-12 02:42:14',0),(7,'Salesclerk','$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6','cashier@gmail.com',2,'2022-06-12 10:10:09',0),(8,'customer','$2y$10$oAudgvpauxhyTxyhDOvo7.Geu/ddVWPU/TIq690SwRXOySZa81Iry','customer@gmail.com',3,'2022-06-12 10:23:27',1),(9,'carrier','$2y$10$Y3ksPARb0uYJFuetdyGuaeRa.jOpIR.8KAxNlVvij4ZQNaZ1KmVm6','carrier@gmail.com',4,'2022-06-15 22:14:36',0),(10,'admin2','$2y$10$/wkSAVsPPi.ooWYWZodyoeio4Xs9gPjEZCm4MMdG.LDlRGAEOxN82','admin2@gmail.com',1,'2022-06-18 19:38:27',1),(11,'customer2','$2y$10$NUrJmzQsyD.zE6K2kOXLLeHKY75trAqrWoS5eZRjy0IxHWTcV3mZa','customer2@gmail.com',3,'2022-06-20 14:36:28',1),(12,'arasa1234','$2y$10$sEYi97dPYqYy0IOAij8vQ.wfZS0y5/8kI6jR0pLZjSqPnp6wZW/.G','testlords@gmail.com',1,'2022-08-06 16:11:57',1),(13,'cjarasa@gmail.com','$2y$10$bi1p.UAHwe3BLFmsvu3q2eHBPRH7nwtYaCyFlIXpg2J2Dl68weOwK','cjarasa@gmail.com',3,'2022-09-12 16:30:13',0),(14,'ace','$2y$10$LKNeHFTMH6nQCcdXoUVWteQIUTviz9M4JgYKGYhlXRZGRi2GYRV..','ace@gmail.com',3,'2022-10-07 22:16:22',0),(15,'customer','$2y$10$ezTqV.umJtY2xiQjxQFNBepazzvmhJiBULgFtv4tqQP6WNd9/x3hS','customer@gmail.com',3,'2022-10-07 23:35:20',0),(16,'admin1','$2y$10$cIv49/hzXeEXmMoHp4iP.ez.TBSmI9I7MYO5znWWiiDtA8J9s5mTe','admin1@gmail.com',5,'2022-10-12 17:18:49',1),(17,'test','$2y$10$3TxN8Pd4DQ6x/9QU4oLd0u4NoQD7Qqtvr5ffMmCptf.IMHj7x8aLS','jimenez.carlo.llabor@gmail.com',5,'2022-10-20 16:31:15',0),(18,'test','$2y$10$qC1LSxIr.gmtBqi9J8uNiunPcfpaAkv0QIeDPKz5G9bPsSHpd7fk6',NULL,3,'2022-11-16 17:02:06',0);
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +412,7 @@ CREATE TABLE `tbl_users_info` (
   `contact_no` int(11) DEFAULT NULL,
   `gender_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -419,7 +421,7 @@ CREATE TABLE `tbl_users_info` (
 
 LOCK TABLES `tbl_users_info` WRITE;
 /*!40000 ALTER TABLE `tbl_users_info` DISABLE KEYS */;
-INSERT INTO `tbl_users_info` VALUES (2,'Carlos','arasa','poblaction sur bayambang pangasinan2',2147483647,1),(7,'Sales Clerk','Cashier','poblaction sur bayambang pangasinan',2147483647,1),(8,'Customer','Customer','poblaction sur bayambang pangasinan',2147483647,1),(9,'Carrier','Carrier','poblaction sur bayambang pangasinan',2147483647,1),(10,'admin2','admin2','poblaction sur bayambang pangasinan',2147483647,1),(11,'Carlos','arasa','poblaction sur bayambang pangasinan',2147483647,1),(12,'Typhoon','arasa ','poblaction sur bayambang pangasinan',2147483647,1),(13,'carlos','arasa','test',2147483647,1),(14,'ace','acer','bababab',2147483647,1),(15,'customer','customer','bayambang pangasinan',2147483647,1),(16,'admin1','admin1','bautista pangasinan',2147483647,1),(17,'test','Typhoon','b',2147483647,1);
+INSERT INTO `tbl_users_info` VALUES (2,'Carlos','arasa','poblaction sur bayambang pangasinan2',2147483647,1),(7,'Sales Clerk','Cashier','poblaction sur bayambang pangasinan',2147483647,1),(8,'Customer','Customer','poblaction sur bayambang pangasinan',2147483647,1),(9,'Carrier','Carrier','poblaction sur bayambang pangasinan',2147483647,1),(10,'admin2','admin2','poblaction sur bayambang pangasinan',2147483647,1),(11,'Carlos','arasa','poblaction sur bayambang pangasinan',2147483647,1),(12,'Typhoon','arasa ','poblaction sur bayambang pangasinan',2147483647,1),(13,'carlos','arasa','test',2147483647,1),(14,'ace','acer','bababab',2147483647,1),(15,'customer','customer','bayambang pangasinan',2147483647,1),(16,'admin1','admin1','bautista pangasinan',2147483647,1),(17,'test','Typhoon','b',2147483647,1),(18,'test','Typhoon','b',2147483647,1);
 /*!40000 ALTER TABLE `tbl_users_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -432,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-02 14:43:57
+-- Dump completed on 2022-11-21 15:53:19

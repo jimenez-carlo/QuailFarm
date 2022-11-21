@@ -71,18 +71,52 @@
             </tbody>
           </table>
         </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label for="" class="form-label">Total</label>
+            <input type="text" class="form-control form-control-sm" disabled value="<?= $total_price ?>" id="total">
+          </div>
+          <div class="col-md-4">
+            <label for="" class="form-label">Amount</label>
+            <div class="input-group">
+              <input type="number" class="form-control form-control-sm" name="amount" id="amount" min="<?= $total_price ?>" <?= ($data['actual_invoice']->paid_status_id == 2) ? 'value="' . $data['actual_invoice']->amount . '" disabled' : 0 ?>>
+
+
+              <form method="post" name="pay_order">
+                <?php if ($data['actual_invoice']->paid_status_id == 1) { ?>
+                  <input type="hidden" name="total" value="value=" <?= $total_price ?>"">
+                  <input type="hidden" name="amount_post" id="amount_post">
+                  <input type="hidden" name="change_post" id="change_post">
+                  <button type="submit" class="btn btn-sm btn-primary" name="pay" value="<?php echo reset($data['transactions'])['invoice']; ?>"> PAY </button>
+                <?php } else { ?>
+                  <button type="button" class="btn btn-sm btn-primary" disabled> PAY </button>
+                <?php } ?>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="col-md-4">
+            <label for="" class="form-label">Change</label>
+            <input type="text" class="form-control form-control-sm" disabled id="change" value="<?= ($data['actual_invoice']->paid_status_id == 2) ? $data['actual_invoice']->change : 0 ?>">
+          </div>
+
+        </div>
+
         <div class="col-md-12 mt-3">
           <div class="pull-right">
-            <?php if (!empty($approvable)) { ?>
-              <form method="post" name="update_orders_view">
+
+            <form method="post" name="update_orders_view">
+              <?php if (!empty($approvable)) { ?>
                 <input type="hidden" name="id" value="<?php echo reset($data['transactions'])['invoice']; ?>">
                 <button type="submit" class="btn btn-sm btn-primary" name="status" value="3"> Approve All <i class="fa fa-check"></i> </button>
                 <button type="submit" class="btn btn-sm btn-primary" name="status" value="6"> Reject All <i class="fa fa-close"></i> </button>
-              </form>
-            <?php } else { ?>
-              <button type="button" class="btn btn-sm btn-primary" disabled> Approve All <i class="fa fa-check"></i> </button>
-              <button type="button" class="btn btn-sm btn-primary" disabled> Reject All <i class="fa fa-close"></i> </button>
-            <?php } ?>
+              <?php } else { ?>
+                <button type="button" class="btn btn-sm btn-primary" disabled> Approve All <i class="fa fa-check"></i> </button>
+                <button type="button" class="btn btn-sm btn-primary" disabled> Reject All <i class="fa fa-close"></i> </button>
+              <?php } ?>
+            </form>
           </div>
         </div>
       </div>
@@ -92,6 +126,7 @@
 </div>
 <br>
 <input type="hidden" id="product_id" name="product_id" requireds value="<?php echo $product->id; ?>">
+
 <div class="card">
   <div class="card-header bg-primary text-white">
     <i class="fa fa-user"></i> Customer Details
@@ -101,24 +136,19 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <label for="" class="form-label">Customer ID</label>
-          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->id; ?>">
+
           <label for="" class="form-label">Full Name</label>
           <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->first_name . ', ' . $customer->last_name; ?>">
-          <label for="" class="form-label">Email</label>
-          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->email; ?>">
+
+          <label for="" class="form-label">Contact No</label>
+          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->contact_no; ?>">
         </div>
         <div class="col-md-6">
           <label for="description" class="form-label">Address</label>
           <textarea class="form-control form-control-sm" rows="4" disabled><?php echo $customer->address; ?></textarea>
-          <label for="" class="form-label">Contact No</label>
-          <input type="text" class="form-control form-control-sm" disabled value="<?php echo $customer->contact_no; ?>">
         </div>
-
-
       </div>
     </div>
-
   </div>
 </div>
 <br>
@@ -162,4 +192,22 @@
   //   dom: '<"top"<"left-col"B><"center-col"><"right-col"f>> <"row"<"col-sm-12"tr>><"row"<"col-sm-10"i><"col-sm-2"p>>',
   //   "order": []
   // });
+  var amount = document.querySelector("#amount");
+  var amount_post = document.querySelector("#amount_post");
+  var change_post = document.querySelector("#change_post");
+
+  amount.addEventListener("keyup", e => {
+    var change = document.querySelector("#change");
+    var total = document.querySelector("#total");
+    if (amount.value == '') {
+      amount.value = 0;
+    }
+    var tmp = parseInt(amount.value) - parseInt(total.value);
+    if (parseInt(total.value) > parseInt(amount.value)) {
+      var tmp = 0;
+    }
+    change.value = tmp;
+    amount_post.value = amount.value;
+    change_post.value = change.value;
+  });
 </script>

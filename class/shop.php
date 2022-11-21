@@ -120,6 +120,24 @@ class Shop
     return $result;
   }
 
+
+  public function pay($id, $amount, $change, $total)
+  {
+
+    $result = def_response();
+    if ($total > $amount) {
+      $result->status = false;
+      $result->result = error_msg("Paid Amount Not Enough!");
+      return $result;
+    }
+    $sql = "update tbl_invoice set paid_status_id = 2,amount= '$amount',`change`='$change'  where invoice = '$id'";
+    mysqli_query($this->conn, $sql);
+
+    $result->status = true;
+    $result->result = success_msg("Order Updated!");
+    return $result;
+  }
+
   public function update_transaction($id, $status)
   {
     $user_id = $_SESSION['user']->id;
