@@ -1,0 +1,46 @@
+Add Menu
+ header.php(admin)
+ common.php
+  function get_access
+   add case name
+    ex.
+     case 'testestst'
+
+ function page_url
+   add case
+    ex.
+      case 'testestst':
+        return '../layout/user-page/content/bagong_page.php';
+
+ create file "bagong_page.php"
+  layout/user-page/content/bagong_page.php
+
+<!-----------------------------Optional-------------------------------->
+
+Optional Add data to page
+ page.php
+  add case
+  ex.
+      case 'testestst':
+      $data['users'] = $request->get_list("SELECT * FROM tbl_users");
+      $data['product'] = $request->get_one("SELECT * FROM tbl_users");
+
+  bagong_page.php
+    ex. 
+  <h1>eto yung bagon page</h1>
+
+  <select name="" id="">
+    <?php foreach ($data['users'] as $baog) { ?>
+      <option value="<?= $baog['id'] ?>"><?= $baog['username'] ?></option>
+    <?php } ?>
+  </select>
+  <pre>
+  <?= print_r($data['products']->name) ?>
+  <?= print_r($data['products2']) ?>
+  </pre>
+  <!-- <select name="" id="">
+    <?php foreach ($data['products'] as $baog) { ?>
+      <option value="<?= $baog['name'] ?>"><?= $baog['name'] ?></option>
+    <?php } ?>
+  </select> -->
+  </table>

@@ -126,8 +126,9 @@ class Shop
 
     $result = def_response();
     if ($total > $amount) {
+
       $result->status = false;
-      $result->result = error_msg("Paid Amount Not Enough!");
+      $result->result = error_msg($amount . "Paid Amount Not Enough!" . $total);
       return $result;
     }
     $sql = "update tbl_invoice set paid_status_id = 2,amount= '$amount',`change`='$change'  where invoice = '$id'";
