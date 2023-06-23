@@ -42,7 +42,6 @@
                 echo '<option value="' . $res['id'] . '">' . $res['gender'] . '</option>';
               } ?>
             </select>
-
           </div>
           <div class="col-md-12 mt-3">
             <div class="pull-right">
